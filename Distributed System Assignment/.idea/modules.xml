@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/distributed-system-project.iml" filepath="$PROJECT_DIR$/distributed-system-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Distributed System Assignment.iml" filepath="$PROJECT_DIR$/Distributed System Assignment.iml" />
     </modules>
   </component>
 </project>
