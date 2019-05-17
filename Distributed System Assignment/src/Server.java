@@ -8,6 +8,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.net.InetAddress;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Server {
 
 
@@ -67,15 +71,29 @@ public class Server {
             //this is an example of creating just a simple vector from 0-49
             //I am fine with hard coding the log path so that the log is always in the same place
             //We can have the logger running as a seperate program for right now.
-
             InetAddress ip = InetAddress.getLocalHost();
+            String logFileName = "/Test/machine" + ip.getHostAddress() + ".log";
+
+            Process process = new ProcessBuilder("grep", "-rni", phrase , logFileName).start();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line = "";
+            while((line = br.readLine()) != null) {
+                responseList.add(line);
+            }
+
+
+
+            /*
             for(int i = 1;i < 6;i++)
             {
                 responseList.add(String.valueOf(i) + " " + ip.toString());
             }
-
+            */
             //Do work above
             System.out.println("Found " + responseList.size() +  " lines with string: " + phrase);
+
             return responseList;
         }
     }
