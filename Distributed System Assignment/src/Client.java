@@ -17,16 +17,17 @@ public class Client {
         Vector<String> ipVector = new Vector<>();
 
         //Development
-        //ipVector.add("localhost");
+        ipVector.add("localhost");
 
         //EC2 instances
 
+/*
         ipVector.add("172.31.23.204");
         ipVector.add("172.31.29.195");
         ipVector.add("172.31.17.62");
         ipVector.add("172.31.29.58");
         ipVector.add("172.31.30.52");
-
+        */
 
         System.out.println("Enter lines of text to search for");
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +41,8 @@ public class Client {
         }
 
     }
-/*
+
+    /*
     public static void main(String[] args) throws Exception {
         if (args.length != 1) {
             System.err.println("Pass the server IP as the sole command line argument");

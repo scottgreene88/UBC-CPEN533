@@ -1,7 +1,11 @@
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
@@ -66,24 +70,17 @@ public class Server {
             Vector<String> responseList = new Vector<>();
 
             System.out.println("Finding lines with string: " + phrase);
-            //Do work below
-            //Code below here needs to find the strings and create a Vector of the lines
-            //this is an example of creating just a simple vector from 0-49
-            //I am fine with hard coding the log path so that the log is always in the same place
-            //We can have the logger running as a seperate program for right now.
             InetAddress ip = InetAddress.getLocalHost();
-            String logFileName = "/Test/machine" + ip.getHostAddress() + ".log";
+            String logFileName = "machine.172.31.9.69.log"; //+ ip.getHostAddress() + ".log";
 
-            Process process = new ProcessBuilder("grep", "-rni", phrase , logFileName).start();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-            String line = "";
-            while((line = br.readLine()) != null) {
+            Runtime rt = Runtime.getRuntime();
+            String cmd = "grep '" + phrase + "' " + logFileName;
+            Process proc = rt.exec(cmd);
+            BufferedReader is = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line;
+            while ((line = is.readLine()) != null) {
                 responseList.add(line);
             }
-
-
 
             /*
             for(int i = 1;i < 6;i++)
@@ -91,7 +88,7 @@ public class Server {
                 responseList.add(String.valueOf(i) + " " + ip.toString());
             }
             */
-            //Do work above
+
             System.out.println("Found " + responseList.size() +  " lines with string: " + phrase);
 
             return responseList;
