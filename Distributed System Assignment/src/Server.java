@@ -72,7 +72,20 @@ public class Server {
 
             System.out.println("Finding lines with string: " + phrase);
             InetAddress ip = InetAddress.getLocalHost();
+<<<<<<< HEAD
             String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\out\\production\\Distributed System Assignment\\machine.log.txt"; //+ ip.getHostAddress() + ".log";
+=======
+            String logFileName = "machine." + ip.getHostAddress() + ".log";
+
+            Runtime rt = Runtime.getRuntime();
+            String cmd = "grep " + phrase + " " + logFileName;
+            Process proc = rt.exec(cmd);
+            BufferedReader is = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line;
+            while ((line = is.readLine()) != null) {
+                responseList.add(line);
+            }
+>>>>>>> d47b3751d346a3d1b910d5b5da15326cacd174d2
 
             try
             {
