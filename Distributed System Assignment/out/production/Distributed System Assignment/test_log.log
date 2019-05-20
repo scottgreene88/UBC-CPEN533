@@ -1,0 +1,511 @@
+﻿Machine has started. This is test log file. Use these lines for testing.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event6  - VirtualBox mouse integration: is tagged by udev as: Mouse
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: #011X.Org Video Driver: 24.0
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: Current Operating System: Linux virtualubuntu 4.18.0-15-generic #16~18.04.1-Ubuntu SMP Thu Feb 7 14:06:04 UTC 2019 x86_64
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.681960130-07:00" level=info msg="loading plugin "io.containerd.snapshotter.v1.zfs"..." type=io.containerd.snapshotter.v1
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) This device may have been added with another device file.
+May 15 12:15:43 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating via systemd: service name='org.gtk.vfs.Metadata' unit='gvfs-metadata.service' requested by ':1.47' (uid=1000 pid=1681 comm="nautilus-desktop " label="unconfined")
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (==) Automatically adding GPU devices
+May 15 12:16:41 virtualubuntu dbus-daemon[518]: [system] Activating via systemd: service name='org.freedesktop.fwupd' unit='fwupd.service' requested by ':1.68' (uid=1000 pid=1881 comm="/usr/bin/gnome-software --gapplication-service " label="unconfined")
+May 15 12:15:26 virtualubuntu kernel: [    4.530358] cryptd: max_cpu_qlen set to 1000
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (==) vmware(0): Rendercheck mode is disabled.
+May 15 12:15:32 virtualubuntu NetworkManager[548]: <info>  [1557947732.2135] device (docker0): state change: unavailable -> disconnected (reason 'connection-assumed', sys-iface-state: 'external')
+May 15 12:15:38 virtualubuntu dbus-daemon[518]: [system] Successfully activated service 'org.freedesktop.locale1'
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Loading /usr/lib/xorg/modules/drivers/vesa_drv.so
+May 15 12:15:26 virtualubuntu kernel: [    1.756246] random: systemd-udevd: uninitialized urandom read (16 bytes read)
+May 15 12:15:41 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating service name='ca.desrt.dconf' requested by ':1.47' (uid=1000 pid=1681 comm="nautilus-desktop " label="unconfined")
+May 15 12:15:31 virtualubuntu systemd[731]: Starting Accessibility services bus...
+May 15 12:15:26 virtualubuntu apport[577]:    ...done.
+May 15 12:15:36 virtualubuntu systemd[731]: Started Evolution source registry.
+May 15 12:15:26 virtualubuntu apport[577]:  * Starting automatic crash report generation: apport
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) systemd-logind: got fd for /dev/input/event1 13:65 fd 23 paused 0
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual6 has no monitor section
+May 15 12:15:32 virtualubuntu dockerd[695]: time="2019-05-15T12:15:32.812844578-07:00" level=info msg="Daemon has completed initialization"
+May 15 12:15:37 virtualubuntu gnome-session-binary[944]: WARNING: App 'spice-vdagent.desktop' exited with code 1
+May 15 12:19:36 virtualubuntu nautilus[2003]: Called "net usershare info" but it failed: Failed to execute child process “net” (No such file or directory)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Loader magic: 0x55d600cf6020
+May 15 12:15:28 virtualubuntu NetworkManager[548]: <info>  [1557947728.0202] dhcp4 (enp0s3):   nameserver '142.103.1.42'
+May 15 12:15:26 virtualubuntu kernel: [    2.879997] systemd[1]: Created slice System Slice.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Using input driver 'libinput' for 'Sleep Button'
+May 15 12:15:26 virtualubuntu alsactl[581]: Found hardware: "ICH" "Analog Devices AD1980" "AC97a:41445370" "0x1028" "0x0177"
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event4  - ImExPS/2 Generic Explorer Mouse: device is a pointer
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) ImExPS/2 Generic Explorer Mouse: (accel) acceleration factor: 2.000
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.689325134-07:00" level=info msg="loading plugin "io.containerd.grpc.v1.healthcheck"..." type=io.containerd.grpc.v1
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) config/udev: Adding input device ImExPS/2 Generic Explorer Mouse (/dev/input/mouse0)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) config/udev: Adding input device VirtualBox mouse integration (/dev/input/event6)
+May 15 12:15:26 virtualubuntu kernel: [    4.475108] audit: type=1400 audit(1557947724.876:4): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/lib/NetworkManager/nm-dhcp-helper" pid=407 comm="apparmor_parser"
+May 15 12:15:26 virtualubuntu kernel: [    4.571224] AVX2 version of gcm_enc/dec engaged.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "2560x1600"x60.0  348.50  2560 2752 3032 3504  1600 1603 1609 1658 -hsync +vsync (99.5 kHz e)
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting TEXTDOMAINDIR=/usr/share/locale/
+May 15 12:15:33 virtualubuntu rtkit-daemon[1444]: Supervising 1 threads of 1 processes of 1 users.
+May 15 12:16:41 virtualubuntu systemd[1]: Starting Firmware update daemon...
+May 15 12:15:27 virtualubuntu NetworkManager[548]: <info>  [1557947727.5788] Loaded device plugin: NMBondDeviceFactory (internal)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Loading /usr/lib/xorg/modules/drivers/vmware_drv.so
+May 15 12:15:27 virtualubuntu systemd[1]: Started Permit User Sessions.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Initializing extension X-Resource
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) IGLX: Loaded and initialized swrast
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Using exact sizes for initial modes
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "640x480"x59.9   25.18  640 656 752 800  480 489 492 525 -hsync -vsync (31.5 kHz e)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:04.0/input/input7/event6"
+May 15 12:15:26 virtualubuntu systemd[1]: Started Save/Restore Sound Card State.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "1360x768"x60.0   85.50  1360 1424 1536 1792  768 771 777 795 +hsync +vsync (47.7 kHz e)
+May 15 12:15:26 virtualubuntu grub-common[554]:    ...done.
+May 15 12:15:28 virtualubuntu systemd[1]: Starting Tool to automatically collect and submit kernel crash signatures...
+May 15 12:15:35 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating service name='org.freedesktop.portal.IBus' requested by ':1.15' (uid=1000 pid=1463 comm="ibus-daemon --xim --panel disable " label="unconfined")
+May 15 12:15:36 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating service name='org.gnome.Shell.CalendarServer' requested by ':1.13' (uid=1000 pid=1277 comm="/usr/bin/gnome-shell " label="unconfined")
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting PWD=/home/oksana
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "800x600"x60.3   40.00  800 840 968 1056  600 601 605 628 +hsync +vsync (37.9 kHz e)
+May 15 12:15:36 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Successfully activated service 'org.gnome.Shell.CalendarServer'
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.688689336-07:00" level=info msg="loading plugin "io.containerd.service.v1.namespaces-service"..." type=io.containerd.service.v1
+May 15 12:15:31 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating via systemd: service name='org.a11y.Bus' unit='at-spi-dbus-bus.service' requested by ':1.9' (uid=1000 pid=1093 comm="/usr/lib/gnome-session/gnome-session-check-acceler" label="unconfined")
+May 15 12:15:28 virtualubuntu systemd[1]: Starting Ubuntu FAN network setup...
+May 15 12:15:26 virtualubuntu kernel: [    4.514908] audit: type=1400 audit(1557947724.916:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/bin/evince-previewer" pid=411 comm="apparmor_parser"
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (EE) open /dev/fb0: Permission denied
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual7 disconnected
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+May 15 12:16:41 virtualubuntu dbus-daemon[518]: [system] Successfully activated service 'org.freedesktop.fwupd'
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "1280x1024"x60.0  108.00  1280 1328 1440 1688  1024 1025 1028 1066 +hsync +vsync (64.0 kHz e)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: #011/usr/share/fonts/X11/misc,
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.688522855-07:00" level=info msg="loading plugin "io.containerd.gc.v1.scheduler"..." type=io.containerd.gc.v1
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.740539290-07:00" level=info msg="Error reading file /proc/977/cmdline: open /proc/977/cmdline: no such file or directory"
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "1024x768"x60.0   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.4 kHz e)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual3 has no monitor section
+May 15 12:15:27 virtualubuntu nm-dispatcher: req:1 'hostname': start running ordered scripts...
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.690682496-07:00" level=info msg="loading plugin "io.containerd.grpc.v1.introspection"..." type=io.containerd.grpc.v1
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) LoadModule: "vesa"
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) config/udev: Adding input device VirtualBox USB Tablet (/dev/input/event5)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) config/udev: Adding input device VirtualBox USB Tablet (/dev/input/js0)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "Device" "/dev/input/event6"
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual1 has no monitor section
+May 15 12:16:41 virtualubuntu fwupd[1901]: disabling plugin because: failed to coldplug synapticsmst: MST firmware updating not supported by OEM
+May 15 12:15:32 virtualubuntu gnome-keyring-ssh.desktop[1252]: SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+May 15 12:15:27 virtualubuntu NetworkManager[548]: <info>  [1557947727.8349] device (enp0s3): state change: disconnected -> prepare (reason 'none', sys-iface-state: 'managed')
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Initializing extension RENDER
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): EDID for output Virtual2
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event0  - Power Button: device is a keyboard
+May 15 12:15:31 virtualubuntu kernel: [   11.395866] Bridge firewalling registered
+May 15 12:15:32 virtualubuntu NetworkManager[548]: <info>  [1557947732.2728] device (docker0): Activation: successful, device activated.
+May 15 12:15:26 virtualubuntu thermald[510]: Polling mode is enabled: 4
+May 15 12:17:23 virtualubuntu nautilus[2003]: Called "net usershare info" but it failed: Failed to execute child process “net” (No such file or directory)
+May 15 12:15:26 virtualubuntu kernel: [    3.084366] EXT4-fs (sda1): re-mounted. Opts: errors=remount-ro
+May 15 12:15:26 virtualubuntu speech-dispatcher[558]:  * speech-dispatcher disabled; edit /etc/default/speech-dispatcher
+May 15 12:16:41 virtualubuntu fwupd[1901]: disabling plugin because: failed to startup uefi: UEFI firmware updating not supported
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) |-->Screen "Default Screen Section" (0)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: #011ABI class: X.Org Video Driver, version 24.0
+May 15 12:15:29 virtualubuntu systemd[731]: Listening on GnuPG network certificate management daemon.
+May 15 12:15:27 virtualubuntu NetworkManager[548]: <info>  [1557947727.5317] (-1750574976) ... get_connections (managed=false): return empty list.
+May 15 12:15:27 virtualubuntu dbus-daemon[518]: [system] Successfully activated service 'org.freedesktop.hostname1'
+May 15 12:15:37 virtualubuntu gnome-session[944]: gnome-session-binary[944]: WARNING: App 'spice-vdagent.desktop' exited with code 1
+May 15 12:15:28 virtualubuntu avahi-daemon[504]: New relevant interface enp0s3.IPv4 for mDNS.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event2  - AT Translated Set 2 keyboard: device is a keyboard
+May 15 12:16:40 virtualubuntu gnome-software[1881]: enabled plugins: fwupd, shell-extensions, packagekit-upgrade, packagekit-refine-repos, desktop-categories, packagekit-refresh, packagekit-local, packagekit, packagekit-url-to-app, os-release, packagekit-proxy, systemd-updates, ubuntuone, packagekit-offline, appstream, steam, desktop-menu-path, hardcoded-popular, packagekit-refine, generic-updates, hardcoded-blacklist, hardcoded-featured, modalias, ubuntu-reviews, rewrite-resource, snap, packagekit-history, provenance, provenance-license, icons, key-colors, key-colors-metadata
+May 15 12:15:29 virtualubuntu systemd[731]: Reached target Sockets.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (WW) The directory "/usr/share/fonts/X11/75dpi/" does not exist.
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.933159377-07:00" level=info msg="parsed scheme: \"unix\"" module=grpc
+May 15 12:16:44 virtualubuntu PackageKit: get-updates transaction /101_acdeaaeb from uid 1000 finished with success after 2203ms
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.682228754-07:00" level=info msg="loading plugin "io.containerd.metadata.v1.bolt"..." type=io.containerd.metadata.v1
+May 15 12:15:49 virtualubuntu systemd[1]: Started Update UTMP about System Runlevel Changes.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event6  - VirtualBox mouse integration: device removed
+May 15 12:15:26 virtualubuntu thermald[510]: Thermal DTS: No coretemp sysfs found
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) vmware(0): EDID for output Virtual8
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #13 0x7ffc31eb4a70 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:15:26 virtualubuntu systemd[1]: Mounted Kernel Configuration File System.
+May 15 12:15:29 virtualubuntu nm-dispatcher: req:3 'connectivity-change': start running ordered scripts...
+May 15 11:54:04 virtualubuntu kernel: [    1.235912] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #27 0x55a79a235198 i   resource:///org/gnome/shell/ui/screenShield.js:1282 (0x7f30c6c50e68 @ 188)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: VMware: No 3D enabled (0, Success).
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #24 0x558008050310 i   self-hosted:916 (0x7f9abc2f12b8 @ 367)
+May 15 11:54:04 virtualubuntu kernel: [    1.457272] [drm] Initialized vmwgfx 2.14.1 20180322 for 0000:00:02.0 on minor 0
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) VirtualBox mouse integration: (accel) selected scheme none/0
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event5  - VirtualBox USB Tablet: device removed
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) The server relies on udev to provide the list of input devices.
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #29 0x7ffe2343c480 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:15:28 virtualubuntu systemd[1]: Starting Tool to automatically collect and submit kernel crash signatures...
+May 15 11:54:04 virtualubuntu kernel: [    1.680838] ata3.00: 20971520 sectors, multi 128: LBA48 NCQ (depth 32)
+May 15 12:15:26 virtualubuntu udisksd[509]: failed to load module mdraid: libbd_mdraid.so.2: cannot open shared object file: No such file or directory
+May 15 12:15:37 virtualubuntu gnome-session[944]: gnome-session-binary[944]: WARNING: App 'spice-vdagent.desktop' exited with code 1
+May 15 12:15:39 virtualubuntu dbus-daemon[518]: [system] Successfully activated service 'org.freedesktop.ColorManager'
+May 15 12:15:26 virtualubuntu systemd[1]: Starting System Logging Service...
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.379964738-07:00" level=info msg="loading plugin "io.containerd.grpc.v1.content"..." type=io.containerd.grpc.v1
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #20 0x560d05223240 i   resource:///org/gnome/shell/ui/extensionSystem.js:361 (0x7f19e005ac48 @ 87)
+May 15 11:54:11 virtualubuntu rtkit-daemon[1441]: Supervising 3 threads of 1 processes of 1 users.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Initializing extension Present
+May 15 12:15:26 virtualubuntu systemd[1]: Mounting Mount unit for gtk-common-themes, revision 1198...
+May 15 11:54:09 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: localuser:oksana being added to access control list
+May 15 11:54:06 virtualubuntu avahi-daemon[517]: Registering new address record for fe80::fddd:5ef8:d150:8a36 on enp0s3.*.
+May 15 11:55:18 virtualubuntu dbus-daemon[519]: [system] Activating via systemd: service name='org.freedesktop.fwupd' unit='fwupd.service' requested by ':1.67' (uid=1000 pid=1929 comm="/usr/bin/gnome-software --gapplication-service " label="unconfined")
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #11 0x560d052235a0 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/docking.js:1784 (0x7f19bf8cc560 @ 116)
+May 15 11:54:04 virtualubuntu kernel: [    0.094218] pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #1 0x560d05222d68 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:208 (0x7f19f80d2b38 @ 54)
+May 15 11:54:14 virtualubuntu PackageKit: daemon start
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #36 0x560d05222b40 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:365 (0x7f19f80d2cd0 @ 10)
+May 15 11:54:04 virtualubuntu systemd[1]: Started CUPS Scheduler.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) This device may have been added with another device file.
+May 15 11:54:20 virtualubuntu systemd[740]: Starting Evolution address book service...
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) VirtualBox USB Tablet: (accel) selected scheme none/0
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #15 0x55a79a2355c0 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/extension.js:32 (0x7f30b71beab0 @ 26)
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.378342783-07:00" level=info msg="loading plugin "io.containerd.service.v1.leases-service"..." type=io.containerd.service.v1
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #1 0x560d05223628 i   /usr/share/gnome-shell/extensions/ubuntu-appindicators@ubuntu.com/indicatorStatusIcon.js:93 (0x7f19bf8bd780 @ 58)
+May 15 12:15:32 virtualubuntu dockerd[695]: time="2019-05-15T12:15:32.812844578-07:00" level=info msg="Daemon has completed initialization"
+May 15 11:55:19 virtualubuntu fwupd[1947]: disabling plugin because: failed to coldplug synapticsmst: MST firmware updating not supported by OEM
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #22 0x7ffe23436e60 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f19f80d2230 @ 386)
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.6375] end _init.
+May 15 12:16:41 virtualubuntu fwupd[1901]: Daemon ready for requests
+May 15 12:15:26 virtualubuntu kernel: [    1.697174] scsi 2:0:0:0: Direct-Access     ATA      VBOX HARDDISK    1.0  PQ: 0 ANSI: 5
+May 15 12:15:26 virtualubuntu kernel: [    0.000000] Linux version 4.18.0-15-generic (buildd@lcy01-amd64-029) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #16~18.04.1-Ubuntu SMP Thu Feb 7 14:06:04 UTC 2019 (Ubuntu 4.18.0-15.16~18.04.1-generic 4.18.20)
+May 15 12:15:28 virtualubuntu systemd[1]: Starting Ubuntu FAN network setup...
+May 15 12:15:38 virtualubuntu systemd[1]: Started Locale Service.
+May 15 11:54:04 virtualubuntu systemd[1]: Reached target Timers.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Module ABI versions:
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #34 0x55a79a234e48 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:337 (0x7f30d83d2bc0 @ 1626)
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #40 0x7ffe23441b00 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:15:49 virtualubuntu systemd[1]: Started Set console scheme.
+May 15 11:54:04 virtualubuntu kernel: [    0.004000] Switched APIC routing to physical x2apic.
+May 15 11:55:33 virtualubuntu PackageKit: get-details transaction /100_eaeacaae from uid 1000 finished with success after 770ms
+May 15 12:15:26 virtualubuntu avahi-daemon[504]: Successfully called chroot().
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #8 0x560d05222a30 i   resource:///org/gnome/shell/ui/tweener.js:219 (0x7f19f80cf780 @ 15)
+May 15 12:15:26 virtualubuntu systemd[1]: Mounted Mount unit for core18, revision 941.
+May 15 11:54:06 virtualubuntu NetworkManager[562]: <info>  [1557946446.1607] manager: startup complete
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #34 0x7ffc31ec1bf0 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 11:54:04 virtualubuntu systemd[1]: Mounting Mount unit for gnome-logs, revision 61...
+May 15 12:15:26 virtualubuntu kernel: [    0.004000] Console: colour VGA+ 80x25
+May 15 12:15:26 virtualubuntu kernel: [    0.000000]   DMA zone: 64 pages used for memmap
+May 15 11:54:16 virtualubuntu gsd-media-keys[1617]: g_variant_unref: assertion 'value != NULL' failed
+May 15 11:54:05 virtualubuntu systemd[1]: Started Save/Restore Sound Card State.
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (==) vmware(0): Default visual is TrueColor
+May 15 11:54:04 virtualubuntu kernel: [    4.698578] audit: type=1400 audit(1557946443.080:10): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/bin/evince-thumbnailer" pid=424 comm="apparmor_parser"
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (==) vmware(0): Rendercheck mode is disabled.
+May 15 12:15:26 virtualubuntu kernel: [    1.085971] Loaded X.509 cert 'Build time autogenerated kernel key: 93c6e076713d738d171f44766725faeef9510f02'
+May 15 12:15:26 virtualubuntu kernel: [    1.697423] sd 2:0:0:0: [sda] Write Protect is off
+May 15 12:15:37 virtualubuntu systemd[731]: Starting Virtual filesystem service - GNOME Online Accounts monitor...
+May 15 11:54:04 virtualubuntu kernel: [    1.011837] Key type asymmetric registered
+May 15 11:54:04 virtualubuntu systemd[1]: Starting Save/Restore Sound Card State...
+May 15 11:54:07 virtualubuntu systemd[740]: Starting D-Bus User Message Bus Socket.
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011ABI class: X.Org Video Driver, version 24.0
+May 15 11:54:04 virtualubuntu kernel: [    1.686134]  sda: sda1
+May 15 12:00:48 virtualubuntu gnome-shell[1339]: Object St.Label (0x55a79b8d1900), has been already deallocated - impossible to connect to signal. This might be caused by the fact that the object has been destroyed from C code using something such as destroy(), dispose(), or remove() vfuncs
+May 15 12:15:26 virtualubuntu avahi-daemon[504]: Joining mDNS multicast group on interface lo.IPv6 with address ::1.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #34 0x560d05222e08 i   resource:///org/gnome/shell/ui/tweener.js:112 (0x7f19f80c8e68 @ 37)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Module vmware: vendor="X.Org Foundation"
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #18 0x558008050500 i   resource:///org/gnome/shell/ui/sessionMode.js:167 (0x7f9aa9c6a6f8 @ 40)
+May 15 12:15:37 virtualubuntu systemd[731]: Started Virtual filesystem service - Media Transfer Protocol monitor.
+May 15 12:15:43 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating via systemd: service name='org.gnome.evolution.dataserver.AddressBook9' unit='evolution-addressbook-factory.service' requested by ':1.54' (uid=1000 pid=1752 comm="/usr/lib/evolution/evolution-calendar-factory-subp" label="unconfined")
+May 15 11:54:04 virtualubuntu systemd[1]: Mounting Mount unit for gtk-common-themes, revision 818...
+May 15 12:15:26 virtualubuntu kernel: [    0.088311] e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+May 15 11:54:36 virtualubuntu pulseaudio[1440]: [pulseaudio] bluez5-util.c: GetManagedObjects() failed: org.freedesktop.DBus.Error.NoReply: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+May 15 12:16:44 virtualubuntu gnome-software[1881]: Only 0 apps for recent list, hiding
+May 15 12:15:26 virtualubuntu kernel: [    1.070199] rtc_cmos rtc_cmos: registered as rtc0
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #36 0x55a79a234e48 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:337 (0x7f30d83d2bc0 @ 1626)
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #31 0x560d05222f10 i   self-hosted:916 (0x7f19f80f12b8 @ 367)
+May 15 12:15:26 virtualubuntu systemd[1]: Starting Tell Plymouth To Write Out Runtime Data...
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #3 0x560d05223810 i   resource:///org/gnome/shell/ui/dash.js:147 (0x7f19e00d6c48 @ 71)
+May 15 11:54:04 virtualubuntu kernel: [    1.416147] [drm]   Extended Fifo.
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Sleep Button: always reports core events
+May 15 11:54:04 virtualubuntu kernel: [    1.013361] ACPI: Battery Slot [BAT0] (battery present)
+May 15 11:54:04 virtualubuntu kernel: [    1.099670] Loading compiled-in X.509 certificates
+May 15 12:15:26 virtualubuntu kernel: [    2.506013] systemd[1]: Detected virtualization oracle.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #24 0x560d05223100 i   resource:///org/gnome/shell/ui/sessionMode.js:167 (0x7f19cf46a6f8 @ 40)
+May 15 11:54:04 virtualubuntu kernel: [    1.012202] ACPI: AC Adapter [AC] (off-line)
+May 15 12:28:23 virtualubuntu gnome-software[1881]: no app for changed ubuntu-dock@ubuntu.com
+May 15 12:15:36 virtualubuntu dbus-daemon[518]: [system] Activating via systemd: service name='org.freedesktop.GeoClue2' unit='geoclue.service' requested by ':1.34' (uid=1000 pid=1277 comm="/usr/bin/gnome-shell " label="unconfined")
+May 15 12:15:49 virtualubuntu systemd[1]: Startup finished in 2.418s (kernel) + 26.650s (userspace) = 29.068s.
+May 15 11:05:46 virtualubuntu dhclient[2189]: bound to 10.0.2.15 -- renewal in 37455 seconds.
+May 15 11:54:14 virtualubuntu dbus-daemon[519]: [system] Activating via systemd: service name='org.freedesktop.GeoClue2' unit='geoclue.service' requested by ':1.33' (uid=1000 pid=1339 comm="/usr/bin/gnome-shell " label="unconfined")
+May 15 11:54:04 virtualubuntu systemd[1]: Started AppArmor initialization.
+May 15 12:15:28 virtualubuntu systemd[1]: Started Ubuntu FAN network setup.
+May 15 13:48:08 virtualubuntu gnome-software[1881]: no app for changed ubuntu-dock@ubuntu.com
+May 15 11:54:06 virtualubuntu systemd[1]: Started GNOME Display Manager.
+May 15 11:54:04 virtualubuntu kernel: [    0.028000] cpuidle: using governor ladder
+May 15 12:00:49 virtualubuntu org.gnome.Shell.desktop[1339]: #7 0x7ffc31ec1c60 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Video Bus: Applying InputClass "libinput keyboard catchall"
+May 15 11:54:09 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+May 15 11:54:04 virtualubuntu kernel: [    1.112686] Key type big_key registered
+May 15 12:15:26 virtualubuntu acpid: waiting for events: event logging is off
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "AccelerationScheme" "none"
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual3 disconnected
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event2  - AT Translated Set 2 keyboard: device is a keyboard
+May 15 11:54:15 virtualubuntu gnome-session[959]: gnome-session-binary[959]: WARNING: App 'spice-vdagent.desktop' exited with code 1
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) No input driver specified, ignoring this device.
+May 15 11:54:04 virtualubuntu kernel: [    1.216053] Write protecting the kernel read-only data: 20480k
+May 15 11:54:04 virtualubuntu kernel: [    1.015836] ata_piix 0000:00:01.1: version 2.13
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #30 0x55a79a234db8 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:350 (0x7f30d83d2c48 @ 100)
+May 15 12:15:26 virtualubuntu alsactl[581]: Found hardware: "ICH" "Analog Devices AD1980" "AC97a:41445370" "0x1028" "0x0177"
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "1856x1392"x60.0  218.25  1856 1952 2176 2528  1392 1393 1396 1439 -hsync +vsync (86.3 kHz e)
+May 15 12:15:26 virtualubuntu kernel: [    0.088415] NetLabel: Initializing
+May 15 11:54:04 virtualubuntu systemd[1]: Starting Set console font and keymap...
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #14 0x7ffe23434c60 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #15 0x7ffc31eb4a70 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event4  - ImExPS/2 Generic Explorer Mouse: device is a pointer
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #6 0x7ffc31eaf1d0 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:17:48 virtualubuntu gvfsd[1084]: mkdir failed on directory /var/cache/samba: Permission denied
+May 15 11:54:09 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: dbus-update-activation-environment: setting GTK_IM_MODULE=ibus
+May 15 12:15:26 virtualubuntu kernel: [    1.350427] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] pcpu-alloc: s151552 r8192 d28672 u2097152 alloc=1*2097152
+May 15 12:15:28 virtualubuntu NetworkManager[548]: <info>  [1557947728.0196] dhcp4 (enp0s3):   lease time 86400
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event5  - VirtualBox USB Tablet: is tagged by udev as: Mouse
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "xkb_layout" "us"
+May 15 11:54:05 virtualubuntu networkd-dispatcher[491]: WARNING: systemd-networkd is not running, output will be incomplete.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #27 0x7ffe2343b120 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (==) Using system config directory "/usr/share/X11/xorg.conf.d"
+May 15 12:15:26 virtualubuntu kernel: [    0.074364] pci 0000:00:0d.0: reg 0x18: [io  0xd250-0xd257]
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.8038] modem-manager: ModemManager available
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.8432] policy: auto-activating connection 'Wired connection 1'
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event4  - ImExPS/2 Generic Explorer Mouse: device is a pointer
+May 15 12:15:26 virtualubuntu kernel: [    0.086513] pps_core: LinuxPPS API ver. 1 registered
+May 15 12:15:26 virtualubuntu kernel: [    0.038398] PCI host bridge to bus 0000:00
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event0  - Power Button: device is a keyboard
+May 15 11:54:04 virtualubuntu acpid: starting up with netlink and the input layer
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Kernel/User page tables isolation: enabled
+May 15 11:54:04 virtualubuntu kernel: [    1.013390] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+May 15 11:54:04 virtualubuntu systemd[1]: Reached target Swap.
+May 15 12:15:36 virtualubuntu dbus-daemon[931]: [session uid=1000 pid=931] Activating service name='org.gnome.Shell.CalendarServer' requested by ':1.13' (uid=1000 pid=1277 comm="/usr/bin/gnome-shell " label="unconfined")
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #40 0x560d05222ab0 i   resource:///org/gnome/shell/ui/tweener.js:244 (0x7f19f80cf808 @ 159)
+May 15 12:15:26 virtualubuntu kernel: [    1.431938] [drm] Capabilities:
+May 15 12:15:26 virtualubuntu kernel: [    0.000000] Movable zone start for each node
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #35 0x55a79a234f68 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:208 (0x7f30d83d2b38 @ 54)
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.250051673-07:00" level=info msg="loading plugin "io.containerd.snapshotter.v1.btrfs"..." type=io.containerd.snapshotter.v1
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011compiled for 1.20.1, module version = 13.3.0
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:06.0/usb1/1-1/1-1:1.0/0003:80EE:0021.0001/input/input6/event5"
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.6376] (722390144) ... get_connections.
+May 15 11:54:04 virtualubuntu kernel: [    0.095530] clocksource: Switched to clocksource kvm-clock
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (--) vmware(0): Direct rendering (DRI3 3D) is disabled.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #23 0x7ffe2343c480 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:15:26 virtualubuntu kernel: [    0.024000] ACPI: Added _OSI(Processor Aggregator Device)
+May 15 12:15:26 virtualubuntu kernel: [    0.073641] pci 0000:00:0d.0: reg 0x14: [io  0xd248-0xd24b]
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #21 0x7ffe23436e60 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f19f80d2230 @ 386)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event4  - ImExPS/2 Generic Explorer Mouse: is tagged by udev as: Mouse
+May 15 12:15:33 virtualubuntu rtkit-daemon[1444]: Supervising 1 threads of 1 processes of 1 users.
+May 15 12:15:26 virtualubuntu systemd[1]: Started Trigger anacron every hour.
+May 15 12:40:12 virtualubuntu org.gnome.Shell.desktop[1277]: #18 0x560d05223078 i   resource:///org/gnome/shell/ui/sessionMode.js:167 (0x7f19cf46a6f8 @ 40)
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #19 0x560d052232c0 i   resource:///org/gnome/shell/ui/extensionSystem.js:343 (0x7f19e005ab38 @ 64)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "800x600"x60.3   40.00  800 840 968 1056  600 601 605 628 +hsync +vsync (37.9 kHz e)
+May 15 12:15:30 virtualubuntu dockerd[695]: time="2019-05-15T12:15:30.630192166-07:00" level=info msg="loading plugin "io.containerd.content.v1.content"..." type=io.containerd.content.v1
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #14 0x560d05223520 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/docking.js:1903 (0x7f19bf8cc918 @ 37)
+May 15 11:55:30 virtualubuntu PackageKit: search-file transaction /96_eeeeadce from uid 1000 finished with success after 674ms
+May 15 12:15:31 virtualubuntu at-spi-bus-launcher[1115]: dbus-daemon[1126]: Successfully activated service 'org.a11y.atspi.Registry'
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #38 0x7ffc31ec0890 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f30d83d2230 @ 386)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) Using input driver 'libinput' for 'AT Translated Set 2 keyboard'
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #23 0x7ffe23438a60 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011built-ins
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #19 0x560d052232c0 i   resource:///org/gnome/shell/ui/extensionSystem.js:343 (0x7f19e005ab38 @ 64)
+May 15 11:54:16 virtualubuntu gnome-session-binary[959]: Entering running state
+May 15 12:15:26 virtualubuntu kernel: [    0.999365] ACPI: AC Adapter [AC] (off-line)
+May 15 11:54:04 virtualubuntu avahi-daemon[517]: Registering new address record for 127.0.0.1 on lo.IPv4.
+May 15 12:15:26 virtualubuntu kernel: [    1.200683] Freeing unused kernel image memory: 2464K
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #14 0x7ffe23434c60 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #12 0x7ffc31eb3e90 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:40:12 virtualubuntu org.gnome.Shell.desktop[1277]: #4 0x7ffe23434240 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f19f80d2230 @ 386)
+May 15 11:55:32 virtualubuntu PackageKit: search-file transaction /99_eebdadeb from uid 1000 finished with success after 775ms
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011Module class: X.Org XInput Driver
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (==) vmware(0): DPI set to (96, 96)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) Option "AccelerationScheme" "none"
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-4.18.0-15-generic root=UUID=06883f4a-5c68-4d01-94d3-6adaf2c58e14 ro quiet splash
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #39 0x560d05222ab0 i   resource:///org/gnome/shell/ui/tweener.js:244 (0x7f19f80cf808 @ 159)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #37 0x55a79a234d40 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:365 (0x7f30d83d2cd0 @ 10)
+May 15 11:54:04 virtualubuntu kernel: [    0.004000] Calibrating delay loop (skipped) preset value.. 3600.00 BogoMIPS (lpj=7200012)
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.383549991-07:00" level=info msg=serving... address="/var/run/docker/containerd/docker-containerd-debug.sock"
+May 15 11:54:08 virtualubuntu snapd[552]: daemon.go:379: started snapd/2.38.1 (series 16; classic) ubuntu/18.04 (amd64) linux/4.18.0-15-generic.
+May 15 12:15:26 virtualubuntu udisksd[509]: udisks daemon version 2.7.6 starting
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #9 0x55a79a235778 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/docking.js:462 (0x7f30b71c8340 @ 122)
+May 15 12:15:26 virtualubuntu systemd[1]: Started AppArmor initialization.
+May 15 12:15:36 virtualubuntu boltd[1523]: config: loading user config
+May 15 11:54:18 virtualubuntu dbus-daemon[948]: [session uid=1000 pid=948] Successfully activated service 'ca.desrt.dconf'
+May 15 12:15:26 virtualubuntu kernel: [    2.174143] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) vmware(0): Modeline "1792x1344"x60.0  204.75  1792 1920 2120 2448  1344 1345 1348 1394 -hsync +vsync (83.6 kHz e)
+May 15 11:55:29 virtualubuntu PackageKit: search-file transaction /94_ebdddccc from uid 1000 finished with success after 673ms
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) systemd-logind: got fd for /dev/input/event4 13:68 fd 28 paused 0
+May 15 12:15:26 virtualubuntu kernel: [    1.361438] ahci 0000:00:0d.0: AHCI 0001.0100 32 slots 1 ports 3 Gbps 0x1 impl SATA mode
+May 15 11:54:05 virtualubuntu systemd[1]: Started Network Manager Script Dispatcher Service.
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) Option "_source" "server/udev"
+May 15 12:15:26 virtualubuntu polkitd[586]: started daemon version 0.105 using authority implementation `local' version `0.105'
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #35 0x560d05222c48 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:337 (0x7f19f80d2bc0 @ 1626)
+May 15 11:54:04 virtualubuntu kernel: [    0.000000]   Normal   empty
+May 15 11:54:09 virtualubuntu systemd[740]: Starting Accessibility services bus...
+May 15 13:48:08 virtualubuntu gnome-shell[1277]: [AppIndicatorSupport-DEBUG] Registering StatusNotifierItem :1.60/org/ayatana/NotificationItem/software_update_available
+May 15 11:54:04 virtualubuntu kernel: [    0.044593] pci 0000:00:01.1: legacy IDE quirk: reg 0x10: [io  0x01f0-0x01f7]
+May 15 11:54:04 virtualubuntu kernel: [    1.866198] usb 1-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+May 15 12:15:26 virtualubuntu kernel: [    1.431940] [drm]   Extended Fifo.
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #21 0x7ffd8ef35ed0 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f9abc2b5de0 @ 71)
+May 15 12:15:26 virtualubuntu NetworkManager[548]: <info>  [1557947726.9694] manager[0x55d497a48060]: monitoring kernel firmware directory '/lib/firmware'.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #6 0x7ffe2342ee80 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 11:54:05 virtualubuntu polkitd[578]: started daemon version 0.105 using authority implementation `local' version `0.105'
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting USER=oksana
+May 15 12:15:57 virtualubuntu pulseaudio[1443]: [pulseaudio] bluez5-util.c: GetManagedObjects() failed: org.freedesktop.DBus.Error.NoReply: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+May 15 12:15:27 virtualubuntu avahi-daemon[504]: Server startup complete. Host name is virtualubuntu.local. Local service cookie is 3976643869.
+May 15 12:15:26 virtualubuntu systemd[1]: Reached target System Initialization.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Setting screen physical size to 211 x 158
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "_source" "server/udev"
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #40 0x55a79a234cb0 i   resource:///org/gnome/shell/ui/tweener.js:244 (0x7f30d83cf808 @ 159)
+May 15 11:54:18 virtualubuntu systemd[740]: Started Evolution calendar service.
+May 15 12:40:12 virtualubuntu org.gnome.Shell.desktop[1277]: #5 0x560d05223518 i   /usr/share/gnome-shell/extensions/ubuntu-appindicators@ubuntu.com/appIndicator.js:190 (0x7f19bf8aa450 @ 22)
+May 15 11:54:04 virtualubuntu systemd[1]: Started Avahi mDNS/DNS-SD Stack.
+May 15 12:15:27 virtualubuntu NetworkManager[548]: <info>  [1557947727.5316] devices added (path: /sys/devices/virtual/net/lo, iface: lo)
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011Entry deleted from font path.
+May 15 12:15:26 virtualubuntu kernel: [    0.024000] Hierarchical SRCU implementation.
+May 15 11:54:05 virtualubuntu systemd[1]: Started Network Manager.
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) No input driver specified, ignoring this device.
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.379933363-07:00" level=info msg="loading plugin "io.containerd.grpc.v1.containers"..." type=io.containerd.grpc.v1
+May 15 11:54:04 virtualubuntu kernel: [    1.084379] rtc_cmos rtc_cmos: alarms up to one day, 114 bytes nvram
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #16 0x560d052233c0 i   resource:///org/gnome/shell/ui/extensionSystem.js:82 (0x7f19e005a120 @ 431)
+May 15 11:54:04 virtualubuntu kernel: [    0.008330] Speculative Store Bypass: Vulnerable
+May 15 12:15:26 virtualubuntu kernel: [    0.999087] io scheduler cfq registered (default)
+May 15 11:54:09 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: dbus-update-activation-environment: setting WINDOWPATH=1
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) vmware(0): Modeline "2560x1600"x60.0  348.50  2560 2752 3032 3504  1600 1603 1609 1658 -hsync +vsync (99.5 kHz e)
+May 15 11:54:04 virtualubuntu systemd[1]: Started CUPS Scheduler.
+May 15 11:54:14 virtualubuntu boltd[1522]: bouncer: initializing polkit
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #7 0x560d052236c0 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/dash.js:428 (0x7f19bf8de098 @ 27)
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #7 0x7ffe23441b70 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:15:26 virtualubuntu kernel: [    1.003719] ohci-pci: OHCI PCI platform driver
+May 15 12:15:26 virtualubuntu systemd[1]: Started Clean up any mess left by 0dns-up.
+May 15 12:15:26 virtualubuntu kernel: [    0.004000] console [tty0] enabled
+May 15 11:54:04 virtualubuntu wpa_supplicant[554]: Successfully initialized wpa_supplicant
+May 15 13:50:34 virtualubuntu gnome-shell[1277]: JS ERROR: Exception in callback for signal: activate: Error: Error invoking IBus.set_global_engine_async: Expected function for callback argument callback, got undefined#012setEngine@resource:///org/gnome/shell/misc/ibusManager.js:207:9#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012activateInputSource@resource:///org/gnome/shell/ui/status/keyboard.js:490:13#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012_emit@resource:///org/gnome/gjs/modules/signals.js:128:27#012activate@resource:///org/gnome/shell/ui/status/keyboard.js:65:9#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012_inputSourcesChanged@resource:///org/gnome/shell/ui/status/keyboard.js:620:13#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012reload@resource:///org/gnome/shell/ui/status/keyboard.js:369:9#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012_ibusSetContentType@resource:///org/gnome/shell/ui/status/keyboard.js:691:9#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22#012_emit@resource:///org/gnome/gjs/modules/signals.js:128:27#012_setContentType@resource:///org/gnome/shell/misc/ibusManager.js:183:9#012wrapper@resource:///org/gnome/gjs/modules/_legacy.js:82:22
+May 15 11:54:08 virtualubuntu kernel: [   10.160189] audit: type=1400 audit(1557946448.544:40): apparmor="STATUS" operation="profile_load" profile="unconfined" name="docker-default" pid=940 comm="apparmor_parser"
+May 15 12:15:26 virtualubuntu kernel: [    0.085808] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 *9 10 11)
+May 15 12:15:26 virtualubuntu kernel: [    0.040542] pci 0000:00:01.1: legacy IDE quirk: reg 0x10: [io  0x01f0-0x01f7]
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (==) vmware(0): Rendercheck mode is disabled.
+May 15 12:15:32 virtualubuntu NetworkManager[548]: <info>  [1557947732.2406] device (docker0): state change: ip-check -> secondaries (reason 'none', sys-iface-state: 'external')
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Modeline "1280x960"x60.0  108.00  1280 1376 1488 1800  960 961 964 1000 +hsync +vsync (60.0 kHz e)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #39 0x7ffc31ec0890 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f30d83d2230 @ 386)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #16 0x55a79a235500 i   resource:///org/gnome/shell/ui/extensionSystem.js:82 (0x7f30d815a120 @ 431)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event1  - Sleep Button: device removed
+May 15 12:15:26 virtualubuntu systemd[1]: Mounted Kernel Debug File System.
+May 15 12:15:26 virtualubuntu kernel: [    1.234508] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) |-->Screen "Default Screen Section" (0)
+May 15 11:54:04 virtualubuntu systemd-resolved[307]: Positive Trust Anchors:
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #8 0x560d05223638 i   /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/docking.js:462 (0x7f19bf8c8340 @ 122)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #30 0x7ffc31ebd8f0 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f30d83d2230 @ 386)
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #40 0x7ffc31ec1bf0 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:15:26 virtualubuntu systemd[1]: Starting WPA supplicant...
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #15 0x7ffe23434c60 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 11:54:04 virtualubuntu kernel: [    1.115521]   Magic number: 3:370:898
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #35 0x55800804fe30 i   resource:///org/gnome/shell/ui/tweener.js:219 (0x7f9abc2cf780 @ 15)
+May 15 12:15:26 virtualubuntu kernel: [    0.006976] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes)
+May 15 11:54:04 virtualubuntu kernel: [    0.030092] ACPI: 2 ACPI AML tables successfully acquired and loaded
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Faking a node at [mem 0x0000000000000000-0x000000007ffeffff]
+May 15 11:54:15 virtualubuntu systemd[1]: Started Manage, Install and Generate Color Profiles.
+May 15 12:15:26 virtualubuntu kernel: [    0.000000] Calgary: Unable to locate Rio Grande table in EBDA - bailing!
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) |   |-->Monitor "<default monitor>"
+May 15 12:35:10 virtualubuntu gnome-shell[1277]: [AppIndicatorSupport-DEBUG] Registering StatusNotifierItem :1.60/org/ayatana/NotificationItem/software_update_available
+May 15 12:15:26 virtualubuntu systemd[1]: Started WPA supplicant.
+May 15 12:15:27 virtualubuntu kernel: [    7.249049] IPv6: ADDRCONF(NETDEV_CHANGE): enp0s3: link becomes ready
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+May 15 11:54:04 virtualubuntu kernel: [    0.068050] pci 0000:00:05.0: [8086:2415] type 00 class 0x040100
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) config/udev: Adding input device VirtualBox mouse integration (/dev/input/js1)
+May 15 11:54:14 virtualubuntu boltd[1522]: config: loading user config
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) VirtualBox mouse integration: (accel) acceleration factor: 2.000
+May 15 12:15:26 virtualubuntu kernel: [    0.024000] NET: Registered protocol family 16
+May 15 11:54:04 virtualubuntu avahi-daemon[517]: Joining mDNS multicast group on interface lo.IPv6 with address ::1.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #21 0x7ffe23436e60 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f19f80d2230 @ 386)
+May 15 12:15:26 virtualubuntu kernel: [    0.088435] NetLabel:  unlabeled traffic allowed by default
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #32 0x560d05222e90 i   resource:///org/gnome/shell/ui/lightbox.js:186 (0x7f19e0038890 @ 29)
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #20 0x560d05223240 i   resource:///org/gnome/shell/ui/extensionSystem.js:361 (0x7f19e005ac48 @ 87)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Initializing extension XFree86-DRI
+May 15 11:54:06 virtualubuntu nm-dispatcher: req:2 'up' [enp0s3]: new request (1 scripts)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) vmware(0): EDID for output Virtual4
+May 15 12:15:26 virtualubuntu rsyslogd: rsyslogd's groupid changed to 106
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Loading /usr/lib/xorg/modules/extensions/libglx.so
+May 15 12:15:26 virtualubuntu kernel: [    0.106236] pnp: PnP ACPI init
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #26 0x55a79a235090 i   resource:///org/gnome/shell/ui/lightbox.js:186 (0x7f30d8138890 @ 29)
+May 15 11:05:34 virtualubuntu systemd[1]: Starting Network Manager Script Dispatcher Service...
+May 15 11:54:04 virtualubuntu systemd[1]: Started Network Time Synchronization.
+May 15 12:15:26 virtualubuntu dbus-daemon[518]: dbus[518]: Unknown group "power" in message bus configuration file
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting WINDOWPATH=1
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #41 0x7ffc31ec1bf0 b   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f30d83b5de0 @ 71)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Initializing extension RANDR
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #15 0x7ffd8ef31c10 b   resource:///org/gnome/gjs/modules/signals.js:128 (0x7f9abc2d2230 @ 386)
+May 15 12:15:26 virtualubuntu kernel: [    0.041073] pci 0000:00:02.0: [15ad:0405] type 00 class 0x030000
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #9 0x7ffe2342fb70 b   self-hosted:918 (0x7f19f80f12b8 @ 394)
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.378981899-07:00" level=info msg="loading plugin "io.containerd.monitor.v1.cgroups"..." type=io.containerd.monitor.v1
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: #011ABI class: X.Org Video Driver, version 24.0
+May 15 11:54:04 virtualubuntu systemd[1]: Started Discard unused blocks once a week.
+May 15 11:54:14 virtualubuntu gnome-shell[1339]: Telepathy is not available, chat integration will be disabled.
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011X.Org Video Driver: 24.0
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Base memory trampoline at [(____ptrval____)] 99000 size 24576
+May 15 12:28:23 virtualubuntu gnome-shell[1277]: Object St.Label (0x560d08b80290), has been already finalized. Impossible to get any property from it.
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.6720] Loaded device plugin: NMWifiFactory (/usr/lib/x86_64-linux-gnu/NetworkManager/libnm-device-plugin-wifi.so)
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.383631598-07:00" level=info msg=serving... address="/var/run/docker/containerd/docker-containerd.sock"
+May 15 11:54:04 virtualubuntu kernel: [    1.078338] usb usb1: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 4.18
+May 15 12:15:26 virtualubuntu kernel: [    0.004000] Security Framework initialized
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) Initializing extension SECURITY
+May 15 12:15:26 virtualubuntu kernel: [    0.086513] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] BRK [0x76967000, 0x76967fff] PGTABLE
+May 15 11:54:04 virtualubuntu systemd[1]: Starting udev Kernel Device Manager...
+May 15 12:15:26 virtualubuntu kernel: [    0.000000] KERNEL supported cpus:
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.6672] Loaded device plugin: NMAtmManager (/usr/lib/x86_64-linux-gnu/NetworkManager/libnm-device-plugin-adsl.so)
+May 15 12:15:28 virtualubuntu systemd[1]: Started Tool to automatically collect and submit kernel crash signatures.
+May 15 11:54:27 virtualubuntu systemd[1]: Starting Update UTMP about System Runlevel Changes...
+May 15 11:54:04 virtualubuntu kernel: [    2.905235] systemd[1]: Reached target Slices.
+May 15 12:15:26 virtualubuntu systemd[1]: Mounting Mount unit for core, revision 6818...
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #4 0x7ffe2342e290 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) Option "xkb_layout" "us"
+May 15 12:15:26 virtualubuntu kernel: [    0.004000] 	Tasks RCU enabled.
+May 15 12:15:26 virtualubuntu avahi-daemon[504]: avahi-daemon 0.7 starting up.
+May 15 12:15:26 virtualubuntu systemd[1]: Started Forward Password Requests to Plymouth Directory Watch.
+May 15 12:15:28 virtualubuntu NetworkManager[548]: <info>  [1557947728.0398] device (enp0s3): state change: ip-check -> secondaries (reason 'none', sys-iface-state: 'managed')
+May 15 11:54:05 virtualubuntu NetworkManager[562]: <info>  [1557946445.6375] device added (path: /sys/devices/virtual/net/lo, iface: lo): no ifupdown configuration found.
+May 15 12:15:42 virtualubuntu nautilus-deskto[1681]: Can not determine workarea, guessing at layout
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: #011Entry deleted from font path.
+May 15 12:15:27 virtualubuntu systemd[1]: Starting GNOME Display Manager...
+May 15 12:15:26 virtualubuntu systemd[1]: Starting Socket activation for snappy daemon.
+May 15 12:15:30 virtualubuntu snapd[575]: daemon.go:379: started snapd/2.38.1 (series 16; classic) ubuntu/18.04 (amd64) linux/4.18.0-15-generic.
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) Option "_source" "server/udev"
+May 15 12:15:26 virtualubuntu kernel: [    0.007256] Spectre V2 : Spectre v2 / SpectreRSB mitigation: Filling RSB on context switch
+May 15 11:54:04 virtualubuntu kernel: [    0.094111] SCSI subsystem initialized
+May 15 11:54:04 virtualubuntu kernel: [    1.081757] serio: i8042 AUX port at 0x60,0x64 irq 12
+May 15 11:54:04 virtualubuntu kernel: [    0.033874] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+May 15 11:54:04 virtualubuntu kernel: [    0.094316] PTP clock support registered
+May 15 12:15:26 virtualubuntu systemd-resolved[304]: Negative trust anchors: 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+May 15 11:54:06 virtualubuntu systemd[1]: Reached target Network is Online.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (==) Automatically enabling devices
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #11 0x560d05223340 i   resource:///org/gnome/shell/ui/extensionSystem.js:344 (0x7f19e005abc0 @ 13)
+May 15 11:54:04 virtualubuntu kernel: [    4.501763] RAPL PMU: hw unit of domain psys 2^-0 Joules
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] NX (Execute Disable) protection: active
+May 15 12:15:26 virtualubuntu kernel: [    2.880440] systemd[1]: Listening on fsck to fsckd communication Socket.
+May 15 10:54:40 virtualubuntu org.gnome.Shell.desktop[1312]: #33 0x55800804feb0 i   resource:///org/gnome/shell/ui/tweener.js:244 (0x7f9abc2cf808 @ 159)
+May 15 11:54:19 virtualubuntu gnome-shell[1339]: Error looking up permission: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.impl.portal.PermissionStore was not provided by any .service files
+May 15 12:00:48 virtualubuntu org.gnome.Shell.desktop[1339]: #8 0x7ffc31eafec0 b   self-hosted:918 (0x7f30d83f12b8 @ 394)
+May 15 11:54:07 virtualubuntu NetworkManager[562]: <info>  [1557946447.3216] manager: NetworkManager state is now CONNECTED_GLOBAL
+May 15 12:15:26 virtualubuntu kernel: [    0.040543] pci 0000:00:01.1: legacy IDE quirk: reg 0x14: [io  0x03f6]
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting XDG_CURRENT_DESKTOP=ubuntu:GNOME
+May 15 12:00:49 virtualubuntu org.gnome.Shell.desktop[1339]: == Stack trace for context 0x55a799e26340 ==
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) config/udev: Adding input device AT Translated Set 2 keyboard (/dev/input/event2)
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (**) Option "xkb_layout" "us"
+May 15 11:54:04 virtualubuntu systemd[1]: Starting Apply Kernel Variables...
+May 15 11:54:07 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: #011to make sure that you have the latest version.
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Booting paravirtualized kernel on KVM
+May 15 11:54:14 virtualubuntu dbus-daemon[948]: [session uid=1000 pid=948] Activating via systemd: service name='org.gtk.vfs.UDisks2VolumeMonitor' unit='gvfs-udisks2-volume-monitor.service' requested by ':1.13' (uid=1000 pid=1339 comm="/usr/bin/gnome-shell " label="unconfined")
+May 15 12:15:26 virtualubuntu kernel: [    0.000000] ACPI: FACS 0x000000007FFF0200 000040
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Unloading fbdev
+May 15 11:54:04 virtualubuntu kernel: [    2.588921] systemd[1]: Detected virtualization oracle.
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) Module modesetting: vendor="X.Org Foundation"
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] PV qspinlock hash table entries: 256 (order: 0, 4096 bytes)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) vmware(0): Output Virtual4 has no monitor section
+May 15 12:15:26 virtualubuntu apparmor[268]:  * Starting AppArmor profiles
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (**) ImExPS/2 Generic Explorer Mouse: always reports core events
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #7 0x7ffe23441b70 I   resource:///org/gnome/gjs/modules/_legacy.js:82 (0x7f19f80b5de0 @ 71)
+May 15 12:15:31 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: dbus-update-activation-environment: setting SHELL=/bin/bash
+May 15 11:54:04 virtualubuntu kernel: [    1.420524] [TTM] Initializing pool allocator
+May 15 12:19:36 virtualubuntu nautilus[2003]: Called "net usershare info" but it failed: Failed to execute child process “net” (No such file or directory)
+May 15 11:54:04 virtualubuntu kernel: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 515961
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #19 0x560d05223240 i   resource:///org/gnome/shell/ui/extensionSystem.js:361 (0x7f19e005ac48 @ 87)
+May 15 11:54:08 virtualubuntu /usr/lib/gdm3/gdm-x-session[895]: (II) event0  - Power Button: device is a keyboard
+May 15 12:15:26 virtualubuntu kernel: [    4.523133] RAPL PMU: hw unit of domain pp1-gpu 2^-0 Joules
+May 15 11:54:04 virtualubuntu kernel: [    0.094971] NetLabel: Initializing
+May 15 12:28:23 virtualubuntu gnome-shell[1277]: Object St.Label (0x560d08b80290), has been already finalized. Impossible to get any property from it.
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #36 0x560d05222bb8 i   resource:///org/gnome/gjs/modules/tweener/tweener.js:350 (0x7f19f80d2c48 @ 100)
+May 15 12:15:26 virtualubuntu kernel: [    1.440991] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+May 15 12:15:30 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) event4  - ImExPS/2 Generic Explorer Mouse: is tagged by udev as: Mouse
+May 15 12:15:26 virtualubuntu kernel: [    4.523132] RAPL PMU: hw unit of domain package 2^-0 Joules
+May 15 11:54:10 virtualubuntu dbus-daemon[519]: [system] Successfully activated service 'org.freedesktop.UPower'
+May 15 12:28:23 virtualubuntu org.gnome.Shell.desktop[1277]: #22 0x560d05222fd0 i   resource:///org/gnome/shell/ui/screenShield.js:902 (0x7f19cf44ef78 @ 18)
+May 15 12:15:29 virtualubuntu /usr/lib/gdm3/gdm-x-session[877]: (II) systemd-logind: took control of session /org/freedesktop/login1/session/_31
+May 15 12:15:26 virtualubuntu systemd[1]: Activated swap /swapfile.
+May 15 11:54:04 virtualubuntu kernel: [    0.028000] pinctrl core: initialized pinctrl subsystem
+May 15 11:54:08 virtualubuntu dockerd[687]: time="2019-05-15T11:54:08.383654376-07:00" level=info msg="containerd successfully booted in 0.136285s"
+May 15 11:54:04 virtualubuntu kernel: [    1.084902] ledtrig-cpu: registered to indicate activity on CPUs
+May 15 12:15:32 virtualubuntu NetworkManager[548]: <info>  [1557947732.2368] device (docker0): state change: config -> ip-config (reason 'none', sys-iface-state: 'external')

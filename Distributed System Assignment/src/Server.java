@@ -48,7 +48,7 @@ public class Server {
                 while (in.hasNextLine()) {
 
 
-                    //out.println(in.nextLine().toUpperCase());
+
                     Vector<String> response = findPhrase(in.nextLine());
                     for(int i = 0; i < response.size(); i++)
                     {
@@ -74,18 +74,8 @@ public class Server {
 
             InetAddress ip = InetAddress.getLocalHost();
             //String logFileName = "machine." + ip.getHostAddress() + ".log";
-            String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\out\\production\\Distributed System Assignment\\machine.log.txt";
-
-            /*
-            Runtime rt = Runtime.getRuntime();
-            String cmd = "grep " + phrase + " " + logFileName;
-            Process proc = rt.exec(cmd);
-            BufferedReader is = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line;
-            while ((line = is.readLine()) != null) {
-                responseList.add(line);
-            }
-            */
+            //String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\out\\production\\Distributed System Assignment\\test_log1.log";
+            String logFileName = ".\\test_log.log";
 
             File file = new File(logFileName);
 

@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Client {
     public static void main(String[] args)  {
@@ -27,72 +28,63 @@ public class Client {
         ipVector.add("172.31.17.62");
         ipVector.add("172.31.29.58");
         ipVector.add("172.31.30.52");
-        */
+  */
 
         System.out.println("Enter lines of text to search for");
         Scanner scanner = new Scanner(System.in);
 
-        String phrase =  scanner.nextLine();
+        while(scanner.hasNextLine()) {
+            String phrase =  scanner.nextLine();
 
-        ExecutorService pool = Executors.newFixedThreadPool(ipVector.size());
 
-        for(int i = 0; i < ipVector.size(); i++){
-            pool.execute(new Client.clientThreader(ipVector.get(i), portNum, phrase));
+            ExecutorService pool = Executors.newFixedThreadPool(ipVector.size());
+
+
+
+                long startTime = System.nanoTime();
+
+                for (int i = 0; i < ipVector.size(); i++) {
+                    pool.execute(new Client.clientThreader(ipVector.get(i), portNum, phrase));
+                }
+
+                pool.shutdown();
+                try {
+                    pool.awaitTermination(30, TimeUnit.SECONDS);
+                } catch (Exception e) {
+                    System.out.println("Exception: " + e.getMessage());
+                }
+
+                long endTime = System.nanoTime();
+
+                System.out.println("Total time in milliseconds = " + (endTime - startTime) / 1000000);
         }
-
     }
 
-    /*
-    public static void main(String[] args) throws Exception {
-        if (args.length != 1) {
-            System.err.println("Pass the server IP as the sole command line argument");
-            return;
-        }
-        try (Socket socket = new Socket(args[0], 59898)) {
-            System.out.println("Enter lines of text then Ctrl+D or Ctrl+C to quit");
-            Scanner scanner = new Scanner(System.in);
-            Scanner in = new Scanner(socket.getInputStream());
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            while (scanner.hasNextLine()) {
-                out.println(scanner.nextLine());
 
-                while(in.hasNextLine()) {
-                    String response = in.nextLine();
-                    System.out.println(response);
-                }
-                break;
-                /*String[] splitResp = response.split(",");
-
-                for(int i = 0; i < splitResp.length; i++)
-                {
-                    System.out.println(splitResp[i]);
-                }
-                //System.out.println(in.nextLine());
-
-            }
-        }
-    }
-*/
 
     private static class clientThreader implements Runnable {
 
-        String ipAddress;
-        int portNum;
-        String phrase;
+        private String ipAddress;
+        private int portNum;
+        private String phrase;
+        private Socket socket;
+
+        public int searchCounter;
 
         clientThreader(String ipAddress, int portNum, String phrase)
         {
             this.ipAddress = ipAddress;
             this.portNum = portNum;
             this.phrase = phrase;
+            this.searchCounter = 0;
         }
 
         @Override
         public void run ()
         {
             try {
-                Socket socket = new Socket(ipAddress, portNum);
-
+                this.socket = new Socket(ipAddress, portNum);
+                socket.setSoTimeout(10000);
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
                 out.println(phrase);
@@ -101,13 +93,23 @@ public class Client {
 
                     while(in.hasNextLine()) {
                         String response = in.nextLine();
-                        System.out.println(response);
+                        searchCounter++;
+                        System.out.println(ipAddress + ": " + response);
                     }
-
+                System.out.println(ipAddress + " Found lines: " + searchCounter);
+            }
+            catch(java.net.SocketTimeoutException e)
+            {
+                System.out.println("Timeout Exception on " + ipAddress +": " +  e.getMessage());
             }
             catch (Exception e)
             {
-                System.out.println("Exception: " + e.getMessage());
+                System.out.println("Exception on " + ipAddress +": " +  e.getMessage());
+            }finally {
+                try { socket.close(); } catch (IOException e) {
+                    System.out.println("Exception on " + ipAddress +": " +  e.getMessage());
+                }
+
             }
         }
     }
