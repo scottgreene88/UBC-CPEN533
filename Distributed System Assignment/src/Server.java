@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.net.InetAddress;
 
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -71,23 +72,26 @@ public class Server {
 
             System.out.println("Finding lines with string: " + phrase);
             InetAddress ip = InetAddress.getLocalHost();
-            String logFileName = "machine.172.31.9.69.log"; //+ ip.getHostAddress() + ".log";
+            String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\out\\production\\Distributed System Assignment\\machine.log.txt"; //+ ip.getHostAddress() + ".log";
 
-            Runtime rt = Runtime.getRuntime();
-            String cmd = "grep '" + phrase + "' " + logFileName;
-            Process proc = rt.exec(cmd);
-            BufferedReader is = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line;
-            while ((line = is.readLine()) != null) {
-                responseList.add(line);
-            }
-
-            /*
-            for(int i = 1;i < 6;i++)
+            try
             {
-                responseList.add(String.valueOf(i) + " " + ip.toString());
+                File file = new File(logFileName);
+
+                BufferedReader br = new BufferedReader(new FileReader(file));
+
+                String st;
+                while ((st = br.readLine()) != null){
+                    if(st.matches(phrase))
+                    {
+                        responseList.add(st);
+                    }
+                }
+        }
+            catch(Exception e){
+                System.out.println("Error found: " + e.getMessage());
             }
-            */
+
 
             System.out.println("Found " + responseList.size() +  " lines with string: " + phrase);
 
