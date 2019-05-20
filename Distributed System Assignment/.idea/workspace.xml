@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="a1b012df-bd4a-43d3-b942-3d40e5bba09b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="a1b012df-bd4a-43d3-b942-3d40e5bba09b" name="Default Changelist" comment="" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
     <list default="true" id="a1b012df-bd4a-43d3-b942-3d40e5bba09b" name="Default Changelist" comment="" />
 >>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
@@ -21,8 +25,13 @@
         <entry file="file://$PROJECT_DIR$/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="306">
               <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+=======
+            <state relative-caret-position="219">
+              <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
             <state relative-caret-position="219">
               <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
@@ -38,8 +47,13 @@
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="148">
               <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+=======
+            <state relative-caret-position="323">
+              <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
             <state relative-caret-position="323">
               <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
@@ -78,10 +92,13 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="-10" />
     <option name="width" value="979" />
     <option name="height" value="1040" />
 =======
+=======
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
     <option name="x" value="-9" />
     <option name="width" value="978" />
     <option name="height" value="1038" />
@@ -96,7 +113,12 @@
   </component>
   <component name="PropertiesComponent">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558053564151" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558225722865" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558225722865" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -215,8 +237,13 @@
     <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="306">
           <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+=======
+        <state relative-caret-position="219">
+          <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
         <state relative-caret-position="219">
           <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
@@ -230,8 +257,13 @@
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="148">
           <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+=======
+        <state relative-caret-position="323">
+          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+>>>>>>> d5ac2e7b0b0337f5733188f707bb783330caccf2
 =======
         <state relative-caret-position="323">
           <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
