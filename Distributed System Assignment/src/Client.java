@@ -18,27 +18,28 @@ public class Client {
         Vector<String> ipVector = new Vector<>();
 
         //Development
-        ipVector.add("localhost");
+        //ipVector.add("localhost");
 
         //EC2 instances
 
-/*
+
         ipVector.add("172.31.23.204");
         ipVector.add("172.31.29.195");
         ipVector.add("172.31.17.62");
         ipVector.add("172.31.29.58");
         ipVector.add("172.31.30.52");
-  */
-
-        System.out.println("Enter lines of text to search for");
-        Scanner scanner = new Scanner(System.in);
-
-        while(scanner.hasNextLine()) {
-            String phrase =  scanner.nextLine();
 
 
-            ExecutorService pool = Executors.newFixedThreadPool(ipVector.size());
 
+        if(args.length == 0) {
+            System.out.println("Enter lines of text to search for");
+            Scanner scanner = new Scanner(System.in);
+
+            while (scanner.hasNextLine()) {
+                String phrase = scanner.nextLine();
+
+
+                ExecutorService pool = Executors.newFixedThreadPool(ipVector.size());
 
 
                 long startTime = System.nanoTime();
@@ -57,6 +58,33 @@ public class Client {
                 long endTime = System.nanoTime();
 
                 System.out.println("Total time in milliseconds = " + (endTime - startTime) / 1000000);
+            }
+        }
+        else if (args[0] == "Test")
+        {
+            //Test Phrase is NetworkManager
+            String testPhrase = "(.*)NetworkManager(.*)";
+
+            //Test Instance 1
+            clientThreader test1 =  new Client.clientThreader(ipVector.get(0), portNum, testPhrase);
+            assert (test1.searchCounter == 22);
+
+            //Test Instance 2
+            clientThreader test2 =  new Client.clientThreader(ipVector.get(1), portNum, testPhrase);
+            assert (test2.searchCounter == 22);
+
+            //Test Instance 3
+            clientThreader test3 =  new Client.clientThreader(ipVector.get(2), portNum, testPhrase);
+            assert (test3.searchCounter == 22);
+
+            //Test Instance 4
+            clientThreader test4 =  new Client.clientThreader(ipVector.get(3), portNum, testPhrase);
+            assert (test4.searchCounter == 22);
+
+            //Test Instance 5
+            clientThreader test5 =  new Client.clientThreader(ipVector.get(4), portNum, testPhrase);
+            assert (test5.searchCounter == 22);
+
         }
     }
 
