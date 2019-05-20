@@ -1,2 +1,6 @@
 *.class
+<<<<<<< HEAD
 *.xml
+=======
+.idea
+>>>>>>> d47b3751d346a3d1b910d5b5da15326cacd174d2
