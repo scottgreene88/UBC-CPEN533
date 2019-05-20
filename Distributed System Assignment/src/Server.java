@@ -71,10 +71,10 @@ public class Server {
 
             System.out.println("Finding lines with string: " + phrase);
             InetAddress ip = InetAddress.getLocalHost();
-            String logFileName = "machine.172.31.9.69.log"; //+ ip.getHostAddress() + ".log";
+            String logFileName = "machine." + ip.getHostAddress() + ".log";
 
             Runtime rt = Runtime.getRuntime();
-            String cmd = "grep '" + phrase + "' " + logFileName;
+            String cmd = "grep " + phrase + " " + logFileName;
             Process proc = rt.exec(cmd);
             BufferedReader is = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
