@@ -75,7 +75,7 @@ public class Server {
             InetAddress ip = InetAddress.getLocalHost();
             //String logFileName = "machine." + ip.getHostAddress() + ".log";
             //String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\out\\production\\Distributed System Assignment\\test_log1.log";
-            String logFileName = ".\\test_log.log";
+            String logFileName = "/home/ec2-user/Test/test_log.log";
 
             File file = new File(logFileName);
 
