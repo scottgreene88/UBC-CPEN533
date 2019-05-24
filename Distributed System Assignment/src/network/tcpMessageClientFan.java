@@ -51,8 +51,7 @@ public class tcpMessageClientFan  {
 
     }
 
-    public Vector<String> clientThread(String ipAddress, int portNum, String message)
-    {
+    public Vector<String> clientThread(String ipAddress, int portNum, String message) throws IOException {
         Vector<String> responseVector = new Vector<>();
 
 
@@ -122,8 +121,7 @@ public class tcpMessageClientFan  {
         }
 
         @Override
-        public Vector<String> call ()
-        {
+        public Vector<String> call () throws IOException {
             Vector<String> responseVector = new Vector<>();
 
             try {
