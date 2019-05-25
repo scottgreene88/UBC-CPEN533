@@ -1,6 +1,10 @@
 package main;
 
 import java.io.IOException;
+import java.net.InetAddress;
+
+import network.*;
+import  heartbeat.sendHeartBeat;
 
 public class Main {
 
@@ -13,6 +17,18 @@ public class Main {
         log.writeLogLine("blabla");
         log.writeLogLine("test");
 
+        InetAddress host = InetAddress.getLocalHost();
+
+        System.out.println("Starting to ping");
+
+        udpMessageServer server =  new udpMessageServer(1234);
+
+        sendHeartBeat sender = new sendHeartBeat(1234,1234,host, host);
+
+
+
 
     }
+
+
 }

@@ -14,7 +14,7 @@ public class udpMessageClient
     private InetAddress ipAddress;
     private DatagramSocket ds;
 
-    udpMessageClient(int portNumIn, InetAddress ipAddressIn) throws IOException
+    public udpMessageClient(int portNumIn, InetAddress ipAddressIn) throws IOException
     {
         this.portNum = portNumIn;
         this.ipAddress = ipAddressIn;

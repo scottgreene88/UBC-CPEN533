@@ -13,7 +13,7 @@ public class udpMessageServer
     private int portNum;
     private DatagramSocket ds;
 
-    udpMessageServer(int portNumIn) throws IOException
+    public udpMessageServer(int portNumIn) throws IOException
     {
         this.portNum = portNumIn;
 

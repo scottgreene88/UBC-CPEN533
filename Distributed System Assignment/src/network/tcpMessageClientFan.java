@@ -2,9 +2,8 @@ package network;
 
 import java.io.*;
 import java.net.*;
-import java.util.Vector;
 import java.util.concurrent.*;
-import java.util.Scanner;
+import java.util.*;
 
 import main.*;
 
@@ -23,26 +22,50 @@ public class tcpMessageClientFan  {
     }
 
 
-    public void sendFanMessage(String message)
+    public void sendFanMessage(String message) throws IOException
     {
 
         ExecutorService pool = Executors.newFixedThreadPool(ipVector.size());
 
-        //Vector<Future<Vector<String>>> responseList = new Vector<Vector<String>>(ipVector.size());
+
+        List<Future<Vector<String>>> list = new ArrayList<Future<Vector<String>>>();
 
         long startTime = System.nanoTime();
 
         for (int i = 0; i < ipVector.size(); i++) {
-            pool.submit(new tcpMessageClientFan.clientThreader(ipVector.get(i), portNum, message));
+            Future<Vector<String>> future = pool.submit(new tcpMessageClientFan.clientThreader(ipVector.get(i), portNum, message));
+            list.add(future);
         }
+
 
 
 
         pool.shutdown();
         try {
-            pool.awaitTermination(30, TimeUnit.SECONDS);
+            pool.awaitTermination(10, TimeUnit.SECONDS);
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
+        }
+
+        for(int i = 0; i < ipVector.size(); i++)
+        {
+            Future<Vector<String>> tempList = list.get(i);
+
+            try
+            {
+                Vector<String> tempVector = tempList.get();
+            }
+            catch (InterruptedException | ExecutionException e)
+            {
+                if(Main.development) {
+                    System.out.println("Socket Timeout Exception: " + e.getMessage());
+                }
+
+                Main.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
+            }
+
+
+
         }
 
         long endTime = System.nanoTime();
