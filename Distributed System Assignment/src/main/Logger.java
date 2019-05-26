@@ -6,7 +6,7 @@ public class Logger {
 
     String fileName;
 
-    Logger (String fileName) throws IOException {
+    public Logger (String fileName) throws IOException {
 
         this.fileName=fileName;
         File myFile = new File("mylogs.log");

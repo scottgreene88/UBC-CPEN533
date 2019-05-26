@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 
 import network.*;
-import  heartbeat.sendHeartBeat;
+import  heartbeat.heartBeatManager;
 
 public class Main {
 
@@ -13,19 +13,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-       Logger log = new Logger("mylogs.log");
-        log.writeLogLine("blabla");
-        log.writeLogLine("test");
+        log = new Logger("mylogs.log");
+        log.writeLogLine("New instance of server process started");
+
 
         InetAddress host = InetAddress.getLocalHost();
 
         System.out.println("Starting to ping");
 
-        udpMessageServer server =  new udpMessageServer(1234);
-
-        sendHeartBeat sender = new sendHeartBeat(1234,1234,host, host);
-
-
+        heartBeatManager hbManager =  new heartBeatManager(1234,5678,host, host);
+        hbManager.startHb();
 
 
     }

@@ -5,10 +5,11 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.concurrent.Callable;
 
 import main.*;
 
-public class udpMessageServer
+public class udpMessageServer implements Callable<String>
 {
     private int portNum;
     private DatagramSocket ds;
@@ -35,13 +36,34 @@ public class udpMessageServer
 
     }
 
-    public void startListening() throws IOException
+    @Override
+    public String call()
+    {
+        String message = "";
+        try
+        {
+
+            message = startListening();
+
+        }catch(Exception e)
+        {
+            if(Main.development) {
+                System.out.println("Exception: " + e.getMessage());
+            }
+            try {Main.log.writeLogLine("Exception: " + e.getMessage());}
+            catch(IOException e2) {System.out.println("Exception: " + e2.getMessage()); }
+        }
+
+        return message;
+    }
+
+    private String startListening() throws IOException
     {
         byte[] receive = new byte[65535];
 
         DatagramPacket DpReceive = null;
-        while (true)
-        {
+        //while (true)
+        //{
 
             // create a DatgramPacket to receive the data.
             DpReceive = new DatagramPacket(receive, receive.length);
@@ -58,9 +80,9 @@ public class udpMessageServer
             Main.log.writeLogLine("Received message: " + message);
 
             // Clear the buffer after every message.
-            receive = new byte[65535];
-        }
-
+            //receive = new byte[65535];
+        //}
+        return message.toString();
     }
 
 

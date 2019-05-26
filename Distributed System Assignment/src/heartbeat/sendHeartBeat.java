@@ -6,15 +6,14 @@ import main.*;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class sendHeartBeat {
+public class sendHeartBeat implements Runnable{
 
-    private long hbWaitTime = 2000;
+
     private int rightPortNum;
     private int leftPortNum;
     private InetAddress leftIpAddress;
     private InetAddress rightIpAddress;
 
-    private String hbMessage = "Beat";
 
     public sendHeartBeat(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
     {
@@ -24,34 +23,33 @@ public class sendHeartBeat {
         this.rightIpAddress = rightIpAddress;
     }
 
-    public void updateTargetMachines(int newLeftPortNum, int newRightPortNum, InetAddress newLeftIpAddress, InetAddress newRightIpAddress)
+    public void run()
     {
-        this.leftPortNum = newLeftPortNum;
-        this.rightPortNum = newRightPortNum;
-        this.leftIpAddress = newLeftIpAddress;
-        this.rightIpAddress = newRightIpAddress;
+        try
+        {
+            sendBeats();
+
+        }catch(Exception e)
+        {
+            if(Main.development) {
+                System.out.println("Exception from sendHB: " + e.getMessage());
+            }
+            try {Main.log.writeLogLine("Exception sendHB: " + e.getMessage());}
+            catch(IOException e2) {System.out.println("Exception from logger: " + e2.getMessage()); }
+        }
+
     }
 
-    public void sendBeats() throws IOException
+
+    private void sendBeats() throws IOException
     {
+        String hbMessage = "Beat";
+
         udpMessageClient myLeftForward =  new udpMessageClient(leftPortNum,leftIpAddress);
         udpMessageClient myRightForward =  new udpMessageClient(rightPortNum,rightIpAddress);
 
-        myLeftForward.sendMessage(hbMessage);
-        myRightForward.sendMessage(hbMessage);
-
-        try
-        {
-            Thread.sleep(hbWaitTime);
-
-        }catch(InterruptedException e)
-        {
-            if(Main.development) {
-                System.out.println("Exception: " + e.getMessage());
-            }
-
-            Main.log.writeLogLine("Exception: " + e.getMessage());
-        }
+        myLeftForward.sendMessage(hbMessage + " 1");
+        myRightForward.sendMessage(hbMessage + " 2");
 
     }
 
