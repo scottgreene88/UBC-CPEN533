@@ -10,12 +10,14 @@ public class Logger {
 
         this.fileName=fileName;
         File myFile = new File("mylogs.log");
-        myFile.createNewFile();
+
     }
 
     public void writeLogLine(String input) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("mylogs.log", true));
-        bw.append(input + System.lineSeparator());
+        FileWriter bw = new FileWriter("mylogs.log", true);
+        InetAddress host = InetAddress.getLocalHost();
+        Date date = new Date();
+        bw.append(host + " " + date + " " + input + System.lineSeparator());
         bw.close();
     }
 
