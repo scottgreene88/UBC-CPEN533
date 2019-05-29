@@ -48,10 +48,10 @@ public class udpMessageServer implements Callable<String>
         }catch(Exception e)
         {
             if(Main.development) {
-                System.out.println("Exception: " + e.getMessage());
+                System.out.println("Exception UDP Server: " + e.getMessage());
             }
-            try {Main.log.writeLogLine("Exception: " + e.getMessage());}
-            catch(IOException e2) {System.out.println("Exception: " + e2.getMessage()); }
+            try {Main.log.writeLogLine("Exception UDP Server: " + e.getMessage());}
+            catch(IOException e2) {System.out.println("Exception UDP Log: " + e2.getMessage()); }
         }
 
         return message;
@@ -82,6 +82,8 @@ public class udpMessageServer implements Callable<String>
             // Clear the buffer after every message.
             //receive = new byte[65535];
         //}
+
+        ds.close();
         return message.toString();
     }
 
