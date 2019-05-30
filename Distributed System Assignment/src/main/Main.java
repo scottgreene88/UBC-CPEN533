@@ -11,6 +11,8 @@ public class Main {
     public static Boolean development = true;
     public static Logger log;
 
+
+
     public static void main(String[] args) throws IOException {
 
         log = new Logger("mylogs.log");
@@ -19,11 +21,20 @@ public class Main {
 
         InetAddress host = InetAddress.getLocalHost();
 
-        System.out.println("Starting to ping");
+        //This stuff below needs to be set up before the rest of the operations can get started
+        // will need to do the request for join and gather this info here.
+        int leftPortForward = 1234;
+        int rightPortForward = 5678;
 
-        heartBeatManager hbManager =  new heartBeatManager(1234,5678,host, host);
-        hbManager.startHb();
+        int commandServerPort = 1526;
 
+
+        //This is the standard operating portion of the process
+        Thread hbThread = new Thread(new heartBeatManager(leftPortForward,rightPortForward,host, host));
+        hbThread.start();
+
+        Thread csmThread = new Thread(new commandServerManager(commandServerPort));
+        csmThread.start();
 
     }
 
