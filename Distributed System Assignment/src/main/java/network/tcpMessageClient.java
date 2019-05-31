@@ -1,11 +1,11 @@
-package main.java.network;
+package network;
 
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 import java.util.Vector;
 
-import main.*;
+import core.*;
 
 public class tcpMessageClient {
 

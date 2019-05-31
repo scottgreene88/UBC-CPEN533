@@ -1,6 +1,6 @@
-package main.java.commands;
+package commands;
 
-import main.Main;
+import core.Main;
 
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;

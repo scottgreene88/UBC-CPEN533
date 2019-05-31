@@ -1,11 +1,11 @@
-package main;
+package core;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
 
-import main.java.commands.commandServerManager;
-import  main.java.heartbeat.heartBeatManager;
+import commands.commandServerManager;
+import  heartbeat.heartBeatManager;
 
 public class Main {
 

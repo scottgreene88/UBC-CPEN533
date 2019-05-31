@@ -1,5 +1,5 @@
 
-package main.java.network;
+package network;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,7 +7,7 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.util.concurrent.Callable;
 
-import main.*;
+import core.*;
 
 public class udpMessageServer implements Callable<String>
 {

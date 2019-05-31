@@ -1,11 +1,11 @@
-package main.java.heartbeat;
+package heartbeat;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.concurrent.*;
 
-import main.Main;
-import main.java.network.*;
+import core.Main;
+import network.*;
 
 public class heartBeatManager implements Runnable{
 

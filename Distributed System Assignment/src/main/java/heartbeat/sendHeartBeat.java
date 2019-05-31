@@ -1,7 +1,7 @@
-package main.java.heartbeat;
+package heartbeat;
 
-import main.java.network.udpMessageClient;
-import main.*;
+import network.udpMessageClient;
+import core.*;
 
 import java.io.IOException;
 import java.net.InetAddress;

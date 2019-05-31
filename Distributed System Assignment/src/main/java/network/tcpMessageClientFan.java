@@ -1,11 +1,11 @@
-package main.java.network;
+package network;
 
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.*;
 import java.util.*;
 
-import main.*;
+import core.Main;
 
 public class tcpMessageClientFan  {
 
@@ -75,7 +75,7 @@ public class tcpMessageClientFan  {
     }
 
     public Vector<String> clientThread(String ipAddress, int portNum, String message) throws IOException {
-        Vector<String> responseVector = new Vector<>();
+        Vector<String> responseVector = new Vector<String>();
 
 
         try {
@@ -143,9 +143,9 @@ public class tcpMessageClientFan  {
             this.phrase = message;
         }
 
-        @Override
+
         public Vector<String> call () throws IOException {
-            Vector<String> responseVector = new Vector<>();
+            Vector<String> responseVector = new Vector<String>();
 
             try {
                 this.socket = new Socket(ipAddress, portNum);

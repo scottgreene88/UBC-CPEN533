@@ -1,6 +1,6 @@
-package main.java.network;
+package network;
 
-import main.Main;
+import core.Main;
 
 import java.io.*;
 import java.net.*;
