@@ -1,8 +1,8 @@
-package main;
+package main.java.commands;
 
 
 import java.net.*;
-import network.tcpMessageServer;
+import main.java.network.tcpMessageServer;
 
 public class commandServer implements Runnable {
 

@@ -1,6 +1,6 @@
-package main;
+package main.java.commands;
 
-import network.tcpMessageServer;
+import main.Main;
 
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;

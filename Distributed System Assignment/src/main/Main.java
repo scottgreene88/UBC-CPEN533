@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 
 
-import  heartbeat.heartBeatManager;
+import main.java.commands.commandServerManager;
+import  main.java.heartbeat.heartBeatManager;
 
 public class Main {
 
