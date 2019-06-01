@@ -8,11 +8,11 @@ import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 
-public class tcpMessageServer implements Callable {
+public class TcpMessageServer implements Callable {
 
     private Socket socket;
 
-    public tcpMessageServer(Socket socket){
+    public TcpMessageServer(Socket socket){
 
         this.socket = socket;
     }
@@ -74,7 +74,7 @@ public class tcpMessageServer implements Callable {
         }
         catch (Exception e)
         {
-            System.out.println("Generic Exception Caught in command tcpMessageServer : " + e.getMessage());
+            System.out.println("Generic Exception Caught in command TcpMessageServer : " + e.getMessage());
         }
 
         return command;

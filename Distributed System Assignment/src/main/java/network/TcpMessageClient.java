@@ -7,14 +7,14 @@ import java.util.Vector;
 
 import core.*;
 
-public class tcpMessageClient {
+public class TcpMessageClient {
 
     private String ipAddress;
     private int portNum;
     private Socket socket;
     private Vector<String> ipVector;
 
-    public tcpMessageClient(int portNumIn, String ipAddressIn) throws IOException
+    public TcpMessageClient(int portNumIn, String ipAddressIn) throws IOException
     {
         this.ipAddress = ipAddressIn;
         this.portNum = portNumIn;

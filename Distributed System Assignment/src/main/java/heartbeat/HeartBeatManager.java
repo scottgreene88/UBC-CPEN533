@@ -2,13 +2,12 @@ package heartbeat;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.Random;
 import java.util.concurrent.*;
 
 import core.Main;
 import network.*;
 
-public class heartBeatManager implements Runnable{
+public class HeartBeatManager implements Runnable{
 
     private int rightPortNum;
     private int leftPortNum;
@@ -18,7 +17,7 @@ public class heartBeatManager implements Runnable{
     public long hbTime = 1000;
     public long hbTimeDelay = 500;
 
-    public heartBeatManager( int leftPortNum, int rightPortNum,InetAddress leftIpAddress,InetAddress rightIpAddress)
+    public HeartBeatManager(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
     {
         this.leftPortNum = leftPortNum;
         this.rightPortNum = rightPortNum;
@@ -35,7 +34,7 @@ public class heartBeatManager implements Runnable{
 
             //starts sending heartbeats at regular intervals
             ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
-            es.scheduleWithFixedDelay(new sendHeartBeat(leftPortNum, rightPortNum, leftIpAddress, rightIpAddress), 0, hbTime, TimeUnit.MILLISECONDS);
+            es.scheduleWithFixedDelay(new SendHeartBeat(leftPortNum, rightPortNum, leftIpAddress, rightIpAddress), 0, hbTime, TimeUnit.MILLISECONDS);
 
             //future values for listen events
             Future<String> leftBackBeat;
@@ -52,8 +51,8 @@ public class heartBeatManager implements Runnable{
 
 
                 //listen on ports for message
-                leftBackBeat = executor.submit(new udpMessageServer(leftPortNum));
-                rightBackBeat = executor.submit(new udpMessageServer(rightPortNum));
+                leftBackBeat = executor.submit(new UdpMessageServer(leftPortNum));
+                rightBackBeat = executor.submit(new UdpMessageServer(rightPortNum));
 
 
                 try {
@@ -129,7 +128,7 @@ public class heartBeatManager implements Runnable{
         Main.log.writeLogLine("Missed message from: " + portNum + " , " + ipAddress.getHostAddress());
 
         //Test code below
-        rightPortNum = 5678;
+        Main.neighbours.rightPortNumForward = 5678;
 
     }
 
@@ -137,7 +136,7 @@ public class heartBeatManager implements Runnable{
     {
         boolean result;
 
-        tcpMessageClient backNode =  new tcpMessageClient(1526, ipAddress.getHostAddress());
+        TcpMessageClient backNode =  new TcpMessageClient(1526, ipAddress.getHostAddress());
         result  = backNode.sendSingleMessage("REORG");
 
     }

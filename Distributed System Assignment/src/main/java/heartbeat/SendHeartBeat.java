@@ -1,12 +1,12 @@
 package heartbeat;
 
-import network.udpMessageClient;
+import network.UdpMessageClient;
 import core.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class sendHeartBeat implements Runnable{
+public class SendHeartBeat implements Runnable{
 
 
     private int rightPortNum;
@@ -15,7 +15,7 @@ public class sendHeartBeat implements Runnable{
     private InetAddress rightIpAddress;
 
 
-    public sendHeartBeat(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
+    public SendHeartBeat(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
     {
         this.leftPortNum = leftPortNum;
         this.rightPortNum = rightPortNum;
@@ -45,8 +45,8 @@ public class sendHeartBeat implements Runnable{
     {
         String hbMessage = "Beat";
 
-        udpMessageClient myLeftForward =  new udpMessageClient(leftPortNum,leftIpAddress);
-        udpMessageClient myRightForward =  new udpMessageClient(rightPortNum,rightIpAddress);
+        UdpMessageClient myLeftForward =  new UdpMessageClient(leftPortNum,leftIpAddress);
+        UdpMessageClient myRightForward =  new UdpMessageClient(rightPortNum,rightIpAddress);
 
         myLeftForward.sendMessage(hbMessage + " 1");
         myRightForward.sendMessage(hbMessage + " 2");

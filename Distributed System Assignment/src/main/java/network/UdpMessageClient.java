@@ -7,14 +7,14 @@ import java.net.InetAddress;
 
 import core.*;
 
-public class udpMessageClient
+public class UdpMessageClient
 {
 
     private int portNum;
     private InetAddress ipAddress;
 
 
-    public udpMessageClient(int portNumIn, InetAddress ipAddressIn) throws IOException
+    public UdpMessageClient(int portNumIn, InetAddress ipAddressIn) throws IOException
     {
         this.portNum = portNumIn;
         this.ipAddress = ipAddressIn;

@@ -4,41 +4,48 @@ import java.io.IOException;
 import java.net.InetAddress;
 
 
-import commands.commandServerManager;
-import  heartbeat.heartBeatManager;
+import commands.CommandServerManager;
+import data.currentNeighbours;
+import heartbeat.HeartBeatManager;
 
 public class Main {
 
     public static Boolean development = true;
     public static Logger log;
-
-
+    public static int commandServerPort = 1526;
+    public  static currentNeighbours neighbours;
 
     public static void main(String[] args) throws IOException {
 
         log = new Logger("mylogs.log");
-        log.writeLogLine("New instance of server process started");
+        log.writeLogLine("***New instance of server process started***");
 
+        neighbours = new currentNeighbours();
 
-        InetAddress host = InetAddress.getLocalHost();
 
         //This stuff below needs to be set up before the rest of the operations can get started
         // will need to do the request for join and gather this info here.
-        int leftPortForward = 1234;
-        int rightPortForward = 5678;
+        int leftPortForward;
+        int rightPortForward;
+        InetAddress leftIpAddressForward;
+        InetAddress rightIpAddressForward;
 
-        int commandServerPort = 1526;
 
 
-        Thread csmThread = new Thread(new commandServerManager(commandServerPort));
+
+
+        Thread csmThread = new Thread(new CommandServerManager(commandServerPort));
         csmThread.start();
 
         while(true) {
 
-
+            leftPortForward = neighbours.leftPortNumForward;
+            rightPortForward = neighbours.rightPortNumForward;
+            leftIpAddressForward = neighbours.leftIpAddressForward;
+            rightIpAddressForward = neighbours.rightIpAddressForward;
 
             //This is the standard operating portion of the process
-            Thread hbThread = new Thread(new heartBeatManager(leftPortForward, rightPortForward, host, host));
+            Thread hbThread = new Thread(new HeartBeatManager(leftPortForward, rightPortForward, leftIpAddressForward, rightIpAddressForward));
             hbThread.start();
             try {
                 hbThread.join();

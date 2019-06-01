@@ -2,13 +2,14 @@ package commands;
 
 
 import java.net.*;
-import network.tcpMessageServer;
 
-public class commandServer implements Runnable {
+import network.TcpMessageServer;
+
+public class CommandServer implements Runnable {
 
     private Socket socket;
 
-    public commandServer(Socket socket)
+    public CommandServer(Socket socket)
     {
         this.socket = socket;
     }
@@ -16,7 +17,7 @@ public class commandServer implements Runnable {
     public void run()
     {
         String command;
-        tcpMessageServer server =  new tcpMessageServer(socket);
+        TcpMessageServer server =  new TcpMessageServer(socket);
         command = server.call();
 
         executeCommand(command);

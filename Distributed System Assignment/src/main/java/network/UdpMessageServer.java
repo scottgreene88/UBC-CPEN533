@@ -9,12 +9,12 @@ import java.util.concurrent.Callable;
 
 import core.*;
 
-public class udpMessageServer implements Callable<String>
+public class UdpMessageServer implements Callable<String>
 {
     private int portNum;
     private DatagramSocket ds;
 
-    public udpMessageServer(int portNumIn) throws IOException
+    public UdpMessageServer(int portNumIn) throws IOException
     {
         this.portNum = portNumIn;
 

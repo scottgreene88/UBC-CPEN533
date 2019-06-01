@@ -7,14 +7,14 @@ import java.util.*;
 
 import core.Main;
 
-public class tcpMessageClientFan  {
+public class TcpMessageClientFan {
 
     private int portNum;
     private Socket socket;
     private Vector<String> ipVector;
 
 
-    tcpMessageClientFan(int portNumIn, Vector<String> ipVectorIn) throws IOException
+    TcpMessageClientFan(int portNumIn, Vector<String> ipVectorIn) throws IOException
     {
         this.ipVector = ipVector;
         this.portNum = portNumIn;
@@ -33,7 +33,7 @@ public class tcpMessageClientFan  {
         long startTime = System.nanoTime();
 
         for (int i = 0; i < ipVector.size(); i++) {
-            Future<Vector<String>> future = pool.submit(new tcpMessageClientFan.clientThreader(ipVector.get(i), portNum, message));
+            Future<Vector<String>> future = pool.submit(new TcpMessageClientFan.clientThreader(ipVector.get(i), portNum, message));
             list.add(future);
         }
 
