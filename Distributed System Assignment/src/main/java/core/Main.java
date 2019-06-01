@@ -30,12 +30,29 @@ public class Main {
         int commandServerPort = 1526;
 
 
-        //This is the standard operating portion of the process
-        Thread hbThread = new Thread(new heartBeatManager(leftPortForward,rightPortForward,host, host));
-        hbThread.start();
-
         Thread csmThread = new Thread(new commandServerManager(commandServerPort));
         csmThread.start();
+
+        while(true) {
+
+
+
+            //This is the standard operating portion of the process
+            Thread hbThread = new Thread(new heartBeatManager(leftPortForward, rightPortForward, host, host));
+            hbThread.start();
+            try {
+                hbThread.join();
+
+            }catch (InterruptedException e)
+            {
+                if (Main.development) {
+                    System.out.println("Exception from hbThread join: " + e.getMessage());
+                }
+                Main.log.writeLogLine("Exception hbThread join: " + e.getMessage());
+            }
+        }
+
+
 
     }
 

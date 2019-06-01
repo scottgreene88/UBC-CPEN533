@@ -19,20 +19,6 @@ public class tcpMessageClient {
         this.ipAddress = ipAddressIn;
         this.portNum = portNumIn;
 
-        try
-        {
-            this.socket = new Socket(ipAddress, portNum);
-            socket.setSoTimeout(10000);
-        }
-        catch (SocketException e)
-        {
-            if(Main.development) {
-                System.out.println("Socket Exception: " + e.getMessage());
-            }
-
-            Main.log.writeLogLine("Socket Exception: " + e.getMessage());
-        }
-
     }
 
     public boolean sendSingleMessage(String message) throws IOException

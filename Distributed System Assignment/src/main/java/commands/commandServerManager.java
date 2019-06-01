@@ -5,6 +5,7 @@ import core.Main;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class commandServerManager implements Runnable {
 
@@ -21,9 +22,11 @@ public class commandServerManager implements Runnable {
             try {
                 ServerSocket listener = new ServerSocket(portNum);
                 System.out.println("The command server is running.");
-                ExecutorService pool = Executors.newFixedThreadPool(20);
+                ExecutorService pool = Executors.newFixedThreadPool(5);
+                //ExecutorService pool = Executors.newSingleThreadScheduledExecutor();
                 while (true) {
                     pool.execute(new commandServer(listener.accept()));
+
                 }
             } catch (Exception e) {
                 if (Main.development) {

@@ -18,42 +18,51 @@ public class udpMessageServer implements Callable<String>
     {
         this.portNum = portNumIn;
 
-        try
-        {
-            this.ds = new DatagramSocket(portNum);
-        }
-        catch(SocketException e)
-        {
-            String errorText = "UDP Server Exception: " + e.getMessage();
-
-            if(Main.development) {
-                System.out.println(errorText);
-            }
-
-            Main.log.writeLogLine(errorText);
-
-        }
-
     }
 
     @Override
     public String call()
     {
+
         String message = "";
-        try
-        {
+        try {
+            try {
+                this.ds = new DatagramSocket(portNum);
+            } catch (SocketException e) {
+                String errorText = "UDP Server Exception on portnum: " + portNum + "  " +  e.getMessage();
 
-            message = startListening();
+                if (Main.development) {
+                    System.out.println(errorText);
+                }
 
-        }catch(Exception e)
-        {
-            if(Main.development) {
-                System.out.println("Exception UDP Server: " + e.getMessage());
+                Main.log.writeLogLine(errorText);
+
             }
-            try {Main.log.writeLogLine("Exception UDP Server: " + e.getMessage());}
-            catch(IOException e2) {System.out.println("Exception UDP Log: " + e2.getMessage()); }
+
+
+            try {
+
+                message = startListening();
+
+            } catch (Exception e) {
+                if (Main.development) {
+                    System.out.println("Exception UDP Server: " + e.getMessage());
+                }
+                try {
+                    Main.log.writeLogLine("Exception UDP Server: " + e.getMessage());
+                } catch (IOException e2) {
+                    System.out.println("Exception UDP Log: " + e2.getMessage());
+                }
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("Generic Exception caught in hbManager run(): " + e.getMessage());
         }
 
+        ds.close();
         return message;
     }
 

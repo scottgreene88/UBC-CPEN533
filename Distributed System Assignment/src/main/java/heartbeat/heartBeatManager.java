@@ -2,6 +2,7 @@ package heartbeat;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Random;
 import java.util.concurrent.*;
 
 import core.Main;
@@ -44,7 +45,8 @@ public class heartBeatManager implements Runnable{
             ExecutorService executor = Executors.newFixedThreadPool(2);
 
             //Test code below
-            rightPortNum = 3456;
+            //Random r = new Random();
+            //rightPortNum =  r.nextInt(5000);
 
             while (true) {
 
@@ -78,11 +80,22 @@ public class heartBeatManager implements Runnable{
                         notifyGroupOfFailure(leftPortNum, leftIpAddress);
 
                         reOrgAfterFailure(rightPortNum, rightIpAddress);
+
+                        executor.shutdownNow();
+
+                        es.shutdown();
+                        es.awaitTermination(1, TimeUnit.SECONDS);
+                        break;
                     }
                     if (!rightBackBeat.isDone()) {
                         notifyGroupOfFailure(rightPortNum, rightIpAddress);
 
                         reOrgAfterFailure(leftPortNum, leftIpAddress);
+                        executor.shutdownNow();
+
+                        es.shutdown();
+                        es.awaitTermination(1, TimeUnit.SECONDS);
+                        break;
                     }
 
 

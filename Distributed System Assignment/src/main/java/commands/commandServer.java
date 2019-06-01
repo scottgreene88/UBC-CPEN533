@@ -25,5 +25,27 @@ public class commandServer implements Runnable {
     private void executeCommand(String command)
     {
         //case switch here to hand all command functions
+
+        switch (command)
+        {
+            case "REORG":
+                commandReorganizePartners();
+                break;
+            case "DISCONNECT":
+                commandDisconnectFromGroup();
+                break;
+            default:
+                System.out.println("INVALID COMMAND");
+        }
+    }
+
+    private void commandReorganizePartners()
+    {
+
+    }
+
+    private void commandDisconnectFromGroup()
+    {
+
     }
 }

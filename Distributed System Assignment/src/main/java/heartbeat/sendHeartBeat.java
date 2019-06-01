@@ -51,6 +51,7 @@ public class sendHeartBeat implements Runnable{
         myLeftForward.sendMessage(hbMessage + " 1");
         myRightForward.sendMessage(hbMessage + " 2");
 
+
     }
 
 }

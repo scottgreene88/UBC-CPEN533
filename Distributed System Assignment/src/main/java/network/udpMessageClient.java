@@ -12,18 +12,20 @@ public class udpMessageClient
 
     private int portNum;
     private InetAddress ipAddress;
-    private DatagramSocket ds;
+
 
     public udpMessageClient(int portNumIn, InetAddress ipAddressIn) throws IOException
     {
         this.portNum = portNumIn;
         this.ipAddress = ipAddressIn;
 
-        ds = new DatagramSocket();
+
     }
 
     public void sendMessage(String message) throws IOException
     {
+        DatagramSocket ds = new DatagramSocket();
+
         byte buf[] = null;
 
         buf = message.getBytes();
@@ -32,12 +34,13 @@ public class udpMessageClient
 
         ds.send(DpSend);
 
+        ds.close();
+
         if(Main.development) {
             System.out.println("Sent message: " + message);
         }
 
         Main.log.writeLogLine("Sent message: " + message);
     }
-
 
 }
