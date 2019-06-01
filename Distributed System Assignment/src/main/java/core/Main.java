@@ -5,7 +5,7 @@ import java.net.InetAddress;
 
 
 import commands.CommandServerManager;
-import data.currentNeighbours;
+import data.CurrentNeighbours;
 import heartbeat.HeartBeatManager;
 
 public class Main {
@@ -13,14 +13,14 @@ public class Main {
     public static Boolean development = true;
     public static Logger log;
     public static int commandServerPort = 1526;
-    public  static currentNeighbours neighbours;
+    public  static CurrentNeighbours neighbours;
 
     public static void main(String[] args) throws IOException {
 
         log = new Logger("mylogs.log");
         log.writeLogLine("***New instance of server process started***");
 
-        neighbours = new currentNeighbours();
+        neighbours = new CurrentNeighbours();
 
 
         //This stuff below needs to be set up before the rest of the operations can get started

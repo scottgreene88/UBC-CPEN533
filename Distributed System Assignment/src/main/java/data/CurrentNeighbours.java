@@ -2,7 +2,7 @@ package data;
 
 import java.net.InetAddress;
 
-public class currentNeighbours {
+public class CurrentNeighbours {
 
     public int rightPortNumForward;
     public int leftPortNumForward;

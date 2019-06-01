@@ -1,13 +1,13 @@
 package data;
 
-public class machine {
+public class Machine {
 
     public String ipAddress;
     public int timestamp;
     public boolean status;
     public boolean gateway;
 
-    public machine (String ipAddress, int timestamp, boolean status, boolean gateway) {
+    public Machine(String ipAddress, int timestamp, boolean status, boolean gateway) {
 
         this.ipAddress = ipAddress;
         this.timestamp = timestamp;
