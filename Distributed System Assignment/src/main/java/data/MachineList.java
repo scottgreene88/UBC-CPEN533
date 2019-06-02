@@ -8,6 +8,8 @@ import com.google.gson.*;
 
 public class MachineList {
 
+    public ArrayList<Object> localMachineList;
+
     public String writeJson(ArrayList<Object> array) throws IOException {
         Gson gson = new Gson();
         String jsonArray = gson.toJson(array);
@@ -17,7 +19,7 @@ public class MachineList {
         return(jsonArray);
     }
 
-    public String parseJson(String filepath) throws FileNotFoundException {
+    public String parseJson() throws FileNotFoundException {
         Gson gson = new Gson();
         String path = "machinelist.json";
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
@@ -26,4 +28,6 @@ public class MachineList {
         return(stringMachineArray);
 
     }
+
+
 }

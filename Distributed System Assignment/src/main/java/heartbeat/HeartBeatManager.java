@@ -134,7 +134,7 @@ public class HeartBeatManager implements Runnable{
 
     private void reOrgAfterFailure(int portNum, InetAddress ipAddress) throws IOException
     {
-        boolean result;
+        String result;
 
         TcpMessageClient backNode =  new TcpMessageClient(1526, ipAddress.getHostAddress());
         result  = backNode.sendSingleMessage("REORG");

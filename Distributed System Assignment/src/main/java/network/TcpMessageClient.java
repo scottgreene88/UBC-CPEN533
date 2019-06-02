@@ -21,7 +21,7 @@ public class TcpMessageClient {
 
     }
 
-    public boolean sendSingleMessage(String message) throws IOException
+    public String sendSingleMessage(String message) throws IOException
     {
 
         boolean result = false;
@@ -29,7 +29,7 @@ public class TcpMessageClient {
 
         try {
             this.socket = new Socket(ipAddress, portNum);
-            socket.setSoTimeout(10000);
+            socket.setSoTimeout(1000);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
 
@@ -49,6 +49,7 @@ public class TcpMessageClient {
         }
         catch(java.net.SocketTimeoutException e)
         {
+            response = "FAILED";
             if(Main.development) {
                 System.out.println("Socket Timeout Exception: " + e.getMessage());
             }
@@ -58,6 +59,7 @@ public class TcpMessageClient {
         }
         catch (Exception e)
         {
+            response = "FAILED";
             if(Main.development) {
                 System.out.println("Socket Exception: " + e.getMessage());
             }
@@ -76,13 +78,8 @@ public class TcpMessageClient {
 
         }
 
-        if(response.contains("ACK"))
-        {
-            result = true;
-        }
 
-
-        return result;
+        return response;
 
 
 

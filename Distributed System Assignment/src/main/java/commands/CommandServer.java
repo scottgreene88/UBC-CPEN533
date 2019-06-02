@@ -35,9 +35,17 @@ public class CommandServer implements Runnable {
             case "DISCONNECT":
                 commandDisconnectFromGroup();
                 break;
+            case "WhoIsGateWay":
+                commandRespondWithGateWayAddress();
+                break;
             default:
                 System.out.println("INVALID COMMAND");
         }
+    }
+
+    private void respondToCommand(String response)
+    {
+
     }
 
     private void commandReorganizePartners()
@@ -46,6 +54,11 @@ public class CommandServer implements Runnable {
     }
 
     private void commandDisconnectFromGroup()
+    {
+
+    }
+
+    private void commandRespondWithGateWayAddress()
     {
 
     }
