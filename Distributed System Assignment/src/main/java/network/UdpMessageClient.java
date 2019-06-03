@@ -36,11 +36,8 @@ public class UdpMessageClient
 
         ds.close();
 
-        if(Main.development) {
-            System.out.println("Sent message: " + message);
-        }
+        Main.writeLog("Send message: " + message + " to IP: " + ipAddress);
 
-        Main.log.writeLogLine("Sent message: " + message);
     }
 
 }

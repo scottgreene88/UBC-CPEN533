@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.concurrent.*;
 import java.util.*;
 
-import core.Main;
+import core.OLDMain;
 
 public class TcpMessageClientFan {
 
@@ -57,11 +57,11 @@ public class TcpMessageClientFan {
             }
             catch (InterruptedException | ExecutionException e)
             {
-                if(Main.development) {
+                if(OLDMain.development) {
                     System.out.println("Socket Timeout Exception: " + e.getMessage());
                 }
 
-                Main.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
+                OLDMain.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
             }
 
 
@@ -97,28 +97,28 @@ public class TcpMessageClientFan {
         }
         catch(java.net.SocketTimeoutException e)
         {
-            if(Main.development) {
+            if(OLDMain.development) {
                 System.out.println("Socket Timeout Exception: " + e.getMessage());
             }
 
-            Main.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
+            OLDMain.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
 
         }
         catch (Exception e)
         {
-            if(Main.development) {
+            if(OLDMain.development) {
                 System.out.println("Socket Exception: " + e.getMessage());
             }
 
-            Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+            OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
         }finally {
             try { socket.close(); } catch (IOException e) {
 
-                if(Main.development) {
+                if(OLDMain.development) {
                     System.out.println("Socket Exception: " + e.getMessage());
                 }
 
-                Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+                OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
 
             }
 
@@ -160,38 +160,38 @@ public class TcpMessageClientFan {
                     String response = in.nextLine();
                     responseVector.add(response);
 
-                    if(Main.development) {
+                    if(OLDMain.development) {
                         System.out.println(ipAddress + ": " + response);
                     }
-                    Main.log.writeLogLine("Server: " + ipAddress + " response: " + response);
+                    OLDMain.log.writeLogLine("Server: " + ipAddress + " response: " + response);
                 }
 
 
             }
             catch(java.net.SocketTimeoutException e)
             {
-                if(Main.development) {
+                if(OLDMain.development) {
                     System.out.println("Socket Timeout Exception: " + e.getMessage());
                 }
 
-                Main.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
+                OLDMain.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
 
             }
             catch (Exception e)
             {
-                if(Main.development) {
+                if(OLDMain.development) {
                     System.out.println("Socket Exception: " + e.getMessage());
                 }
 
-                Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+                OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
             }finally {
                 try { socket.close(); } catch (IOException e) {
 
-                    if(Main.development) {
+                    if(OLDMain.development) {
                         System.out.println("Socket Exception: " + e.getMessage());
                     }
 
-                    Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+                    OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
 
                 }
 

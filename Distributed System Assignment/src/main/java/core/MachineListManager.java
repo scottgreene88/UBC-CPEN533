@@ -2,7 +2,6 @@ package core;
 
 
 import data.Machine;
-import data.MachineList;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -34,7 +33,7 @@ public class MachineListManager {
 
         for (int i = 0; i < localMachineList.size(); i++) {
             Machine tempMachine =  localMachineList.get(i);
-            TcpMessageClient client = new TcpMessageClient(Main.commandServerPort, tempMachine.ipAddress);
+            TcpMessageClient client = new TcpMessageClient(OLDMain.commandServerPort, tempMachine.ipAddress);
             String response  = client.sendSingleMessage("WhoIsGateWay");
 
 
@@ -54,7 +53,7 @@ public class MachineListManager {
         InetAddress local = InetAddress.getLocalHost();
         Date date = new Date();
 
-        Machine current = new Machine(local.getHostAddress(), date, true, Main.isGatewayNode);
+        Machine current = new Machine(local.getHostAddress(), date, true, OLDMain.isGatewayNode);
 
         return current;
     }

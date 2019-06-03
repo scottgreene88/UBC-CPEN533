@@ -1,6 +1,6 @@
 package commands;
 
-import core.Main;
+import core.OLDMain;
 
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
@@ -27,10 +27,10 @@ public class CommandServerManager implements Runnable {
 
                 }
             } catch (Exception e) {
-                if (Main.development) {
+                if (OLDMain.development) {
                     System.out.println("Exception from hbManager: " + e.getMessage());
                 }
-                Main.log.writeLogLine("Exception hbManager: " + e.getMessage());
+                OLDMain.log.writeLogLine("Exception hbManager: " + e.getMessage());
             }
         }
         catch (Exception e)

@@ -2,22 +2,27 @@ package heartbeat;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import core.Main;
+import core.OLDMain;
+import data.Machine;
 import network.*;
 
-public class HeartBeatManager implements Runnable{
+public class OLDHeartBeatManager implements Runnable{
 
     private int rightPortNum;
     private int leftPortNum;
     private InetAddress leftIpAddress;
     private InetAddress rightIpAddress;
 
+
+    public static ArrayList<Machine> sendList;
+    public static ArrayList<Machine> receiveList;
     public long hbTime = 1000;
     public long hbTimeDelay = 500;
 
-    public HeartBeatManager(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
+    public OLDHeartBeatManager(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
     {
         this.leftPortNum = leftPortNum;
         this.rightPortNum = rightPortNum;
@@ -34,7 +39,7 @@ public class HeartBeatManager implements Runnable{
 
             //starts sending heartbeats at regular intervals
             ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
-            es.scheduleWithFixedDelay(new SendHeartBeat(leftPortNum, rightPortNum, leftIpAddress, rightIpAddress), 0, hbTime, TimeUnit.MILLISECONDS);
+            es.scheduleWithFixedDelay(new OLDSendHeartBeat(leftPortNum, rightPortNum, leftIpAddress, rightIpAddress), 0, hbTime, TimeUnit.MILLISECONDS);
 
             //future values for listen events
             Future<String> leftBackBeat;
@@ -60,19 +65,19 @@ public class HeartBeatManager implements Runnable{
                     leftMessage = leftBackBeat.get(hbTime + hbTimeDelay, TimeUnit.MILLISECONDS);
                     rightMessage = rightBackBeat.get(hbTime + hbTimeDelay, TimeUnit.MILLISECONDS);
                 } catch (ExecutionException | InterruptedException e) {
-                    if (Main.development) {
+                    if (OLDMain.development) {
                         System.out.println("Exception from hbManager: " + e.getMessage());
                     }
-                    Main.log.writeLogLine("Exception hbManager: " + e.getMessage());
+                    OLDMain.log.writeLogLine("Exception hbManager: " + e.getMessage());
                 } catch (TimeoutException e) {
 
 
                     //If this exception is triggered then it means that one of the events timed out.
 
-                    if (Main.development) {
+                    if (OLDMain.development) {
                         System.out.println("Timeout exception found. Left message: " + leftMessage + " , Right message: " + rightMessage);
                     }
-                    Main.log.writeLogLine("Timeout exception found. Left message: " + leftMessage + " , Right message: " + rightMessage);
+                    OLDMain.log.writeLogLine("Timeout exception found. Left message: " + leftMessage + " , Right message: " + rightMessage);
 
 
                     if (!leftBackBeat.isDone()) {
@@ -122,13 +127,13 @@ public class HeartBeatManager implements Runnable{
 
     private void notifyGroupOfFailure(int portNum, InetAddress ipAddress) throws IOException
     {
-        if(Main.development) {
+        if(OLDMain.development) {
             System.out.println("Missed message from: " + portNum + " , " + ipAddress.getHostAddress());
         }
-        Main.log.writeLogLine("Missed message from: " + portNum + " , " + ipAddress.getHostAddress());
+        OLDMain.log.writeLogLine("Missed message from: " + portNum + " , " + ipAddress.getHostAddress());
 
         //Test code below
-        Main.neighbours.rightPortNumForward = 5678;
+        //OLDMain.neighbours.rightPortNumForward = 5678;
 
     }
 
@@ -140,4 +145,6 @@ public class HeartBeatManager implements Runnable{
         result  = backNode.sendSingleMessage("REORG");
 
     }
+
+
 }

@@ -29,14 +29,7 @@ public class UdpMessageServer implements Callable<String>
             try {
                 this.ds = new DatagramSocket(portNum);
             } catch (SocketException e) {
-                String errorText = "UDP Server Exception on portnum: " + portNum + "  " +  e.getMessage();
-
-                if (Main.development) {
-                    System.out.println(errorText);
-                }
-
-                Main.log.writeLogLine(errorText);
-
+                Main.writeLog("UDP Server Exception on portnum: " + portNum + "  " +  e.getMessage());
             }
 
 
@@ -45,14 +38,7 @@ public class UdpMessageServer implements Callable<String>
                 message = startListening();
 
             } catch (Exception e) {
-                if (Main.development) {
-                    System.out.println("Exception UDP Server: " + e.getMessage());
-                }
-                try {
-                    Main.log.writeLogLine("Exception UDP Server: " + e.getMessage());
-                } catch (IOException e2) {
-                    System.out.println("Exception UDP Log: " + e2.getMessage());
-                }
+                Main.writeLog("UDP Server Exception on portnum: " + portNum + "  " +  e.getMessage());
             }
 
 
@@ -71,26 +57,17 @@ public class UdpMessageServer implements Callable<String>
         byte[] receive = new byte[65535];
 
         DatagramPacket DpReceive = null;
-        //while (true)
-        //{
 
-            // create a DatgramPacket to receive the data.
+
+            // create a DatagramPacket to receive the data.
             DpReceive = new DatagramPacket(receive, receive.length);
 
-            // recieve the data in byte buffer.
+            // receive the data in byte buffer.
             ds.receive(DpReceive);
 
             StringBuilder message = data(receive);
 
-            if(Main.development) {
-                System.out.println("Received message: " + message);
-            }
-
-            Main.log.writeLogLine("Received message: " + message);
-
-            // Clear the buffer after every message.
-            //receive = new byte[65535];
-        //}
+            Main.writeLog("Received message: " + message);
 
         ds.close();
         return message.toString();

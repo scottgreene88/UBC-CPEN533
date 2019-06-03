@@ -41,38 +41,38 @@ public class TcpMessageClient {
                 response = in.nextLine();
             }
 
-            if(Main.development) {
+            if(OLDMain.development) {
                 System.out.println("Client sent: " + message + " to: " + ipAddress + " responded: " + response);
             }
-            Main.log.writeLogLine("Client sent: " + message + " to: " + ipAddress + " responded: " + response);
+            OLDMain.log.writeLogLine("Client sent: " + message + " to: " + ipAddress + " responded: " + response);
 
         }
         catch(java.net.SocketTimeoutException e)
         {
             response = "FAILED";
-            if(Main.development) {
+            if(OLDMain.development) {
                 System.out.println("Socket Timeout Exception: " + e.getMessage());
             }
 
-            Main.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
+            OLDMain.log.writeLogLine("Socket Timeout Exception: " + e.getMessage());
 
         }
         catch (Exception e)
         {
             response = "FAILED";
-            if(Main.development) {
+            if(OLDMain.development) {
                 System.out.println("Socket Exception: " + e.getMessage());
             }
 
-            Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+            OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
         }finally {
             try { socket.close(); } catch (IOException e) {
 
-                if(Main.development) {
+                if(OLDMain.development) {
                     System.out.println("Socket Exception: " + e.getMessage());
                 }
 
-                Main.log.writeLogLine("Socket Exception: " + e.getMessage());
+                OLDMain.log.writeLogLine("Socket Exception: " + e.getMessage());
 
             }
 

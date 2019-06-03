@@ -1,6 +1,6 @@
 package network;
 
-import core.Main;
+import core.OLDMain;
 
 import java.io.*;
 import java.net.*;
@@ -25,36 +25,36 @@ public class TcpMessageServer implements Callable {
 
             String logText = "TCP Server connected: " + socket;
 
-            if (Main.development) {
+            if (OLDMain.development) {
                 System.out.println(logText);
             }
 
-            Main.log.writeLogLine(logText);
+            OLDMain.log.writeLogLine(logText);
 
 
             try {
                 Scanner in = new Scanner(socket.getInputStream());
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                out.println("ACK");
+                //PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                //out.println("ACK");
 
                 command = in.nextLine();
 
                 String errorText = "TCP Server command received: " + command;
 
-                if (Main.development) {
+                if (OLDMain.development) {
                     System.out.println(errorText);
                 }
 
-                Main.log.writeLogLine(errorText);
+                OLDMain.log.writeLogLine(errorText);
 
             } catch (Exception e) {
                 logText = "TCP Server Exception: " + e.getMessage();
 
-                if (Main.development) {
+                if (OLDMain.development) {
                     System.out.println(logText);
                 }
 
-                Main.log.writeLogLine(logText);
+                OLDMain.log.writeLogLine(logText);
             } finally {
                 try {
                     socket.close();
@@ -63,11 +63,11 @@ public class TcpMessageServer implements Callable {
 
                 logText = "TCP Server closed: " + socket;
 
-                if (Main.development) {
+                if (OLDMain.development) {
                     System.out.println(logText);
                 }
 
-                Main.log.writeLogLine(logText);
+                OLDMain.log.writeLogLine(logText);
             }
 
 

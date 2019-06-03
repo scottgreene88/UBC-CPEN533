@@ -1,57 +1,36 @@
 package heartbeat;
 
+import core.Main;
+import data.UDPMessage;
 import network.UdpMessageClient;
-import core.*;
+import java.net.*;
+import java.util.Date;
 
-import java.io.IOException;
-import java.net.InetAddress;
+import com.google.gson.*;
 
-public class SendHeartBeat implements Runnable{
-
-
-    private int rightPortNum;
-    private int leftPortNum;
-    private InetAddress leftIpAddress;
-    private InetAddress rightIpAddress;
-
-
-    public SendHeartBeat(int leftPortNum, int rightPortNum, InetAddress leftIpAddress, InetAddress rightIpAddress)
-    {
-        this.leftPortNum = leftPortNum;
-        this.rightPortNum = rightPortNum;
-        this.leftIpAddress = leftIpAddress;
-        this.rightIpAddress = rightIpAddress;
-    }
+public class SendHeartBeat implements Runnable {
 
     public void run()
     {
-        try
-        {
-            sendBeats();
+        try {
+            Gson json = new Gson();
+            Date date = new Date();
+            UDPMessage heartBeatMessage = new UDPMessage("HB", Inet4Address.getLocalHost().getHostAddress(), date);
+            UdpMessageClient client;
+            String message = json.toJson(heartBeatMessage);
+
+            for (String ip : Main.successorsList) {
+
+                client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
+                client.sendMessage(message);
+
+            }
 
         }catch(Exception e)
         {
-            if(Main.development) {
-                System.out.println("Exception from sendHB: " + e.getMessage());
-            }
-            try {Main.log.writeLogLine("Exception sendHB: " + e.getMessage());}
-            catch(IOException e2) {System.out.println("Exception from logger: " + e2.getMessage()); }
+            System.out.println("Exception in OLDSendHeartBeat: " + e.getMessage());
         }
-
     }
-
-
-    private void sendBeats() throws IOException
-    {
-        String hbMessage = "Beat";
-
-        UdpMessageClient myLeftForward =  new UdpMessageClient(leftPortNum,leftIpAddress);
-        UdpMessageClient myRightForward =  new UdpMessageClient(rightPortNum,rightIpAddress);
-
-        myLeftForward.sendMessage(hbMessage + " 1");
-        myRightForward.sendMessage(hbMessage + " 2");
-
-
-    }
-
 }
+
+
