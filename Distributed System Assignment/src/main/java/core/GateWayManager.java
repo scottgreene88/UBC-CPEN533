@@ -13,6 +13,8 @@ import java.util.Vector;
 
 public class GateWayManager {
 
+    private int numberOfNeightbours = 4;
+
     public void requestLogin(String ip)
     {
         try {
@@ -43,7 +45,7 @@ public class GateWayManager {
             UdpMessageClient client;
             String message = json.toJson(updateMessage);
 
-            updateSuccessorsListList();
+            updatePredecessorsList();
             updateSuccessorsListList();
 
             client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
@@ -81,6 +83,8 @@ public class GateWayManager {
 
     public void updatePredecessorsList()
     {
+        Main.predecessorsList.clear();
+
         int selfIndex = 0;
         try {
             selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
@@ -99,9 +103,11 @@ public class GateWayManager {
             if(selfIndex == 0)
             {
                 Main.predecessorsList.add(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
             }
             else {
                 Main.predecessorsList.add(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
             }
 
         }
@@ -111,25 +117,75 @@ public class GateWayManager {
             {
                 Main.predecessorsList.add(Main.currentMachineList.get(1));
                 Main.predecessorsList.add(Main.currentMachineList.get(2));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
             }
             else if(selfIndex == 1){
                 Main.predecessorsList.add(Main.currentMachineList.get(0));
                 Main.predecessorsList.add(Main.currentMachineList.get(2));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
             }
             else
             {
                 Main.predecessorsList.add(Main.currentMachineList.get(0));
                 Main.predecessorsList.add(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+            }
+        }
+        else if (Main.currentMachineList.size() == 4)
+        {
+            for(int i = 1; i <= numberOfNeightbours-1; i++)
+            {
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex+i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex+i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+                    Main.predecessorsList.add(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                }
+
             }
         }
         else
         {
 
+            for(int i = 1; i <= numberOfNeightbours; i++)
+            {
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex+i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex+i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+                    Main.predecessorsList.add(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                }
+
+            }
+
+        }
+
+        System.out.println("CURRENT PRED LIST:");
+        for (String s: Main.predecessorsList
+             ) {
+            System.out.println(s);
         }
     }
 
     public void updateSuccessorsListList()
     {
+        Main.successorsList.clear();
+
         int selfIndex = 0;
         try {
             selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
@@ -146,10 +202,10 @@ public class GateWayManager {
         {
             if(selfIndex == 0) {
                 Main.successorsList.add(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
             }else {
                 Main.successorsList.add(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
             }
         }
         else if (Main.currentMachineList.size() == 3)
@@ -157,28 +213,73 @@ public class GateWayManager {
             if(selfIndex == 0)
             {
                 Main.successorsList.add(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
                 Main.successorsList.add(Main.currentMachineList.get(2));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
             }
             else if(selfIndex == 1){
                 Main.successorsList.add(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
                 Main.successorsList.add(Main.currentMachineList.get(2));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
             }
             else
             {
                 Main.successorsList.add(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
                 Main.successorsList.add(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+            }
+        }
+        else if (Main.currentMachineList.size() == 4)
+        {
+            for(int i = 1; i <= numberOfNeightbours - 1; i++)
+            {
+
+                if((selfIndex - i) >= 0)
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex-i));
+                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex-i));
+                }
+                else
+                {
+                    int val =  Main.currentMachineList.size() - i;
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                }
+
             }
         }
         else
         {
+            for(int i = 1; i <= numberOfNeightbours; i++)
+            {
 
+                if((selfIndex - i) >= 0)
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex-i));
+                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex-i));
+                }
+                else
+                {
+                    int val =  Main.currentMachineList.size() - i;
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                }
+
+            }
         }
+
+        System.out.println("CURRENT SUC LIST:");
+        for (String s: Main.successorsList
+        ) {
+            System.out.println(s);
+        }
+
     }
 
 }

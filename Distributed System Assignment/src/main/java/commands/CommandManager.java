@@ -54,9 +54,9 @@ public class CommandManager implements Runnable {
         Main.currentMachineList.add(currentCommand.senderIP);
         Main.currentMachineListLoginTime.add(date.toString());
 
-        GateWayManager gateWayManager = new GateWayManager();
+        //GateWayManager gateWayManager = new GateWayManager();
 
-        gateWayManager.sendCurrentMachineList(currentCommand.senderIP);
+        //gateWayManager.sendCurrentMachineList(currentCommand.senderIP);
         updateAllMachines();
     }
 
@@ -67,9 +67,15 @@ public class CommandManager implements Runnable {
 
     private void updateAllMachines()
     {
-        GateWayManager gateWayManager = new GateWayManager();
-        for (String ip: Main.currentMachineList) {
-            gateWayManager.sendCurrentMachineList(ip);
+        try {
+            GateWayManager gateWayManager = new GateWayManager();
+            for (String ip : Main.currentMachineList) {
+                if (ip.equals(InetAddress.getLocalHost().getHostAddress()) )
+                    gateWayManager.sendCurrentMachineList(ip);
+            }
+        }catch (Exception e)
+        {
+            System.out.println("Inet failure");
         }
 
     }
