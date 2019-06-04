@@ -11,21 +11,39 @@ public class HeartBeatTable {
 
     public HeartBeatTable()
     {
-        currentPredecessors =  new Vector<>();
-        lastTimeStamp = new Vector<>();
+        try {
+            currentPredecessors = new Vector<>();
+            lastTimeStamp = new Vector<>();
+        }
+        catch (Exception e)
+        {
+            System.out.println("Exception in HB table");
+        }
     }
 
     public void addPredecessor(String ip)
     {
+        try {
         Date date = new Date();
         currentPredecessors.add(ip);
         lastTimeStamp.add(date);
+        }
+            catch (Exception e)
+        {
+            System.out.println("Exception in HB table add pred");
+        }
     }
 
     public void updateNewTimeStamp(String ip, Date timestamp)
     {
+        try {
         int index = currentPredecessors.indexOf(ip);
         lastTimeStamp.set(index,timestamp);
+        }
+                catch (Exception e)
+        {
+            System.out.println("Exception in HB table set time");
+        }
     }
 
     public String checkPredecessorTimeoutForFail()

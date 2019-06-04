@@ -52,6 +52,9 @@ public class Main {
         currentMachineList =  new Vector<>();
         currentMachineListLoginTime = new Vector<>();
 
+        ExecutorService es2 = Executors.newSingleThreadExecutor();
+        es2.execute(new UdpMessageServerManager());
+
         if(args.length > 0)
         {
             if(args[0].equals("GW"))
@@ -69,8 +72,8 @@ public class Main {
         }
 
 
-        ExecutorService es2 = Executors.newSingleThreadExecutor();
-        es2.execute(new UdpMessageServerManager());
+        //ExecutorService es2 = Executors.newSingleThreadExecutor();
+       //es2.execute(new UdpMessageServerManager());
 
         ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
         es.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);

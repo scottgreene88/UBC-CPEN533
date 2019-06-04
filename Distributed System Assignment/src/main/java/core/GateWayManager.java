@@ -1,7 +1,6 @@
 package core;
 
 import com.google.gson.Gson;
-import data.HeartBeatTable;
 import data.UDPMessage;
 import network.UdpMessageClient;
 
@@ -13,7 +12,7 @@ import java.util.Vector;
 
 public class GateWayManager {
 
-    private int numberOfNeightbours = 4;
+    private int numberOfNeighbours = 4;
 
     public void requestLogin(String ip)
     {
@@ -44,9 +43,6 @@ public class GateWayManager {
             updateMessage.machineStartTimes = serializeList(Main.currentMachineListLoginTime);
             UdpMessageClient client;
             String message = json.toJson(updateMessage);
-
-            updatePredecessorsList();
-            updateSuccessorsListList();
 
             client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
             client.sendMessage(message);
@@ -113,42 +109,43 @@ public class GateWayManager {
         }
         else if (Main.currentMachineList.size() == 3)
         {
-            if(selfIndex == 0)
+            for(int i = 1; i <= numberOfNeighbours - 2; i++)
             {
-                Main.predecessorsList.add(Main.currentMachineList.get(1));
-                Main.predecessorsList.add(Main.currentMachineList.get(2));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
-            }
-            else if(selfIndex == 1){
-                Main.predecessorsList.add(Main.currentMachineList.get(0));
-                Main.predecessorsList.add(Main.currentMachineList.get(2));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
-            }
-            else
-            {
-                Main.predecessorsList.add(Main.currentMachineList.get(0));
-                Main.predecessorsList.add(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+
+                if((selfIndex - i) >= 0)
+                {
+                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+
+                }
+                else
+                {
+                    int val =  (selfIndex - i) + Main.currentMachineList.size();
+                    Main.predecessorsList.add(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+
+                }
+
             }
         }
         else if (Main.currentMachineList.size() == 4)
         {
-            for(int i = 1; i <= numberOfNeightbours-1; i++)
+
+            for(int i = 1; i <= numberOfNeighbours - 1; i++)
             {
 
-                if((selfIndex+ i) < Main.currentMachineList.size())
+                if((selfIndex - i) >= 0)
                 {
-                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex+i));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex+i));
+                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+
                 }
                 else
                 {
-                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+                    int val =  (selfIndex - i) + Main.currentMachineList.size();
                     Main.predecessorsList.add(Main.currentMachineList.get(val));
                     Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+
                 }
 
             }
@@ -156,19 +153,21 @@ public class GateWayManager {
         else
         {
 
-            for(int i = 1; i <= numberOfNeightbours; i++)
+            for(int i = 1; i <= numberOfNeighbours; i++)
             {
 
-                if((selfIndex+ i) < Main.currentMachineList.size())
+                if((selfIndex - i) >= 0)
                 {
-                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex+i));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex+i));
+                    Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+
                 }
                 else
                 {
-                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+                    int val =  (selfIndex - i) + Main.currentMachineList.size();
                     Main.predecessorsList.add(Main.currentMachineList.get(val));
                     Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+
                 }
 
             }
@@ -182,7 +181,7 @@ public class GateWayManager {
         }
     }
 
-    public void updateSuccessorsListList()
+    public void updateSuccessorsList()
     {
         Main.successorsList.clear();
 
@@ -210,65 +209,61 @@ public class GateWayManager {
         }
         else if (Main.currentMachineList.size() == 3)
         {
-            if(selfIndex == 0)
+            for(int i = 1; i <= numberOfNeighbours - 2; i++)
             {
-                Main.successorsList.add(Main.currentMachineList.get(1));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
-                Main.successorsList.add(Main.currentMachineList.get(2));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
-            }
-            else if(selfIndex == 1){
-                Main.successorsList.add(Main.currentMachineList.get(0));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
-                Main.successorsList.add(Main.currentMachineList.get(2));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
-            }
-            else
-            {
-                Main.successorsList.add(Main.currentMachineList.get(0));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
-                Main.successorsList.add(Main.currentMachineList.get(1));
-                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                }
+
             }
         }
         else if (Main.currentMachineList.size() == 4)
         {
-            for(int i = 1; i <= numberOfNeightbours - 1; i++)
+            for(int i = 1; i <= numberOfNeighbours - 1; i++)
             {
 
-                if((selfIndex - i) >= 0)
+                if((selfIndex+ i) < Main.currentMachineList.size())
                 {
 
-                    Main.successorsList.add(Main.currentMachineList.get(selfIndex-i));
-                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex-i));
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
                 }
                 else
                 {
-                    int val =  Main.currentMachineList.size() - i;
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
 
                     Main.successorsList.add(Main.currentMachineList.get(val));
-                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
                 }
 
             }
+
         }
         else
         {
-            for(int i = 1; i <= numberOfNeightbours; i++)
+            for(int i = 1; i <= numberOfNeighbours; i++)
             {
 
-                if((selfIndex - i) >= 0)
+                if((selfIndex+ i) < Main.currentMachineList.size())
                 {
 
-                    Main.successorsList.add(Main.currentMachineList.get(selfIndex-i));
-                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex-i));
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
                 }
                 else
                 {
-                    int val =  Main.currentMachineList.size() - i;
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
 
                     Main.successorsList.add(Main.currentMachineList.get(val));
-                    //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
                 }
 
             }

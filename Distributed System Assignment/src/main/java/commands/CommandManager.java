@@ -7,7 +7,6 @@ import data.UDPMessage;
 
 import java.net.InetAddress;
 import java.util.Date;
-import java.util.Vector;
 
 public class CommandManager implements Runnable {
 
@@ -54,9 +53,10 @@ public class CommandManager implements Runnable {
         Main.currentMachineList.add(currentCommand.senderIP);
         Main.currentMachineListLoginTime.add(date.toString());
 
-        //GateWayManager gateWayManager = new GateWayManager();
+        GateWayManager gateWayManager = new GateWayManager();
+        gateWayManager.updatePredecessorsList();
+        gateWayManager.updateSuccessorsList();
 
-        //gateWayManager.sendCurrentMachineList(currentCommand.senderIP);
         updateAllMachines();
     }
 
@@ -70,7 +70,7 @@ public class CommandManager implements Runnable {
         try {
             GateWayManager gateWayManager = new GateWayManager();
             for (String ip : Main.currentMachineList) {
-                if (ip.equals(InetAddress.getLocalHost().getHostAddress()) )
+                if (!ip.equals(InetAddress.getLocalHost().getHostAddress()) )
                     gateWayManager.sendCurrentMachineList(ip);
             }
         }catch (Exception e)
@@ -90,7 +90,7 @@ public class CommandManager implements Runnable {
         Main.currentMachineListLoginTime = gateWayManager.deserializeList(currentCommand.machineStartTimes);
 
         gateWayManager.updatePredecessorsList();
-        gateWayManager.updateSuccessorsListList();
+        gateWayManager.updateSuccessorsList();
 
 
     }
