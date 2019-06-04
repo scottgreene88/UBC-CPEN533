@@ -30,7 +30,7 @@ public class Main {
     public static Vector<String> currentMachineListLoginTime;
 
     public static int heartBeatPort = 1526;
-    public static int heartBeatTime = 3000;
+    public static int heartBeatTime = 5000;
     public static HeartBeatTable heartBeatTable;
 
     public static Boolean development = true;
@@ -71,11 +71,13 @@ public class Main {
         }
 
 
+        ExecutorService es2 = Executors.newSingleThreadExecutor();
+        es2.execute(new UdpMessageServerManager());
+
         ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
         es.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
 
-        ExecutorService es2 = Executors.newSingleThreadExecutor();
-        es2.execute(new UdpMessageServerManager());
+
 
     }
 

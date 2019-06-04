@@ -43,6 +43,8 @@ public class GateWayManager {
             UdpMessageClient client;
             String message = json.toJson(updateMessage);
 
+            updateSuccessorsListList();
+            updateSuccessorsListList();
 
             client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
             client.sendMessage(message);
@@ -79,18 +81,46 @@ public class GateWayManager {
 
     public void updatePredecessorsList()
     {
+        int selfIndex = 0;
+        try {
+            selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
+        }
+        catch(Exception e)
+        {
+            System.out.println("InetAddress Exception" + e.getMessage());
+        }
+
         if(Main.currentMachineList.size() == 1)
         {
 
         }
         else if(Main.currentMachineList.size() == 2)
         {
-            Main.predecessorsList.add(Main.currentMachineList.get(0));
+            if(selfIndex == 0)
+            {
+                Main.predecessorsList.add(Main.currentMachineList.get(1));
+            }
+            else {
+                Main.predecessorsList.add(Main.currentMachineList.get(0));
+            }
 
         }
         else if (Main.currentMachineList.size() == 3)
         {
-
+            if(selfIndex == 0)
+            {
+                Main.predecessorsList.add(Main.currentMachineList.get(1));
+                Main.predecessorsList.add(Main.currentMachineList.get(2));
+            }
+            else if(selfIndex == 1){
+                Main.predecessorsList.add(Main.currentMachineList.get(0));
+                Main.predecessorsList.add(Main.currentMachineList.get(2));
+            }
+            else
+            {
+                Main.predecessorsList.add(Main.currentMachineList.get(0));
+                Main.predecessorsList.add(Main.currentMachineList.get(1));
+            }
         }
         else
         {
@@ -100,18 +130,50 @@ public class GateWayManager {
 
     public void updateSuccessorsListList()
     {
+        int selfIndex = 0;
+        try {
+            selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
+        }
+        catch(Exception e)
+        {
+            System.out.println("InetAddress Exception" + e.getMessage());
+        }
         if(Main.currentMachineList.size() == 1)
         {
 
         }
         else if(Main.currentMachineList.size() == 2)
         {
-            Main.successorsList.add(Main.currentMachineList.get(0));
-            Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+            if(selfIndex == 0) {
+                Main.successorsList.add(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+            }else {
+                Main.successorsList.add(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+            }
         }
         else if (Main.currentMachineList.size() == 3)
         {
-
+            if(selfIndex == 0)
+            {
+                Main.successorsList.add(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                Main.successorsList.add(Main.currentMachineList.get(2));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
+            }
+            else if(selfIndex == 1){
+                Main.successorsList.add(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                Main.successorsList.add(Main.currentMachineList.get(2));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(2));
+            }
+            else
+            {
+                Main.successorsList.add(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                Main.successorsList.add(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+            }
         }
         else
         {

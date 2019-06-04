@@ -53,14 +53,27 @@ public class CommandManager implements Runnable {
         Date date = new Date();
         Main.currentMachineList.add(currentCommand.senderIP);
         Main.currentMachineListLoginTime.add(date.toString());
+
         GateWayManager gateWayManager = new GateWayManager();
+
         gateWayManager.sendCurrentMachineList(currentCommand.senderIP);
+        updateAllMachines();
     }
 
     private void removeMachineFromGroup(UDPMessage currentCommand)
     {
 
     }
+
+    private void updateAllMachines()
+    {
+        GateWayManager gateWayManager = new GateWayManager();
+        for (String ip: Main.currentMachineList) {
+            gateWayManager.sendCurrentMachineList(ip);
+        }
+
+    }
+
 
     private void updateNeighbourLists(UDPMessage currentCommand)
     {
