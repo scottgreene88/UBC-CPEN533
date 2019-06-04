@@ -1,7 +1,5 @@
 package heartbeat;
 
-import core.OLDMain;
-
 public class WaitForHeartBeats implements Runnable{
 
     public void run()
@@ -9,13 +7,7 @@ public class WaitForHeartBeats implements Runnable{
 
         while(true)
         {
-            if(OLDMain.processActive)
-            {
 
-
-
-
-            }
         }
 
     }

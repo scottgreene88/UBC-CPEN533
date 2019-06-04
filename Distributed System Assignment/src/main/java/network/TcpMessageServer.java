@@ -1,7 +1,5 @@
 package network;
 
-import core.OLDMain;
-
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -25,11 +23,11 @@ public class TcpMessageServer implements Callable {
 
             String logText = "TCP Server connected: " + socket;
 
-            if (OLDMain.development) {
+            if (core.Main.development) {
                 System.out.println(logText);
             }
 
-            OLDMain.log.writeLogLine(logText);
+            core.Main.log.writeLogLine(logText);
 
 
             try {
@@ -41,20 +39,20 @@ public class TcpMessageServer implements Callable {
 
                 String errorText = "TCP Server command received: " + command;
 
-                if (OLDMain.development) {
+                if (core.Main.development) {
                     System.out.println(errorText);
                 }
 
-                OLDMain.log.writeLogLine(errorText);
+                core.Main.log.writeLogLine(errorText);
 
             } catch (Exception e) {
                 logText = "TCP Server Exception: " + e.getMessage();
 
-                if (OLDMain.development) {
+                if (core.Main.development) {
                     System.out.println(logText);
                 }
 
-                OLDMain.log.writeLogLine(logText);
+                core.Main.log.writeLogLine(logText);
             } finally {
                 try {
                     socket.close();
@@ -63,11 +61,11 @@ public class TcpMessageServer implements Callable {
 
                 logText = "TCP Server closed: " + socket;
 
-                if (OLDMain.development) {
+                if (core.Main.development) {
                     System.out.println(logText);
                 }
 
-                OLDMain.log.writeLogLine(logText);
+                core.Main.log.writeLogLine(logText);
             }
 
 
