@@ -60,9 +60,12 @@ public class CommandManager implements Runnable {
         updateAllMachines();
     }
 
-    private void removeMachineFromGroup(UDPMessage currentCommand)
+    private boolean removeMachineFromGroup(UDPMessage currentCommand)
     {
 
+
+
+        return true;
     }
 
     public static void updateAllMachines()

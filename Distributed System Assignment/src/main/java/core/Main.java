@@ -2,6 +2,7 @@ package core;
 
 
 
+import commands.ClientCommandManager;
 import data.HeartBeatTable;
 
 import heartbeat.HeartBeatManager;
@@ -87,6 +88,10 @@ public class Main {
 
         ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
         hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
+
+        ExecutorService clientThread = Executors.newSingleThreadExecutor();
+        clientThread.execute(new ClientCommandManager());
+
 
     }
 
