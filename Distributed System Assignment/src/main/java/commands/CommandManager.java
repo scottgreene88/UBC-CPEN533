@@ -30,9 +30,6 @@ public class CommandManager implements Runnable {
             case "LOGIN":
                 addNewMachineToGroup(currentCommand);
                 break;
-            case "DISCONNECT":
-                removeMachineFromGroup(currentCommand);
-                break;
             case "UPDATE":
                 updateNeighbourLists(currentCommand);
                 break;
@@ -60,7 +57,7 @@ public class CommandManager implements Runnable {
         updateAllMachines();
     }
 
-    private boolean removeMachineFromGroup(UDPMessage currentCommand)
+    private boolean removeMachineFromGroup()
     {
 
 
