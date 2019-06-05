@@ -4,6 +4,7 @@ package core;
 
 import data.HeartBeatTable;
 
+import heartbeat.HeartBeatManager;
 import heartbeat.SendHeartBeat;
 
 import network.UdpMessageServerManager;
@@ -28,7 +29,8 @@ public class Main {
     public static Vector<String> currentMachineListLoginTime;
 
     public static int heartBeatPort = 1526;
-    public static int heartBeatTime = 5000;
+    public static int heartBeatTime = 500;
+    public  static int heartBeatTimeout = 9000;
     public static HeartBeatTable heartBeatTable;
 
     public static Boolean development = true;
@@ -52,8 +54,8 @@ public class Main {
         currentMachineList =  new Vector<>();
         currentMachineListLoginTime = new Vector<>();
 
-        ExecutorService es2 = Executors.newSingleThreadExecutor();
-        es2.execute(new UdpMessageServerManager());
+        ExecutorService udpMessageServerThread = Executors.newSingleThreadExecutor();
+        udpMessageServerThread.execute(new UdpMessageServerManager());
 
         if(args.length > 0)
         {
@@ -75,10 +77,16 @@ public class Main {
         //ExecutorService es2 = Executors.newSingleThreadExecutor();
        //es2.execute(new UdpMessageServerManager());
 
-        ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
-        es.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
+        ScheduledExecutorService hbThread = Executors.newSingleThreadScheduledExecutor();
+        hbThread.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
 
+        while(currentMachineList.size() == 1)
+        {
+            Thread.sleep(5000);
+        }
 
+        ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
+        hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
 
     }
 

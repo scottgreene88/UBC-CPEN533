@@ -36,9 +36,9 @@ public class UdpMessageClient
 
         ds.close();
 
-        if(!message.contains("HB")) {
-            Main.writeLog("Send message: " + message + " to IP: " + ipAddress);
-        }
+        //if(!message.contains("HB")) {
+            //Main.writeLog("Send message: " + message + " to IP: " + ipAddress);
+        //}
 
     }
 

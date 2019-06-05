@@ -65,9 +65,10 @@ public class CommandManager implements Runnable {
 
     }
 
-    private void updateAllMachines()
+    public static void updateAllMachines()
     {
         try {
+            System.out.println("Notify all machines");
             GateWayManager gateWayManager = new GateWayManager();
             for (String ip : Main.currentMachineList) {
                 if (!ip.equals(InetAddress.getLocalHost().getHostAddress()) )
@@ -80,6 +81,23 @@ public class CommandManager implements Runnable {
 
     }
 
+    public static void removeMachineFromCurrentList(String ip)
+    {
+        try {
+            System.out.println("Trying to remove ip: " + ip);
+            int index = Main.currentMachineList.indexOf(ip);
+            if(index != -1) {
+                Main.currentMachineList.remove(index);
+                Main.currentMachineListLoginTime.remove(index);
+                System.out.println("removed ip: " + ip);
+            }
+        }catch(Exception e)
+        {
+            System.out.println("Exception when removing machine from list: " + e.getMessage());
+        }
+
+
+    }
 
     private void updateNeighbourLists(UDPMessage currentCommand)
     {

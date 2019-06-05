@@ -80,6 +80,7 @@ public class GateWayManager {
     public void updatePredecessorsList()
     {
         Main.predecessorsList.clear();
+        Main.heartBeatTable.clearLists();
 
         int selfIndex = 0;
         try {
@@ -99,11 +100,11 @@ public class GateWayManager {
             if(selfIndex == 0)
             {
                 Main.predecessorsList.add(Main.currentMachineList.get(1));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1), Main.currentMachineListLoginTime.get(1));
             }
             else {
                 Main.predecessorsList.add(Main.currentMachineList.get(0));
-                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+                Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0), Main.currentMachineListLoginTime.get(0));
             }
 
         }
@@ -115,14 +116,14 @@ public class GateWayManager {
                 if((selfIndex - i) >= 0)
                 {
                     Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i), Main.currentMachineListLoginTime.get(selfIndex - i));
 
                 }
                 else
                 {
                     int val =  (selfIndex - i) + Main.currentMachineList.size();
                     Main.predecessorsList.add(Main.currentMachineList.get(val));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val), Main.currentMachineListLoginTime.get(val));
 
                 }
 
@@ -137,14 +138,14 @@ public class GateWayManager {
                 if((selfIndex - i) >= 0)
                 {
                     Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i), Main.currentMachineListLoginTime.get(selfIndex - i));
 
                 }
                 else
                 {
                     int val =  (selfIndex - i) + Main.currentMachineList.size();
                     Main.predecessorsList.add(Main.currentMachineList.get(val));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val), Main.currentMachineListLoginTime.get(val));
 
                 }
 
@@ -159,14 +160,14 @@ public class GateWayManager {
                 if((selfIndex - i) >= 0)
                 {
                     Main.predecessorsList.add(Main.currentMachineList.get(selfIndex - i));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(selfIndex - i), Main.currentMachineListLoginTime.get(selfIndex - i));
 
                 }
                 else
                 {
                     int val =  (selfIndex - i) + Main.currentMachineList.size();
                     Main.predecessorsList.add(Main.currentMachineList.get(val));
-                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val));
+                    Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(val), Main.currentMachineListLoginTime.get(val));
 
                 }
 

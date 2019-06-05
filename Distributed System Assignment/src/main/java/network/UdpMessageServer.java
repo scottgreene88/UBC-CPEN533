@@ -67,9 +67,9 @@ public class UdpMessageServer implements Callable<String>
 
             StringBuilder message = data(receive);
 
-        if(!message.toString().contains("HB")) {
-            Main.writeLog("Received message: " + message);
-        }
+        //if(!message.toString().contains("HB")) {
+            //Main.writeLog("Received message: " + message);
+        //}
 
         ds.close();
         return message.toString();
