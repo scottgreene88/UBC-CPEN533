@@ -59,7 +59,7 @@ public class CommandManager implements Runnable {
 
     private boolean removeMachineFromGroup()
     {
-
+        //test
 
 
         return true;
