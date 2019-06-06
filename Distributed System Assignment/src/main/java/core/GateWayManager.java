@@ -7,8 +7,7 @@ import network.UdpMessageClient;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.util.Date;
-import java.util.Vector;
+import java.util.*;
 
 public class GateWayManager {
 
@@ -77,10 +76,11 @@ public class GateWayManager {
         return tempList;
     }
 
-    public void updatePredecessorsList()
+    synchronized public void updatePredecessorsList()
     {
         Main.predecessorsList.clear();
         Main.heartBeatTable.clearLists();
+
 
         int selfIndex = 0;
         try {
@@ -175,14 +175,15 @@ public class GateWayManager {
 
         }
 
-        System.out.println("CURRENT PRED LIST:");
-        for (String s: Main.predecessorsList
-             ) {
-            System.out.println(s);
-        }
+        //System.out.println("CURRENT PRED LIST:");
+        //for (String s: Main.predecessorsList
+        //     ) {
+        //    System.out.println(s);
+        //}
     }
 
-    public void updateSuccessorsList()
+
+    synchronized public void updateSuccessorsList()
     {
         Main.successorsList.clear();
 
@@ -270,11 +271,11 @@ public class GateWayManager {
             }
         }
 
-        System.out.println("CURRENT SUC LIST:");
-        for (String s: Main.successorsList
-        ) {
-            System.out.println(s);
-        }
+        //System.out.println("CURRENT SUC LIST:");
+        //for (String s: Main.successorsList
+        //) {
+        //   System.out.println(s);
+        //}
 
     }
 

@@ -19,11 +19,11 @@ public class UdpMessageServerManager implements Runnable {
         {
             try {
                 //ExecutorService es = Executors.newSingleThreadExecutor();
-                ExecutorService es = Executors.newFixedThreadPool(5);
+                ExecutorService es = Executors.newFixedThreadPool(6);
                 command = es.submit(new UdpMessageServer(Main.heartBeatPort));
 
                 //ExecutorService es2 = Executors.newSingleThreadExecutor();
-                ExecutorService es2 = Executors.newFixedThreadPool(5);
+                ExecutorService es2 = Executors.newFixedThreadPool(6);
                 es2.execute(new CommandManager(command.get()));
 
             }

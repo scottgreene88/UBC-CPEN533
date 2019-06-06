@@ -68,7 +68,7 @@ public class CommandManager implements Runnable {
     public static void updateAllMachines()
     {
         try {
-            System.out.println("Notify all machines");
+            //System.out.println("Notify all machines");
             GateWayManager gateWayManager = new GateWayManager();
             for (String ip : Main.currentMachineList) {
                 if (!ip.equals(InetAddress.getLocalHost().getHostAddress()) )
@@ -84,12 +84,13 @@ public class CommandManager implements Runnable {
     public static void removeMachineFromCurrentList(String ip)
     {
         try {
-            System.out.println("Trying to remove ip: " + ip);
+            //System.out.println("Trying to remove ip: " + ip);
             int index = Main.currentMachineList.indexOf(ip);
             if(index != -1) {
                 Main.currentMachineList.remove(index);
                 Main.currentMachineListLoginTime.remove(index);
-                System.out.println("removed ip: " + ip);
+                Main.writeLog("Removed ip from current list: " + ip);
+
             }
         }catch(Exception e)
         {

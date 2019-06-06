@@ -30,8 +30,8 @@ public class Main {
     public static Vector<String> currentMachineListLoginTime;
 
     public static int heartBeatPort = 1526;
-    public static int heartBeatTime = 500;
-    public  static int heartBeatTimeout = 9000;
+    public static int heartBeatTime = 300;
+    public  static int heartBeatTimeout = 2000;
     public static HeartBeatTable heartBeatTable;
 
     public static Boolean development = true;
@@ -39,7 +39,7 @@ public class Main {
 
     public static boolean processActive;
 
-
+    public static int clientPortNum = 5000;
 
     public static void main(String[] args) throws Exception {
 
@@ -83,14 +83,14 @@ public class Main {
 
         while(currentMachineList.size() == 1)
         {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }
 
         ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
         hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
 
-        ExecutorService clientThread = Executors.newSingleThreadExecutor();
-        clientThread.execute(new ClientCommandManager());
+        //ExecutorService clientThread = Executors.newSingleThreadExecutor();
+        //clientThread.execute(new ClientCommandManager());
 
 
     }
