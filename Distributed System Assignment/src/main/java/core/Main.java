@@ -36,6 +36,7 @@ public class Main {
 
     public static Boolean development = true;
     public static Logger log;
+    public static String logName = "mylogs.log";
 
     public static boolean processActive;
 
@@ -45,7 +46,7 @@ public class Main {
 
 
 
-        log = new Logger("mylogs.log");
+        log = new Logger(logName);
         log.writeLogLine("***New instance of server process started***");
 
         processActive = true;
@@ -89,8 +90,8 @@ public class Main {
         ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
         hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
 
-        //ExecutorService clientThread = Executors.newSingleThreadExecutor();
-        //clientThread.execute(new ClientCommandManager());
+        ExecutorService clientThread = Executors.newSingleThreadExecutor();
+        clientThread.execute(new ClientCommandManager());
 
 
     }

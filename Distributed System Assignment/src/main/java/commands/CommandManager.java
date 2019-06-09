@@ -57,12 +57,21 @@ public class CommandManager implements Runnable {
         updateAllMachines();
     }
 
-    private boolean removeMachineFromGroup()
+    public static String removeMachineFromGroup()
     {
-        //testasdfasdf
+        //handle disconnect
+        try {
+            removeMachineFromCurrentList(InetAddress.getLocalHost().getHostAddress());
+        }catch (Exception e)
+        {
+            System.out.println("Inet error " + e.getMessage());
+        }
 
+        updateAllMachines();
 
-        return true;
+        Main.processActive = false;
+
+        return "Machine Disconnected";
     }
 
     public static void updateAllMachines()
