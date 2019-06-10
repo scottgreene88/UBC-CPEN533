@@ -1,11 +1,18 @@
 package commands;
 
 import core.Main;
+import network.TcpMessageClient;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ClientCommandManager implements Runnable {
 
@@ -103,6 +110,26 @@ public class ClientCommandManager implements Runnable {
     {
         //Send the TCP String "phrase XXXXXXX" to all other Server Client Managers
         Vector<String> response = new Vector<>();
+
+        ExecutorService pool = Executors.newFixedThreadPool(Main.currentMachineList.size());
+
+        List<Future<Vector<String>>> resultList = new ArrayList<>();
+
+        for (int i = 0; i < Main.currentMachineList.size(); i++) {
+            Future<Vector<String>> result = pool.submit(new TcpMessageClient(portNum, Main.currentMachineList.get(i), phrase));
+            resultList.add(result);
+        }
+
+        for (int i = 0; i < resultList.size(); i++) {
+
+            try {
+                response.addAll(resultList.get(i).get());
+            }catch (Exception e)
+            {
+                System.out.println("Exception getting future thread grep result: " + e.getMessage());
+            }
+        }
+
 
         return response;
     }
