@@ -35,6 +35,8 @@ public class ClientCommandManager implements Runnable {
             socket  = listener.accept();
             Scanner inCommand = new Scanner(socket.getInputStream());
             PrintWriter outResponse = new PrintWriter(socket.getOutputStream(), true);
+
+
             //get user command
             String command = inCommand.nextLine();
 
@@ -42,11 +44,25 @@ public class ClientCommandManager implements Runnable {
             Vector<String> response = executeCommand(command);
 
             //respond with the answer
+            String responseLine;
             for(int i = 0; i < response.size(); i++)
             {
-                outResponse.println(response.get(i));
+
+                responseLine = response.get(i);
+                try {
+
+                    outResponse.println(responseLine);
+                }catch (Exception e)
+                {
+                    System.out.println("Printwriter error: " + e.getMessage());
+                }
+
+                outResponse.flush();
+
             }
             socket.close();
+            outResponse.flush();
+            outResponse.close();
         }
         }catch (Exception e)
         {
@@ -116,8 +132,10 @@ public class ClientCommandManager implements Runnable {
         List<Future<Vector<String>>> resultList = new ArrayList<>();
 
         for (int i = 0; i < Main.currentMachineList.size(); i++) {
-            Future<Vector<String>> result = pool.submit(new TcpMessageClient(portNum, Main.currentMachineList.get(i), phrase));
-            resultList.add(result);
+            if(Main.currentMachineList.get(i) != Main.localHostIP) {
+                Future<Vector<String>> result = pool.submit(new TcpMessageClient(portNum, Main.currentMachineList.get(i), "phrase " + phrase));
+                resultList.add(result);
+            }
         }
 
         for (int i = 0; i < resultList.size(); i++) {
@@ -129,7 +147,8 @@ public class ClientCommandManager implements Runnable {
                 System.out.println("Exception getting future thread grep result: " + e.getMessage());
             }
         }
-
+        //add local log
+        response.addAll(findPhraseInLog(phrase));
 
         return response;
     }
@@ -151,6 +170,7 @@ public class ClientCommandManager implements Runnable {
         try {
 
             String logFileName = "/home/ec2-user/Test/" + Main.logName;
+            //String logFileName = "B:\\School\\CPEN 533\\Assignments Repo\\UBC-CPEN533\\Distributed System Assignment\\" + Main.logName;
 
             File file = new File(logFileName);
 

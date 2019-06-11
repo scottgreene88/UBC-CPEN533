@@ -18,7 +18,7 @@ public class GateWayManager {
         try {
             Gson json = new Gson();
             Date date = new Date();
-            UDPMessage loginMessage = new UDPMessage("LOGIN", Inet4Address.getLocalHost().getHostAddress(), date);
+            UDPMessage loginMessage = new UDPMessage("LOGIN", Main.localHostIP, date);
             UdpMessageClient client;
             String message = json.toJson(loginMessage);
 
@@ -37,7 +37,7 @@ public class GateWayManager {
         try {
             Gson json = new Gson();
             Date date = new Date();
-            UDPMessage updateMessage = new UDPMessage("UPDATE", Inet4Address.getLocalHost().getHostAddress(), date);
+            UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, date);
             updateMessage.machineList = serializeList(Main.currentMachineList);
             updateMessage.machineStartTimes = serializeList(Main.currentMachineListLoginTime);
             UdpMessageClient client;
@@ -84,7 +84,7 @@ public class GateWayManager {
 
         int selfIndex = 0;
         try {
-            selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
+            selfIndex = Main.currentMachineList.indexOf(Main.localHostIP);
         }
         catch(Exception e)
         {
@@ -189,7 +189,7 @@ public class GateWayManager {
 
         int selfIndex = 0;
         try {
-            selfIndex = Main.currentMachineList.indexOf(InetAddress.getLocalHost().getHostAddress());
+            selfIndex = Main.currentMachineList.indexOf(Main.localHostIP);
         }
         catch(Exception e)
         {

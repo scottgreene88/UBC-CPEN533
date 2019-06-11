@@ -11,15 +11,13 @@ public class HeartBeatManager implements Runnable{
     public void run()
     {
 
-
-            try
-            {
+        if(Main.processActive) {
+            try {
 
                 Vector<String> hbCheckResponse = Main.heartBeatTable.checkPredecessorTimeoutForFail();
 
-                if(hbCheckResponse.size() != 0)
-                {
-                    for (String ip: hbCheckResponse) {
+                if (hbCheckResponse.size() != 0) {
+                    for (String ip : hbCheckResponse) {
 
                         CommandManager.removeMachineFromCurrentList(ip);
                     }
@@ -32,18 +30,15 @@ public class HeartBeatManager implements Runnable{
                     CommandManager.updateAllMachines();
                 }
 
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 try {
                     Main.writeLog("Exception in HeartBeatManager" + e.getMessage());
-                }catch(Exception e2)
-                {
+                } catch (Exception e2) {
                     System.out.println("Generic logger error" + e2.getMessage());
                 }
             }
 
-
+        }
 
     }
 

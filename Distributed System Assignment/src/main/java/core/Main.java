@@ -34,6 +34,8 @@ public class Main {
     public  static int heartBeatTimeout = 2000;
     public static HeartBeatTable heartBeatTable;
 
+    public static String localHostIP;
+
     public static Boolean development = true;
     public static Logger log;
     public static String logName = "mylogs.log";
@@ -56,6 +58,8 @@ public class Main {
         currentMachineList =  new Vector<>();
         currentMachineListLoginTime = new Vector<>();
 
+        localHostIP = InetAddress.getLocalHost().getHostAddress();
+
         ExecutorService udpMessageServerThread = Executors.newSingleThreadExecutor();
         udpMessageServerThread.execute(new UdpMessageServerManager());
 
@@ -64,7 +68,7 @@ public class Main {
             if(args[0].equals("GW"))
             {
                 Date date =  new Date();
-                currentMachineList.add(InetAddress.getLocalHost().getHostAddress());
+                currentMachineList.add(localHostIP);
                 currentMachineListLoginTime.add(date.toString());
             }
             else
@@ -82,10 +86,10 @@ public class Main {
         ScheduledExecutorService hbThread = Executors.newSingleThreadScheduledExecutor();
         hbThread.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
 
-        while(currentMachineList.size() == 1)
-        {
-            Thread.sleep(1000);
-        }
+       // while(currentMachineList.size() == 1)
+       // {
+        //    Thread.sleep(1000);
+        //}
 
         ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
         hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);

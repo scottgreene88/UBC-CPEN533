@@ -61,7 +61,7 @@ public class CommandManager implements Runnable {
     {
         //handle disconnect
         try {
-            removeMachineFromCurrentList(InetAddress.getLocalHost().getHostAddress());
+            removeMachineFromCurrentList(Main.localHostIP);
         }catch (Exception e)
         {
             System.out.println("Inet error " + e.getMessage());
@@ -80,7 +80,7 @@ public class CommandManager implements Runnable {
             //System.out.println("Notify all machines");
             GateWayManager gateWayManager = new GateWayManager();
             for (String ip : Main.currentMachineList) {
-                if (!ip.equals(InetAddress.getLocalHost().getHostAddress()) )
+                if (!ip.equals(Main.localHostIP) )
                     gateWayManager.sendCurrentMachineList(ip);
             }
         }catch (Exception e)

@@ -13,19 +13,20 @@ public class SendHeartBeat implements Runnable {
     public void run()
     {
         try {
-            Gson json = new Gson();
-            Date date = new Date();
-            UDPMessage heartBeatMessage = new UDPMessage("HB", Inet4Address.getLocalHost().getHostAddress(), date);
-            UdpMessageClient client;
-            String message = json.toJson(heartBeatMessage);
+            if(Main.processActive) {
+                Gson json = new Gson();
+                Date date = new Date();
+                UDPMessage heartBeatMessage = new UDPMessage("HB", Main.localHostIP, date);
+                UdpMessageClient client;
+                String message = json.toJson(heartBeatMessage);
 
-            for (String ip : Main.successorsList) {
+                for (String ip : Main.successorsList) {
 
-                client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
-                client.sendMessage(message);
+                    client = new UdpMessageClient(Main.heartBeatPort, InetAddress.getByName(ip));
+                    client.sendMessage(message);
 
+                }
             }
-
         }catch(Exception e)
         {
             System.out.println("Exception in OLDSendHeartBeat: " + e.getMessage());
