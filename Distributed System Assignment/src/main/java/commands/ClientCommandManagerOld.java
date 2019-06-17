@@ -1,32 +1,26 @@
 package commands;
 
-import com.google.gson.Gson;
 import core.Main;
-import data.TCPMessage;
 import network.TcpMessageClient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.concurrent.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
-public class ClientCommandManager implements Runnable {
+public class ClientCommandManagerOld implements Runnable {
+
 
     private int portNum = Main.clientPortNum;
-
-    private TCPMessage cmd;
+    private Socket socket;
     private String command;
 
-    public ClientCommandManager(String command)
+    public ClientCommandManagerOld(String command)
     {
 
         this.command = command;
@@ -37,19 +31,46 @@ public class ClientCommandManager implements Runnable {
     public void run()
     {
         try {
+            ServerSocket listener = new ServerSocket(portNum);
+
+
+        //set up the TCP port
+        while(Main.processActive)
+        {
+
+            // listen for someone to connect
+            socket  = listener.accept();
+            Scanner inCommand = new Scanner(socket.getInputStream());
+            PrintWriter outResponse = new PrintWriter(socket.getOutputStream(), true);
+
 
             //get user command
-            Gson json = new Gson();
-
-            cmd =  json.fromJson(command, TCPMessage.class);
-
-
+            String command = inCommand.nextLine();
 
             //execute the command
-            Vector<String> response = executeCommand(cmd.messageType);
+            Vector<String> response = executeCommand(command);
 
+            //respond with the answer
+            String responseLine;
+            for(int i = 0; i < response.size(); i++)
+            {
 
+                responseLine = response.get(i);
+                try {
 
+                    outResponse.println(responseLine);
+                }catch (Exception e)
+                {
+                    System.out.println("Printwriter error: " + e.getMessage());
+                }
+
+                outResponse.flush();
+
+            }
+            socket.close();
+            outResponse.flush();
+            outResponse.close();
+        }
         }catch (Exception e)
         {
             System.out.println("Client Manager Exception: " + e.getMessage());

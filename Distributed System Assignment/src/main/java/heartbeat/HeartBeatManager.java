@@ -1,6 +1,6 @@
 package heartbeat;
 
-import commands.CommandManager;
+import commands.UdpCommandManager;
 import core.GateWayManager;
 import core.Main;
 
@@ -19,7 +19,7 @@ public class HeartBeatManager implements Runnable{
                 if (hbCheckResponse.size() != 0) {
                     for (String ip : hbCheckResponse) {
 
-                        CommandManager.removeMachineFromCurrentList(ip);
+                        UdpCommandManager.removeMachineFromCurrentList(ip);
                     }
 
                     GateWayManager gateWayManager = new GateWayManager();
@@ -27,7 +27,7 @@ public class HeartBeatManager implements Runnable{
                     gateWayManager.updatePredecessorsList();
                     gateWayManager.updateSuccessorsList();
 
-                    CommandManager.updateAllMachines();
+                    UdpCommandManager.updateAllMachines();
                 }
 
             } catch (Exception e) {

@@ -2,17 +2,16 @@ package core;
 
 
 
-import commands.ClientCommandManager;
 import data.HeartBeatTable;
 
 import heartbeat.HeartBeatManager;
 import heartbeat.SendHeartBeat;
 
+import network.TcpMessageServerManager;
 import network.UdpMessageServerManager;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.Date;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,7 +26,7 @@ public class Main {
     public static Vector<String> predecessorsList;
 
     public static Vector<String> currentMachineList;
-    public static Vector<String> currentMachineListLoginTime;
+    public static Vector<Long> currentMachineListLoginTime;
 
     public static int heartBeatPort = 1526;
     public static int heartBeatTime = 300;
@@ -35,10 +34,11 @@ public class Main {
     public static HeartBeatTable heartBeatTable;
 
     public static String localHostIP;
+    public static long localProcessClock;
 
     public static Boolean development = true;
     public static Logger log;
-    public static String logName = "mylogs.log";
+    public static String logName = "/home/ec2-user/mylogs.log";
 
     public static boolean processActive;
 
@@ -50,6 +50,9 @@ public class Main {
 
         log = new Logger(logName);
         log.writeLogLine("***New instance of server process started***");
+
+        //start process clock
+        localProcessClock = 1;
 
         processActive = true;
         successorsList =  new Vector<>();
@@ -67,9 +70,8 @@ public class Main {
         {
             if(args[0].equals("GW"))
             {
-                Date date =  new Date();
                 currentMachineList.add(localHostIP);
-                currentMachineListLoginTime.add(date.toString());
+                currentMachineListLoginTime.add(localProcessClock);
             }
             else
             {
@@ -80,22 +82,24 @@ public class Main {
         }
 
 
-        //ExecutorService es2 = Executors.newSingleThreadExecutor();
-       //es2.execute(new UdpMessageServerManager());
-
         ScheduledExecutorService hbThread = Executors.newSingleThreadScheduledExecutor();
         hbThread.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
 
-       // while(currentMachineList.size() == 1)
-       // {
-        //    Thread.sleep(1000);
-        //}
-
-        ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
-        hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
+        //ExecutorService clientThread = Executors.newSingleThreadExecutor();
+        //clientThread.execute(new ClientCommandManager());
 
         ExecutorService clientThread = Executors.newSingleThreadExecutor();
-        clientThread.execute(new ClientCommandManager());
+        clientThread.execute(new TcpMessageServerManager());
+
+        while(currentMachineList.size() == 1)
+        {
+            Thread.sleep(500);
+        }
+
+        ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
+        hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 0, heartBeatTimeout, TimeUnit.MILLISECONDS);
+
+
 
 
     }

@@ -11,14 +11,14 @@ import java.util.*;
 
 public class GateWayManager {
 
-    private int numberOfNeighbours = 4;
+    private int numberOfNeighbours = 1;
 
     public void requestLogin(String ip)
     {
         try {
             Gson json = new Gson();
-            Date date = new Date();
-            UDPMessage loginMessage = new UDPMessage("LOGIN", Main.localHostIP, date);
+            Main.localProcessClock++;
+            UDPMessage loginMessage = new UDPMessage("LOGIN", Main.localHostIP, Main.localProcessClock);
             UdpMessageClient client;
             String message = json.toJson(loginMessage);
 
@@ -36,8 +36,8 @@ public class GateWayManager {
     {
         try {
             Gson json = new Gson();
-            Date date = new Date();
-            UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, date);
+            Main.localProcessClock++;
+            UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, Main.localProcessClock);
             updateMessage.machineList = serializeList(Main.currentMachineList);
             updateMessage.machineStartTimes = serializeList(Main.currentMachineListLoginTime);
             UdpMessageClient client;
@@ -53,7 +53,7 @@ public class GateWayManager {
 
     }
 
-    public String serializeList(Vector<String> list)
+    public String serializeList(Vector<?> list)
     {
         Gson json = new Gson();
         String message = json.toJson(list);
@@ -61,18 +61,27 @@ public class GateWayManager {
 
     }
 
-    public Vector<String> deserializeList(String list)
+    public Vector<String> deserializeStringList(String list)
     {
         Gson json = new Gson();
         String[] temp = json.fromJson(list,String[].class);
-
         Vector<String> tempList = new Vector<>();
-
         for(int i = 0; i < temp.length; i++)
         {
             tempList.add(temp[i]);
         }
+        return tempList;
 
+    }
+
+
+    public Vector<Long> deserializeLongList(String list) {
+        Gson json = new Gson();
+        Long[] temp = json.fromJson(list, Long[].class);
+        Vector<Long> tempList = new Vector<>();
+        for (int i = 0; i < temp.length; i++) {
+            tempList.add(temp[i]);
+        }
         return tempList;
     }
 

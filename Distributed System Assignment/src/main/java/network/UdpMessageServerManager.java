@@ -7,13 +7,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import commands.CommandManager;
+import commands.UdpCommandManager;
 
 public class UdpMessageServerManager implements Runnable {
 
     public void run()
     {
-        System.out.println("Starting Server");
+        System.out.println("Starting UDP Server");
         Future<String> command;
         while(Main.processActive)
         {
@@ -24,7 +24,7 @@ public class UdpMessageServerManager implements Runnable {
 
                 //ExecutorService es2 = Executors.newSingleThreadExecutor();
                 ExecutorService es2 = Executors.newFixedThreadPool(6);
-                es2.execute(new CommandManager(command.get()));
+                es2.execute(new UdpCommandManager(command.get()));
 
             }
             catch (Exception e)

@@ -5,14 +5,12 @@ import core.GateWayManager;
 import core.Main;
 import data.UDPMessage;
 
-import java.net.InetAddress;
-import java.util.Date;
 
-public class CommandManager implements Runnable {
+public class UdpCommandManager implements Runnable {
 
     private String command;
 
-    public CommandManager(String command)
+    public UdpCommandManager(String command)
     {
         this.command = command;
     }
@@ -21,6 +19,8 @@ public class CommandManager implements Runnable {
     {
         Gson json = new Gson();
         UDPMessage currentCommand = json.fromJson(command, UDPMessage.class);
+
+        updateLocalClock(currentCommand.sendTimestamp);
 
         switch (currentCommand.messageType)
         {
@@ -44,11 +44,25 @@ public class CommandManager implements Runnable {
         Main.heartBeatTable.updateNewTimeStamp(currentCommand.senderIP, currentCommand.sendTimestamp);
     }
 
+    private void updateLocalClock(long commandClock)
+    {
+
+        if(commandClock > Main.localProcessClock) {
+            commandClock++;
+            Main.localProcessClock = commandClock;
+        }
+        else{
+            Main.localProcessClock++;
+        }
+
+    }
+
+
     private void addNewMachineToGroup(UDPMessage currentCommand)
     {
-        Date date = new Date();
+
         Main.currentMachineList.add(currentCommand.senderIP);
-        Main.currentMachineListLoginTime.add(date.toString());
+        Main.currentMachineListLoginTime.add(Main.localProcessClock);
 
         GateWayManager gateWayManager = new GateWayManager();
         gateWayManager.updatePredecessorsList();
@@ -114,8 +128,8 @@ public class CommandManager implements Runnable {
 
         GateWayManager gateWayManager = new GateWayManager();
 
-        Main.currentMachineList = gateWayManager.deserializeList(currentCommand.machineList);
-        Main.currentMachineListLoginTime = gateWayManager.deserializeList(currentCommand.machineStartTimes);
+        Main.currentMachineList = gateWayManager.deserializeStringList(currentCommand.machineList);
+        Main.currentMachineListLoginTime = gateWayManager.deserializeLongList(currentCommand.machineStartTimes);
 
         gateWayManager.updatePredecessorsList();
         gateWayManager.updateSuccessorsList();

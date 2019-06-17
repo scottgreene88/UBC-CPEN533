@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 public class HeartBeatTable {
 
     private ArrayList<String> currentPredecessors;
-    private ArrayList<Date> lastTimeStamp;
-    private ArrayList<Date> lastCheckedTimeStamp;
+    private ArrayList<Long> lastTimeStamp;
+    private ArrayList<Long> lastCheckedTimeStamp;
 
     public HeartBeatTable()
     {
@@ -27,21 +27,21 @@ public class HeartBeatTable {
         }
     }
 
-    public void addPredecessor(String ip, String dateString)
+    public synchronized void addPredecessor(String ip, long timeStamp)
     {
         try {
 
-                Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
+                //Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
 
 
                 currentPredecessors.add(ip);
-                lastCheckedTimeStamp.add(date);
+                lastCheckedTimeStamp.add(timeStamp);
                 //System.out.println("Setting new machine ip: " + ip + " to last check time: " + date);
                 //provide an offset to account for initial HB check
-                long dateOffset = date.getTime();
-                dateOffset += 10;
-                date.setTime(dateOffset);
-                lastTimeStamp.add(date);
+                //long dateOffset = date.getTime();
+                //dateOffset += 10;
+                //date.setTime(dateOffset);
+                lastTimeStamp.add(timeStamp);
                 //System.out.println("Setting new machine ip: " + ip + " to time: " + date);
 
         }
@@ -52,14 +52,14 @@ public class HeartBeatTable {
 
     }
 
-    public void clearLists()
+    public synchronized void clearLists()
     {
         currentPredecessors.clear();
         lastCheckedTimeStamp.clear();
         lastTimeStamp.clear();
     }
 
-    public void updateNewTimeStamp(String ip, Date timestamp)
+    public synchronized void updateNewTimeStamp(String ip, long timestamp)
     {
         try {
         int index = currentPredecessors.indexOf(ip);
@@ -87,9 +87,9 @@ public class HeartBeatTable {
 
             for (int i = 0; i < currentPredecessors.size(); i++) {
 
-                long lastChecked = lastCheckedTimeStamp.get(i).getTime();
+                long lastChecked = lastCheckedTimeStamp.get(i);
                 Thread.sleep(50);
-                long lastReceived = lastTimeStamp.get(i).getTime();
+                long lastReceived = lastTimeStamp.get(i);
 
                 if (lastChecked == lastReceived) {
                     machineFailedList.add(currentPredecessors.get(i));
