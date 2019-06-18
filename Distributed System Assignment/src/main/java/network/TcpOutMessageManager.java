@@ -1,7 +1,11 @@
 package network;
 
+import com.google.gson.Gson;
 import core.Main;
+import data.TCPMessage;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,20 +13,31 @@ import java.util.Vector;
 
 public class TcpOutMessageManager implements Runnable {
 
-
-    public Queue<String> outboundCommandQueue;
-
-
     public void run()
     {
-        outboundCommandQueue = new LinkedList<>();
+
+        Gson json = new Gson();
 
         while(Main.processActive) {
 
-            if(!outboundCommandQueue.isEmpty()) {
+            if(!Main.commandQueues.checkOutBoundEmpty()) {
 
-                //need to make the inbound and outbound message queues to work
-                //client command manager needs to put its response onto the outbound queue
+                TCPMessage outMessage =  Main.commandQueues.getCommandFromOutBoundQueue();
+
+                try {
+                    Socket socket = new Socket(outMessage.senderIP, Main.clientPortNum);
+                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+                    out.println(json.toJson(outMessage));
+
+                    socket.close();
+
+                }catch (IOException e){
+                    System.out.println("Exception in TCP Out Message manager " + e.getMessage());
+                }
+
+
+
 
             }
         }

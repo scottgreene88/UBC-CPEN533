@@ -17,8 +17,8 @@ public class GateWayManager {
     {
         try {
             Gson json = new Gson();
-            Main.localProcessClock++;
-            UDPMessage loginMessage = new UDPMessage("LOGIN", Main.localHostIP, Main.localProcessClock);
+            Main.localProcessClock.incrementClock();
+            UDPMessage loginMessage = new UDPMessage("LOGIN", Main.localHostIP, Main.localProcessClock.getClock());
             UdpMessageClient client;
             String message = json.toJson(loginMessage);
 
@@ -36,8 +36,8 @@ public class GateWayManager {
     {
         try {
             Gson json = new Gson();
-            Main.localProcessClock++;
-            UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, Main.localProcessClock);
+            Main.localProcessClock.incrementClock();
+            UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, Main.localProcessClock.getClock());
             updateMessage.machineList = serializeList(Main.currentMachineList);
             updateMessage.machineStartTimes = serializeList(Main.currentMachineListLoginTime);
             UdpMessageClient client;

@@ -47,12 +47,12 @@ public class UdpCommandManager implements Runnable {
     private void updateLocalClock(long commandClock)
     {
 
-        if(commandClock > Main.localProcessClock) {
+        if(commandClock > Main.localProcessClock.getClock()) {
             commandClock++;
-            Main.localProcessClock = commandClock;
+            Main.localProcessClock.setClock(commandClock);
         }
         else{
-            Main.localProcessClock++;
+            Main.localProcessClock.incrementClock();
         }
 
     }
@@ -62,7 +62,7 @@ public class UdpCommandManager implements Runnable {
     {
 
         Main.currentMachineList.add(currentCommand.senderIP);
-        Main.currentMachineListLoginTime.add(Main.localProcessClock);
+        Main.currentMachineListLoginTime.add(Main.localProcessClock.getClock());
 
         GateWayManager gateWayManager = new GateWayManager();
         gateWayManager.updatePredecessorsList();

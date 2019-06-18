@@ -2,12 +2,15 @@ package core;
 
 
 
+import data.CommandQueues;
 import data.HeartBeatTable;
 
+import data.ProcessClock;
 import heartbeat.HeartBeatManager;
 import heartbeat.SendHeartBeat;
 
 import network.TcpMessageServerManager;
+import network.TcpOutMessageManager;
 import network.UdpMessageServerManager;
 
 import java.io.IOException;
@@ -28,13 +31,15 @@ public class Main {
     public static Vector<String> currentMachineList;
     public static Vector<Long> currentMachineListLoginTime;
 
+    public static CommandQueues commandQueues;
+
     public static int heartBeatPort = 1526;
     public static int heartBeatTime = 300;
     public  static int heartBeatTimeout = 2000;
     public static HeartBeatTable heartBeatTable;
 
     public static String localHostIP;
-    public static long localProcessClock;
+    public static ProcessClock localProcessClock;
 
     public static Boolean development = true;
     public static Logger log;
@@ -51,15 +56,17 @@ public class Main {
         log = new Logger(logName);
         log.writeLogLine("***New instance of server process started***");
 
-        //start process clock
-        localProcessClock = 1;
 
         processActive = true;
+
         successorsList =  new Vector<>();
         predecessorsList = new Vector<>();
         heartBeatTable = new HeartBeatTable();
         currentMachineList =  new Vector<>();
         currentMachineListLoginTime = new Vector<>();
+
+        commandQueues = new CommandQueues();
+        localProcessClock =  new ProcessClock();
 
         localHostIP = InetAddress.getLocalHost().getHostAddress();
 
@@ -71,7 +78,7 @@ public class Main {
             if(args[0].equals("GW"))
             {
                 currentMachineList.add(localHostIP);
-                currentMachineListLoginTime.add(localProcessClock);
+                currentMachineListLoginTime.add(localProcessClock.getClock());
             }
             else
             {
@@ -90,6 +97,9 @@ public class Main {
 
         ExecutorService clientThread = Executors.newSingleThreadExecutor();
         clientThread.execute(new TcpMessageServerManager());
+
+        ExecutorService tcpOutThread = Executors.newSingleThreadExecutor();
+        tcpOutThread.execute(new TcpOutMessageManager());
 
         while(currentMachineList.size() == 1)
         {

@@ -1,7 +1,9 @@
 package network;
 
 
+import com.google.gson.Gson;
 import core.Main;
+import data.TCPMessage;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -13,7 +15,7 @@ import java.util.concurrent.Future;
 
 public class TcpMessageServerManager implements Runnable {
 
-    public Queue<String> inboundCommandQueue;
+
     ServerSocket listener;
 
     public void run()
@@ -22,7 +24,7 @@ public class TcpMessageServerManager implements Runnable {
         Future<String> command;
         String commandReceived;
 
-        inboundCommandQueue = new LinkedList<>();
+
 
         try {
             listener = new ServerSocket(Main.clientPortNum);
@@ -42,7 +44,11 @@ public class TcpMessageServerManager implements Runnable {
 
                 commandReceived = command.get();
 
-                inboundCommandQueue.add(commandReceived);
+                Gson json = new Gson();
+
+                TCPMessage jsonCommand = json.fromJson(commandReceived, TCPMessage.class);
+
+                Main.commandQueues.addCommandToInBoundQueue(jsonCommand);
 
             }
             catch (Exception e)

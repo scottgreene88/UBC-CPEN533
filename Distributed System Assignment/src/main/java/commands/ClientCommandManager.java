@@ -48,7 +48,11 @@ public class ClientCommandManager implements Runnable {
             //execute the command
             Vector<String> response = executeCommand(cmd.messageType);
 
+            Main.localProcessClock.incrementClock();
+            TCPMessage responseMessage =  new TCPMessage("response",cmd.commandType,Main.localHostIP,Main.localProcessClock.getClock());
+            responseMessage.dataList = new core.GateWayManager().serializeList(response) ;
 
+            Main.commandQueues.addCommandToOutBoundQueue(responseMessage);
 
         }catch (Exception e)
         {
@@ -117,9 +121,17 @@ public class ClientCommandManager implements Runnable {
 
         List<Future<Vector<String>>> resultList = new ArrayList<>();
 
+        Gson json = new Gson();
+
         for (int i = 0; i < Main.currentMachineList.size(); i++) {
             if(Main.currentMachineList.get(i) != Main.localHostIP) {
-                Future<Vector<String>> result = pool.submit(new TcpMessageClient(portNum, Main.currentMachineList.get(i), "phrase " + phrase));
+
+                Main.localProcessClock.incrementClock();
+                TCPMessage phraseMessage =  new TCPMessage("command","phrase "+ phrase,Main.localHostIP, Main.localProcessClock.getClock());
+
+                String message =  json.toJson(phraseMessage);
+
+                Future<Vector<String>> result = pool.submit(new TcpMessageClient(portNum, Main.currentMachineList.get(i), message));
                 resultList.add(result);
             }
         }

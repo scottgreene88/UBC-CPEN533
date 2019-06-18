@@ -15,8 +15,8 @@ public class SendHeartBeat implements Runnable {
         try {
             if(Main.processActive) {
                 Gson json = new Gson();
-                Main.localProcessClock++;
-                UDPMessage heartBeatMessage = new UDPMessage("HB", Main.localHostIP, Main.localProcessClock);
+                Main.localProcessClock.incrementClock();
+                UDPMessage heartBeatMessage = new UDPMessage("HB", Main.localHostIP, Main.localProcessClock.getClock());
                 UdpMessageClient client;
                 String message = json.toJson(heartBeatMessage);
 
