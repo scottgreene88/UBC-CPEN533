@@ -9,6 +9,8 @@ public class TCPMessage {
     public String machineList;
     public String machineStartTimes;
     public String dataList;
+    public String localFileName;
+    public String fs533FileName;
 
 
     public TCPMessage(String messageType, String commandType, String senderIP, long sendTimestamp)

@@ -2,6 +2,8 @@ package commands;
 
 import com.google.gson.Gson;
 import core.Main;
+import data.CommandQueues;
+import data.ReadWriteManager;
 import data.TCPMessage;
 import network.TcpMessageClient;
 
@@ -77,6 +79,8 @@ public class ClientCommandManager implements Runnable {
             case "disconnect":
                 responseList = disconnectThisMachine();
                 break;
+            case "put":
+                responseList = loadFileIntoCache();
             default:
                 responseList.add("Invalid Command");
                 break;
@@ -174,6 +178,29 @@ public class ClientCommandManager implements Runnable {
             System.out.println("Exception in findPhraseIngLogs " + e.getMessage());
         }
 
+        return response;
+    }
+
+    private Vector<String> loadFileIntoCache()
+    {
+        Vector<String> response = new Vector<>();
+
+        //TODO: We need to implement some timer to deal with the consecutive write within 1 minute. Maybe the command will set a timer on the master and we will do a check before
+
+        String localFileName = cmd.localFileName;
+        String fs533FileName =  cmd.fs533FileName;
+
+        ReadWriteManager reader = new ReadWriteManager();
+
+        reader.cacheFile(localFileName);
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("local", "put", "local", Main.localProcessClock.getClock() );
+        localMessage.fs533FileName = fs533FileName;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        response.add("File Saved");
         return response;
     }
 }
