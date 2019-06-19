@@ -10,6 +10,8 @@ public class UDPMessage {
     public String machineList;
     public String machineStartTimes;
 
+    public String masterNodeIP;
+
     public UDPMessage(String messageType, String senderIP, long sendTimestamp)
     {
         this.messageType = messageType;

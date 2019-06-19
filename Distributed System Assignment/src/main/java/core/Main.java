@@ -49,6 +49,8 @@ public class Main {
 
     public static boolean processActive;
 
+    public static String masterIPAddress;
+
     public static int inPortNum = 5000;
     public static int outPortNum = 6000;
 
@@ -82,6 +84,7 @@ public class Main {
             {
                 currentMachineList.add(localHostIP);
                 currentMachineListLoginTime.add(localProcessClock.getClock());
+                masterIPAddress = localHostIP;
             }
             else
             {

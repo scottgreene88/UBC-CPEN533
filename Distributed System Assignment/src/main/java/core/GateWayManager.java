@@ -40,6 +40,7 @@ public class GateWayManager {
             UDPMessage updateMessage = new UDPMessage("UPDATE", Main.localHostIP, Main.localProcessClock.getClock());
             updateMessage.machineList = serializeList(Main.currentMachineList);
             updateMessage.machineStartTimes = serializeList(Main.currentMachineListLoginTime);
+            updateMessage.masterNodeIP = Main.masterIPAddress;
             UdpMessageClient client;
             String message = json.toJson(updateMessage);
 

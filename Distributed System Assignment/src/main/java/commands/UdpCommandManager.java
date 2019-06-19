@@ -128,6 +128,8 @@ public class UdpCommandManager implements Runnable {
 
         GateWayManager gateWayManager = new GateWayManager();
 
+        Main.masterIPAddress = currentCommand.masterNodeIP;
+
         Main.currentMachineList = gateWayManager.deserializeStringList(currentCommand.machineList);
         Main.currentMachineListLoginTime = gateWayManager.deserializeLongList(currentCommand.machineStartTimes);
 

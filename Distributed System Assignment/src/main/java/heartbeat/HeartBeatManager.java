@@ -20,6 +20,11 @@ public class HeartBeatManager implements Runnable{
                     for (String ip : hbCheckResponse) {
 
                         UdpCommandManager.removeMachineFromCurrentList(ip);
+
+                        if(ip.equals(Main.masterIPAddress))
+                        {
+                            Main.masterIPAddress = Main.localHostIP;
+                        }
                     }
 
                     GateWayManager gateWayManager = new GateWayManager();
