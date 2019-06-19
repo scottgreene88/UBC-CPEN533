@@ -13,6 +13,7 @@ public class WipeManager {
         for(File file: dir.listFiles())
             if (!file.isDirectory())
                 file.delete();
+            System.out.println("Deleted files");
     }
 
 }
