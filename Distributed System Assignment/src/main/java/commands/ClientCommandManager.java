@@ -8,12 +8,8 @@ import network.TcpMessageClient;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,15 +17,15 @@ import java.util.concurrent.Future;
 
 public class ClientCommandManager implements Runnable {
 
-    private int portNum = Main.clientPortNum;
+    private int portNum = Main.inPortNum;
 
     private TCPMessage cmd;
-    private String command;
 
-    public ClientCommandManager(String command)
+
+    public ClientCommandManager(TCPMessage cmd)
     {
 
-        this.command = command;
+        this.cmd = cmd;
 
     }
 
@@ -38,15 +34,8 @@ public class ClientCommandManager implements Runnable {
     {
         try {
 
-            //get user command
-            Gson json = new Gson();
-
-            cmd =  json.fromJson(command, TCPMessage.class);
-
-
-
             //execute the command
-            Vector<String> response = executeCommand(cmd.messageType);
+            Vector<String> response = executeCommand(cmd.commandType);
 
             Main.localProcessClock.incrementClock();
             TCPMessage responseMessage =  new TCPMessage("response",cmd.commandType,Main.localHostIP,Main.localProcessClock.getClock());

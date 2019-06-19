@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 public class ClientCommandManagerOld implements Runnable {
 
 
-    private int portNum = Main.clientPortNum;
+    private int portNum = Main.inPortNum;
     private Socket socket;
     private String command;
 

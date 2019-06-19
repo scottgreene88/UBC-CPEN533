@@ -7,8 +7,6 @@ import data.TCPMessage;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -27,7 +25,7 @@ public class TcpMessageServerManager implements Runnable {
 
 
         try {
-            listener = new ServerSocket(Main.clientPortNum);
+            listener = new ServerSocket(Main.inPortNum);
         }catch (IOException e)
         {
             System.out.println("Tcp Server Manager Scoket error: " + e.getMessage());
@@ -48,6 +46,7 @@ public class TcpMessageServerManager implements Runnable {
 
                 TCPMessage jsonCommand = json.fromJson(commandReceived, TCPMessage.class);
 
+                Main.localProcessClock.incrementClock();
                 Main.commandQueues.addCommandToInBoundQueue(jsonCommand);
 
             }

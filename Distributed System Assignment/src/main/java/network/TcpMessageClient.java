@@ -34,6 +34,7 @@ public class TcpMessageClient implements Callable {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
 
+
             out.println(message);
 
             Scanner in = new Scanner(socket.getInputStream());

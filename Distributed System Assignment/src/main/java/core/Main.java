@@ -2,6 +2,7 @@ package core;
 
 
 
+import commands.TcpCommandManager;
 import data.CommandQueues;
 import data.HeartBeatTable;
 
@@ -43,11 +44,13 @@ public class Main {
 
     public static Boolean development = true;
     public static Logger log;
-    public static String logName = "/home/ec2-user/mylogs.log";
+    //public static String logName = "/home/ec2-user/mylogs.log";
+    public static String logName = "mylogs.log";
 
     public static boolean processActive;
 
-    public static int clientPortNum = 5000;
+    public static int inPortNum = 5000;
+    public static int outPortNum = 6000;
 
     public static void main(String[] args) throws Exception {
 
@@ -92,14 +95,14 @@ public class Main {
         ScheduledExecutorService hbThread = Executors.newSingleThreadScheduledExecutor();
         hbThread.scheduleWithFixedDelay(new SendHeartBeat(), 0, heartBeatTime, TimeUnit.MILLISECONDS);
 
-        //ExecutorService clientThread = Executors.newSingleThreadExecutor();
-        //clientThread.execute(new ClientCommandManager());
-
         ExecutorService clientThread = Executors.newSingleThreadExecutor();
         clientThread.execute(new TcpMessageServerManager());
 
         ExecutorService tcpOutThread = Executors.newSingleThreadExecutor();
         tcpOutThread.execute(new TcpOutMessageManager());
+
+        ExecutorService commandThread = Executors.newSingleThreadExecutor();
+        commandThread.execute(new TcpCommandManager());
 
         while(currentMachineList.size() == 1)
         {

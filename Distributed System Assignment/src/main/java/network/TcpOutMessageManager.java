@@ -7,9 +7,6 @@ import data.TCPMessage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Vector;
 
 public class TcpOutMessageManager implements Runnable {
 
@@ -25,10 +22,17 @@ public class TcpOutMessageManager implements Runnable {
                 TCPMessage outMessage =  Main.commandQueues.getCommandFromOutBoundQueue();
 
                 try {
-                    Socket socket = new Socket(outMessage.senderIP, Main.clientPortNum);
+                    Socket socket = new Socket(outMessage.senderIP, Main.outPortNum);
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-                    out.println(json.toJson(outMessage));
+                    Main.localProcessClock.incrementClock();
+
+
+                    String jsonMessage = json.toJson(outMessage);
+
+                    Main.writeLog("TCP Out Client Send: " + jsonMessage);
+
+                    out.println(jsonMessage);
 
                     socket.close();
 
