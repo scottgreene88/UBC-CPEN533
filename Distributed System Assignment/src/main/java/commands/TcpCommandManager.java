@@ -22,10 +22,20 @@ public class TcpCommandManager implements Runnable {
                 Main.localProcessClock.incrementClock();
 
                 //if the sender is this machine then it is a client request
-                if(inputMessage.senderIP.equals(Main.localHostIP) )
+                if(inputMessage.messageType.equals("client") )
                 {
                     ExecutorService clientThread = Executors.newSingleThreadExecutor();
                     clientThread.execute(new ClientCommandManager(inputMessage));
+                }
+                else if(inputMessage.messageType.equals("node"))
+                {
+                    ExecutorService nodeThread = Executors.newSingleThreadExecutor();
+                    nodeThread.execute(new NodeCommandManager(inputMessage));
+                }
+                else if(inputMessage.messageType.equals("master"))
+                {
+                    ExecutorService masterThread = Executors.newSingleThreadExecutor();
+                    masterThread.execute(new MasterCommandManager(inputMessage));
                 }
 
             }

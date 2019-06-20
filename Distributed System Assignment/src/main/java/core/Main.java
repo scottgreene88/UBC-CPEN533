@@ -53,6 +53,8 @@ public class Main {
     public static String masterIPAddress;
 
     public static ArrayList<String> cacheFile;
+    public static boolean cacheFileSaved;
+    public static String cacheFileName;
 
     public static int inPortNum = 5000;
     public static int outPortNum = 6000;

@@ -22,7 +22,10 @@ public class TcpOutMessageManager implements Runnable {
                 TCPMessage outMessage =  Main.commandQueues.getCommandFromOutBoundQueue();
 
                 try {
-                    Socket socket = new Socket(outMessage.senderIP, Main.outPortNum);
+
+
+                    Socket  socket = new Socket(outMessage.destinationIP, Main.outPortNum);
+
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
                     Main.localProcessClock.incrementClock();
