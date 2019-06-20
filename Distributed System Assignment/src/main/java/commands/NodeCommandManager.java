@@ -20,6 +20,8 @@ public class NodeCommandManager implements Runnable {
     public void run()
     {
 
+        executeCommand(cmd.commandType);
+
     }
 
     private void executeCommand(String commandType)

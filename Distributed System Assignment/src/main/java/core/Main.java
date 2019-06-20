@@ -48,6 +48,8 @@ public class Main {
     //public static String logName = "/home/ec2-user/mylogs.log";
     public static String logName = "mylogs.log";
 
+    public static String fs533FileFolder = "/home/ec2-user/MyFiles";
+
     public static boolean processActive;
 
     public static String masterIPAddress;
@@ -55,6 +57,7 @@ public class Main {
     public static ArrayList<String> cacheFile;
     public static boolean cacheFileSaved;
     public static String cacheFileName;
+
 
     public static int inPortNum = 5000;
     public static int outPortNum = 6000;
