@@ -77,7 +77,7 @@ public class MasterCommandManager implements Runnable {
         fileXferInThread.execute(new fileTransferServer());
 
         Main.localProcessClock.incrementClock();
-        TCPMessage localMessage = new TCPMessage("master", "putReady", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
+        TCPMessage localMessage = new TCPMessage("node", "putReady", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
 
         Main.commandQueues.addCommandToOutBoundQueue(localMessage);
 
@@ -97,7 +97,7 @@ public class MasterCommandManager implements Runnable {
         writer.writeFile(Main.fs533FileFolder + cmd.fs533FileName, Main.cacheFile);
 
         Main.localProcessClock.incrementClock();
-        localMessage = new TCPMessage("master", "masterXferDone", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
+        localMessage = new TCPMessage("node", "masterXferDone", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
 
         Main.commandQueues.addCommandToOutBoundQueue(localMessage);
     }
