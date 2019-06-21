@@ -2,6 +2,8 @@ package commands;
 
 import com.google.gson.Gson;
 import core.Main;
+import data.CommandQueues;
+import data.ReadWriteManager;
 import data.TCPMessage;
 import network.TcpMessageClient;
 
@@ -38,7 +40,7 @@ public class ClientCommandManager implements Runnable {
             Vector<String> response = executeCommand(cmd.commandType);
 
             Main.localProcessClock.incrementClock();
-            TCPMessage responseMessage =  new TCPMessage("response",cmd.commandType,Main.localHostIP,Main.localProcessClock.getClock());
+            TCPMessage responseMessage =  new TCPMessage("client",cmd.commandType,Main.localHostIP, Main.localHostIP,Main.localProcessClock.getClock());
             responseMessage.dataList = new core.GateWayManager().serializeList(response) ;
 
             Main.commandQueues.addCommandToOutBoundQueue(responseMessage);
@@ -77,6 +79,8 @@ public class ClientCommandManager implements Runnable {
             case "disconnect":
                 responseList = disconnectThisMachine();
                 break;
+            case "put":
+                responseList = loadFileIntoCache();
             default:
                 responseList.add("Invalid Command");
                 break;
@@ -116,7 +120,7 @@ public class ClientCommandManager implements Runnable {
             if(Main.currentMachineList.get(i) != Main.localHostIP) {
 
                 Main.localProcessClock.incrementClock();
-                TCPMessage phraseMessage =  new TCPMessage("command","phrase "+ phrase,Main.localHostIP, Main.localProcessClock.getClock());
+                TCPMessage phraseMessage =  new TCPMessage("command","phrase "+ phrase,Main.localHostIP, Main.currentMachineList.get(i) , Main.localProcessClock.getClock());
 
                 String message =  json.toJson(phraseMessage);
 
@@ -174,6 +178,39 @@ public class ClientCommandManager implements Runnable {
             System.out.println("Exception in findPhraseIngLogs " + e.getMessage());
         }
 
+        return response;
+    }
+
+    private Vector<String> loadFileIntoCache()
+    {
+        Vector<String> response = new Vector<>();
+
+        String localFileName = cmd.localFileName;
+        String fs533FileName =  cmd.fs533FileName;
+
+        ReadWriteManager reader = new ReadWriteManager();
+
+        while(!Main.cacheFileSaved)
+        {
+            try {
+                Thread.sleep(50);
+            }catch (Exception e)
+            {
+                System.out.println("LoadFileIntoCache exception: " + e.getMessage());
+            }
+        }
+
+        Main.cacheFileSaved = false;
+        Main.cacheFileName = fs533FileName;
+        reader.cacheFile(localFileName);
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "put", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock() );
+        localMessage.fs533FileName = fs533FileName;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        response.add("File Submitted");
         return response;
     }
 }
