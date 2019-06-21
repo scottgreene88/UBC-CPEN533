@@ -123,7 +123,7 @@ public class Main {
         }
 
         ScheduledExecutorService hbMonitorThread = Executors.newSingleThreadScheduledExecutor();
-        hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 0, heartBeatTimeout, TimeUnit.MILLISECONDS);
+        hbMonitorThread.scheduleWithFixedDelay(new HeartBeatManager(), 1500, heartBeatTimeout, TimeUnit.MILLISECONDS);
 
 
 
