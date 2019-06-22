@@ -14,6 +14,7 @@ public class NewClient {
     public static void main(String[] args) throws Exception {
 
         //NewClient client = new NewClient();
+        //test
 
             while (true) {
 
