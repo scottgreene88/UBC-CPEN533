@@ -42,7 +42,7 @@ public class TcpOutMessageManager implements Runnable {
                     Thread.sleep(50);
 
                 }catch (Exception e){
-                    System.out.println("Exception in TCP Out Message manager " + e.getMessage());
+                    System.out.println("Exception in TCP Out Message manager " + e.getMessage() + " " + outMessage.destinationIP);
                 }
 
 

@@ -15,4 +15,8 @@ public class WipeManager {
                 file.delete();
     }
 
+    public void createFolder (String filePath) {
+
+        new File(filePath).mkdir();
+    }
 }

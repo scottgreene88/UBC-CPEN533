@@ -93,9 +93,9 @@ public class NodeCommandManager implements Runnable {
     {
         Main.cacheFileSaved = true;
         Main.localProcessClock.incrementClock();
-        TCPMessage localMessage = new TCPMessage("client", "masterXferDone", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock());
+        //TCPMessage localMessage = new TCPMessage("client", "masterXferDone", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock());
 
-        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+        //Main.commandQueues.addCommandToOutBoundQueue(localMessage);
 
     }
 }
