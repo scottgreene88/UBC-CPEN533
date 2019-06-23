@@ -64,7 +64,7 @@ public class MasterCommandManager implements Runnable {
         if(checkIfFileRequestWithinMinute)
         {
             Main.localProcessClock.incrementClock();
-            TCPMessage localMessage = new TCPMessage("node", "checkConfirm", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
+            TCPMessage localMessage = new TCPMessage("node", "checkAsk", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());
 
             Main.commandQueues.addCommandToOutBoundQueue(localMessage);
 
@@ -94,7 +94,7 @@ public class MasterCommandManager implements Runnable {
 
         //here will temp just save the file to a folder for testing
         ReadWriteManager writer = new ReadWriteManager();
-        writer.writeFile(Main.fs533FileFolder + cmd.fs533FileName, Main.cacheFile);
+        writer.writeFile(Main.fs533FileFolder +"/" + cmd.fs533FileName, Main.cacheFile);
 
         Main.localProcessClock.incrementClock();
         localMessage = new TCPMessage("node", "masterXferDone", Main.localHostIP, cmd.senderIP , Main.localProcessClock.getClock());

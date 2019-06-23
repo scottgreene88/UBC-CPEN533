@@ -192,7 +192,7 @@ public class GateWayManager {
         //}
     }
 
-
+/*
     synchronized public void updateSuccessorsList()
     {
         Main.successorsList.clear();
@@ -288,5 +288,102 @@ public class GateWayManager {
         //}
 
     }
+*/
+    synchronized public void updateSuccessorsList()
+    {
+        Main.successorsList.clear();
+
+        int selfIndex = 0;
+        try {
+            selfIndex = Main.currentMachineList.indexOf(Main.localHostIP);
+        }
+        catch(Exception e)
+        {
+            System.out.println("InetAddress Exception" + e.getMessage());
+        }
+        if(Main.currentMachineList.size() == 1)
+        {
+
+        }
+        else if(Main.currentMachineList.size() == 2)
+        {
+            if(selfIndex == 0) {
+                Main.successorsList.add(Main.currentMachineList.get(1));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(1));
+            }else {
+                Main.successorsList.add(Main.currentMachineList.get(0));
+                //Main.heartBeatTable.addPredecessor(Main.currentMachineList.get(0));
+            }
+        }
+        else if (Main.currentMachineList.size() == 3)
+        {
+            for(int i = 1; i <= numberOfNeighbours - 2; i++)
+            {
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                }
+
+            }
+        }
+        else if (Main.currentMachineList.size() == 4)
+        {
+            for(int i = 1; i <= numberOfNeighbours - 1; i++)
+            {
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                }
+
+            }
+
+        }
+        else
+        {
+            for(int i = 1; i <= numberOfNeighbours; i++)
+            {
+
+                if((selfIndex+ i) < Main.currentMachineList.size())
+                {
+
+                    Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));
+                }
+                else
+                {
+                    int val =  (selfIndex + i) - Main.currentMachineList.size();
+
+
+                    Main.successorsList.add(Main.currentMachineList.get(val));
+                }
+
+            }
+        }
+
+        //System.out.println("CURRENT SUC LIST:");
+        //for (String s: Main.successorsList
+        //) {
+        //   System.out.println(s);
+        //}
+
+    }
+
 
 }

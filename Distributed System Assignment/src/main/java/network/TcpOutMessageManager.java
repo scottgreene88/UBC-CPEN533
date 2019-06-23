@@ -24,7 +24,7 @@ public class TcpOutMessageManager implements Runnable {
                 try {
 
 
-                    Socket  socket = new Socket(outMessage.destinationIP, Main.outPortNum);
+                    Socket  socket = new Socket(outMessage.destinationIP, Main.inPortNum);
 
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -39,7 +39,9 @@ public class TcpOutMessageManager implements Runnable {
 
                     socket.close();
 
-                }catch (IOException e){
+                    Thread.sleep(50);
+
+                }catch (Exception e){
                     System.out.println("Exception in TCP Out Message manager " + e.getMessage());
                 }
 
