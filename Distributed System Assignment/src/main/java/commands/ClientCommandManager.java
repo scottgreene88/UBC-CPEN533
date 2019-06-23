@@ -214,7 +214,7 @@ public class ClientCommandManager implements Runnable {
         Main.cacheFileSaved = false;
         Main.cacheFileName = fs533FileName;
         try {
-            reader.cacheFile(localFileName);
+            Main.cacheFile = reader.cacheFile(localFileName);
         }catch (Exception e){
             System.out.println("File cache error: " + e.getMessage());
         }

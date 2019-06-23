@@ -24,7 +24,7 @@ public class TcpOutMessageManager implements Runnable {
                 try {
 
 
-                    Socket  socket = new Socket(outMessage.destinationIP, Main.inPortNum);
+                    Socket  socket = new Socket(outMessage.destinationIP, Main.outPortNum);
 
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 

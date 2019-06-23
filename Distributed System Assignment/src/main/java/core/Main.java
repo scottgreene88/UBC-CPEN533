@@ -49,6 +49,9 @@ public class Main {
     //public static String logName = "/home/ec2-user/CPEN/mylogs.log";
     public static String logName = "mylogs.log";
 
+    public static WipeManager wipeManager;
+    public static String filePath = "MyFiles";
+
     public static String fs533FileFolder = "/home/ec2-user/MyFiles";
 
     public static boolean processActive;
@@ -71,6 +74,9 @@ public class Main {
         log = new Logger(logName);
         log.writeLogLine("***New instance of server process started***");
 
+        wipeManager = new WipeManager();
+        wipeManager.createFolder(filePath);
+        wipeManager.clearFolder(filePath);
 
         cacheFileSaved = true;
 
