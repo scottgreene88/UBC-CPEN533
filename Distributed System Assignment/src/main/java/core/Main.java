@@ -30,6 +30,7 @@ public class Main {
     public static Vector<String> successorsList;
     public static Vector<String> predecessorsList;
 
+
     public static Vector<String> currentMachineList;
     public static Vector<Long> currentMachineListLoginTime;
 
@@ -45,7 +46,7 @@ public class Main {
 
     public static Boolean development = true;
     public static Logger log;
-    //public static String logName = "/home/ec2-user/mylogs.log";
+    //public static String logName = "/home/ec2-user/CPEN/mylogs.log";
     public static String logName = "mylogs.log";
 
     public static String fs533FileFolder = "/home/ec2-user/MyFiles";
@@ -70,6 +71,8 @@ public class Main {
         log = new Logger(logName);
         log.writeLogLine("***New instance of server process started***");
 
+
+        cacheFileSaved = true;
 
         processActive = true;
 

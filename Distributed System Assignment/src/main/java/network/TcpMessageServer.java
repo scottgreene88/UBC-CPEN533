@@ -23,11 +23,11 @@ public class TcpMessageServer implements Callable {
 
             String logText = "TCP Server connected: " + socket;
 
-            if (core.Main.development) {
-                System.out.println(logText);
-            }
+            //if (core.Main.development) {
+            //    System.out.println(logText);
+            //}
 
-            core.Main.log.writeLogLine(logText);
+            //core.Main.log.writeLogLine(logText);
 
 
             try {
@@ -36,6 +36,7 @@ public class TcpMessageServer implements Callable {
                 //out.println("ACK");
 
                 command = in.nextLine();
+
 
                 String errorText = "TCP Server command received: " + command;
 
@@ -59,13 +60,13 @@ public class TcpMessageServer implements Callable {
                 } catch (IOException e) {
                 }
 
-                logText = "TCP Server closed: " + socket;
+                //logText = "TCP Server closed: " + socket;
 
-                if (core.Main.development) {
-                    System.out.println(logText);
-                }
+                //if (core.Main.development) {
+                 //   System.out.println(logText);
+                //}
 
-                core.Main.log.writeLogLine(logText);
+                //core.Main.log.writeLogLine(logText);
             }
 
 

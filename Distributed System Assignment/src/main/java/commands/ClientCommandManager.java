@@ -81,6 +81,10 @@ public class ClientCommandManager implements Runnable {
                 break;
             case "put":
                 responseList = loadFileIntoCache();
+                break;
+            case "confirmResponse":
+                responseList = forwardConfirmToNode();
+                break;
             default:
                 responseList.add("Invalid Command");
                 break;
@@ -185,13 +189,18 @@ public class ClientCommandManager implements Runnable {
     {
         Vector<String> response = new Vector<>();
 
+        System.out.println("In client put command");
+
         String localFileName = cmd.localFileName;
         String fs533FileName =  cmd.fs533FileName;
+
+        System.out.println("Read file names");
 
         ReadWriteManager reader = new ReadWriteManager();
 
         while(!Main.cacheFileSaved)
         {
+            System.out.println("stuck in cachefile loop");
             try {
                 Thread.sleep(50);
             }catch (Exception e)
@@ -200,9 +209,17 @@ public class ClientCommandManager implements Runnable {
             }
         }
 
+        System.out.println("starting to cache file");
+
         Main.cacheFileSaved = false;
         Main.cacheFileName = fs533FileName;
-        reader.cacheFile(localFileName);
+        try {
+            reader.cacheFile(localFileName);
+        }catch (Exception e){
+            System.out.println("File cache error: " + e.getMessage());
+        }
+
+        System.out.println("file read size: " + Main.cacheFile.size());
 
         Main.localProcessClock.incrementClock();
         TCPMessage localMessage = new TCPMessage("node", "put", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock() );
@@ -211,6 +228,22 @@ public class ClientCommandManager implements Runnable {
         Main.commandQueues.addCommandToInBoundQueue(localMessage);
 
         response.add("File Submitted");
+        return response;
+    }
+
+    private Vector<String> forwardConfirmToNode()
+    {
+        Vector<String> response = new Vector<>();
+
+
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "confirmGet", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fileSaveConfirm = cmd.fileSaveConfirm;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        response.add("Confirmation Received");
         return response;
     }
 }

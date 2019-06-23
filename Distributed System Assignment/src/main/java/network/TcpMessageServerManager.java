@@ -37,7 +37,7 @@ public class TcpMessageServerManager implements Runnable {
             try {
 
                 //ExecutorService es = Executors.newSingleThreadExecutor();
-                ExecutorService es = Executors.newFixedThreadPool(6);
+                ExecutorService es = Executors.newFixedThreadPool(1);
                 command = es.submit(new TcpMessageServer(listener.accept()));
 
                 commandReceived = command.get();
@@ -48,6 +48,7 @@ public class TcpMessageServerManager implements Runnable {
 
                 Main.localProcessClock.incrementClock();
                 Main.commandQueues.addCommandToInBoundQueue(jsonCommand);
+
 
             }
             catch (Exception e)
