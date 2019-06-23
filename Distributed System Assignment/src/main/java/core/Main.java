@@ -60,8 +60,8 @@ public class Main {
     public static String cacheFileName;
 
 
-    public static int inPortNum = 5000;
-    public static int outPortNum = 6000;
+    public static int inPortNum;
+    public static int outPortNum;
     public static int fileTransferPortNUm = 7000;
 
     public static void main(String[] args) throws Exception {
@@ -95,12 +95,16 @@ public class Main {
         {
             if(args[0].equals("GW"))
             {
+                inPortNum = 6000;
+                outPortNum = 5000;
                 currentMachineList.add(localHostIP);
                 currentMachineListLoginTime.add(localProcessClock.getClock());
                 masterIPAddress = localHostIP;
             }
             else
             {
+                inPortNum = 5000;
+                outPortNum = 6000;
                 //send Login to the provided IP address
                 GateWayManager gateWayManager = new GateWayManager();
                 gateWayManager.requestLogin(args[0]);

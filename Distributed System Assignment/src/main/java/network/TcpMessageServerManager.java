@@ -37,7 +37,7 @@ public class TcpMessageServerManager implements Runnable {
             try {
 
                 //ExecutorService es = Executors.newSingleThreadExecutor();
-                ExecutorService es = Executors.newFixedThreadPool(1);
+                ExecutorService es = Executors.newFixedThreadPool(6);
                 command = es.submit(new TcpMessageServer(listener.accept()));
 
                 commandReceived = command.get();
