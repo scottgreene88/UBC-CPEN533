@@ -84,6 +84,13 @@ public class HeartBeatTable {
            //     System.out.println(currentPredecessors.get(i) + " last check: " + lastCheckedTimeStamp.get(i) + " last received: " + lastTimeStamp.get(i));
            // }
 
+            while(Main.listBusyLock)
+            {
+                //if lists are being updated then wait for them to finish
+                Thread.sleep(50);
+            }
+
+            Main.listBusyLock = true;
 
             for (int i = 0; i < currentPredecessors.size(); i++) {
 
@@ -104,6 +111,8 @@ public class HeartBeatTable {
                     lastCheckedTimeStamp.set(i, lastTimeStamp.get(i));
                 }
             }
+            Main.listBusyLock = false;
+
             return machineFailedList;
         }
         catch (Exception e)

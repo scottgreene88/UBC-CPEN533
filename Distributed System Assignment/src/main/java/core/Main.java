@@ -29,7 +29,7 @@ public class Main {
 
     public static Vector<String> successorsList;
     public static Vector<String> predecessorsList;
-
+    public static boolean listBusyLock;
 
     public static Vector<String> currentMachineList;
     public static Vector<Long> currentMachineListLoginTime;
@@ -77,6 +77,7 @@ public class Main {
         wipeManager.clearFolder(filePath);
 
         cacheFileSaved = true;
+        listBusyLock = false;
 
         processActive = true;
 

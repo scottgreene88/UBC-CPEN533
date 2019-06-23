@@ -88,12 +88,23 @@ public class GateWayManager {
 
     synchronized public void updatePredecessorsList()
     {
-        Main.predecessorsList.clear();
-        Main.heartBeatTable.clearLists();
+
 
 
         int selfIndex = 0;
         try {
+
+            while(Main.listBusyLock)
+            {
+                //if lists are being updated then wait for them to finish
+                Thread.sleep(50);
+            }
+
+            Main.listBusyLock = true;
+
+            Main.predecessorsList.clear();
+            Main.heartBeatTable.clearLists();
+
             selfIndex = Main.currentMachineList.indexOf(Main.localHostIP);
         }
         catch(Exception e)
@@ -185,6 +196,7 @@ public class GateWayManager {
 
         }
 
+        Main.listBusyLock = false;
         //System.out.println("CURRENT PRED LIST:");
         //for (String s: Main.predecessorsList
         //     ) {
@@ -291,10 +303,22 @@ public class GateWayManager {
 */
     synchronized public void updateSuccessorsList()
     {
-        Main.successorsList.clear();
+
+
 
         int selfIndex = 0;
         try {
+
+            while(Main.listBusyLock)
+            {
+                //if lists are being updated then wait for them to finish
+                Thread.sleep(50);
+            }
+
+            Main.listBusyLock = true;
+
+            Main.successorsList.clear();
+
             selfIndex = Main.currentMachineList.indexOf(Main.localHostIP);
         }
         catch(Exception e)
@@ -382,6 +406,9 @@ public class GateWayManager {
         //) {
         //   System.out.println(s);
         //}
+
+
+        Main.listBusyLock = false;
 
     }
 
