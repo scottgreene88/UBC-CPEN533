@@ -28,7 +28,7 @@ public class fileTransferServer implements Runnable{
             Main.cacheFile.clear();
             Main.cacheFile.addAll(incomingFile);
 
-            Main.cacheFileSaved = false;
+            Main.cacheFileSaved = true;
 
             socket.close();
             listener.close();

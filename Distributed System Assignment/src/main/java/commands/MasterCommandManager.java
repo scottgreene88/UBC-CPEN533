@@ -67,6 +67,9 @@ public class MasterCommandManager implements Runnable {
         //TODO: need to check if there has been a similar request for this file name within the last 60 seconds then send confirm message
         boolean checkIfFileRequestWithinMinute = false;
 
+
+
+
         if(checkIfFileRequestWithinMinute)
         {
             Main.localProcessClock.incrementClock();
@@ -76,6 +79,7 @@ public class MasterCommandManager implements Runnable {
 
             return;
         }
+
 
         Main.cacheFileName = cmd.fs533FileName;
 
@@ -308,5 +312,55 @@ public class MasterCommandManager implements Runnable {
         int index = Main.masterFileList.getIndexOfFile(cmd.fs533FileName);
 
         FileInfo temp = Main.masterFileList.getFileFromIndex(index);
+
+        TCPMessage localMessage;
+
+        String mainIP = temp.mainIP;
+        if(!mainIP.equals(Main.localHostIP)) {
+
+            ExecutorService fileXferInThread = Executors.newSingleThreadExecutor();
+            fileXferInThread.execute(new fileTransferServer());
+
+            Main.localProcessClock.incrementClock();
+            localMessage = new TCPMessage("node", "get", Main.localHostIP, mainIP, Main.localProcessClock.getClock());
+            localMessage.fs533FileName = cmd.fs533FileName;
+            localMessage.localFileName = cmd.localFileName;
+
+            Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+
+            fileXferInThread.shutdown();
+            try {
+                fileXferInThread.awaitTermination(10000, TimeUnit.MILLISECONDS);
+            }catch (InterruptedException e)
+            {
+                fileXferInThread.shutdownNow();
+                System.out.println("File Transfer Thread Timed Out");
+            }
+
+            Main.cacheFileName = cmd.fs533FileName;
+
+        }else
+        {
+            if(!Main.cacheFileName.equals(cmd.fs533FileName)) {
+                System.out.println("Caching File Locally " + cmd.fs533FileName);
+
+                ReadWriteManager reader = new ReadWriteManager();
+                reader.cacheFile(cmd.fs533FileName);
+                Main.cacheFileName = cmd.fs533FileName;
+            }else
+            {
+                System.out.println("File already in cache on Master");
+            }
+
+        }
+
+        Main.localProcessClock.incrementClock();
+        localMessage = new TCPMessage("node", "getReady", Main.localHostIP, cmd.senderIP, Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+        localMessage.localFileName = cmd.localFileName;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+
+
     }
 }

@@ -72,11 +72,12 @@ public class NodeCommandManager implements Runnable {
             case "getToMaster":
                 sendGetToMaster();
                 break;
-
-
-
-
-
+            case "get":
+                sendGetFileToMaster();
+                break;
+            case "getReady":
+                getFileFromMaster();
+                break;
 
         }
 
@@ -227,5 +228,56 @@ public class NodeCommandManager implements Runnable {
         localMessage.localFileName = cmd.localFileName;
 
         Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendGetFileToMaster()
+    {
+        ReadWriteManager reader = new ReadWriteManager();
+        reader.cacheFile(Main.fs533FileFolder + "/" + cmd.fs533FileName);
+        Main.cacheFileName = cmd.fs533FileName;
+
+        System.out.println("Sending file to master " + Main.cacheFileName);
+
+        ExecutorService fileXferOutThread = Executors.newSingleThreadExecutor();
+        fileXferOutThread.execute(new fileTransferClient(Main.masterIPAddress));
+
+        fileXferOutThread.shutdown();
+        try {
+            fileXferOutThread.awaitTermination(10000, TimeUnit.MILLISECONDS);
+        }catch (InterruptedException e)
+        {
+            fileXferOutThread.shutdownNow();
+            System.out.println("File Transfer Thread Timed Out");
+        }
+    }
+
+    private void getFileFromMaster()
+    {
+
+        ExecutorService fileXferInThread = Executors.newSingleThreadExecutor();
+        fileXferInThread.execute(new fileTransferServer());
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("master", "nodeReady", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+        localMessage.localFileName = cmd.localFileName;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+
+        fileXferInThread.shutdown();
+        try {
+            fileXferInThread.awaitTermination(10000, TimeUnit.MILLISECONDS);
+        }catch (InterruptedException e)
+        {
+            fileXferInThread.shutdownNow();
+            System.out.println("File Transfer Thread Timed Out");
+        }
+
+        System.out.println("Received File From Master" + cmd.fs533FileName);
+        Main.cacheFileName = cmd.fs533FileName;
+
+        ReadWriteManager writer = new ReadWriteManager();
+        writer.writeFile(cmd.localFileName, Main.cacheFile);
+
     }
 }

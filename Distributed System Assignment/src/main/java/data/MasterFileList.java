@@ -25,9 +25,16 @@ public class MasterFileList {
 
     public void addNewFile(FileInfo file)
     {
-        System.out.println("Adding to master list " + file.fs533FileName);
-        masterIndex.add(file.fs533FileName);
-        masterList.add(file);
+        int index = getIndexOfFile(file.fs533FileName);
+
+        if(index == -1) {
+            System.out.println("Adding to master list " + file.fs533FileName);
+            masterIndex.add(file.fs533FileName);
+            masterList.add(file);
+        }else
+        {
+            incrementVersionNum(index);
+        }
     }
 
     public Vector<String> getMasterIndex()
@@ -49,5 +56,13 @@ public class MasterFileList {
     {
         masterList.remove(index);
         masterIndex.remove(index);
+    }
+
+    public void incrementVersionNum(int index)
+    {
+        FileInfo temp = masterList.get(index);
+        temp.versionNum++;
+        System.out.println("Incrementing " + temp.fs533FileName + " to version " + temp.versionNum);
+        masterList.set(index, temp);
     }
 }

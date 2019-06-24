@@ -215,7 +215,7 @@ public class ClientCommandManager implements Runnable {
 
         while(!Main.cacheFileSaved)
         {
-            System.out.println("s=Stuck in cachefile loop");
+            System.out.println("Stuck in cachefile loop");
             try {
                 Thread.sleep(50);
             }catch (Exception e)
@@ -317,6 +317,8 @@ public class ClientCommandManager implements Runnable {
         localMessage.localFileName = cmd.localFileName;
 
         Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        response.add("File Get Submitted");
 
         return response;
     }
