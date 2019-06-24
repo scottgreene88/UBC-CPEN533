@@ -100,6 +100,9 @@ public class ClientCommandManager implements Runnable {
             case "remove":
                 responseList = sendRemoveToNode();
                 break;
+            case "get":
+                responseList = sendGetToNode();
+                break;
 
 
         }
@@ -296,6 +299,22 @@ public class ClientCommandManager implements Runnable {
         Main.localProcessClock.incrementClock();
         TCPMessage localMessage = new TCPMessage("node", "removeToMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
         localMessage.fs533FileName = cmd.fs533FileName;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        response.add("File Remove Submitted");
+
+        return response;
+    }
+
+    private  Vector<String> sendGetToNode()
+    {
+        Vector<String> response = new Vector<>();
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "getToMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+        localMessage.localFileName = cmd.localFileName;
 
         Main.commandQueues.addCommandToInBoundQueue(localMessage);
 

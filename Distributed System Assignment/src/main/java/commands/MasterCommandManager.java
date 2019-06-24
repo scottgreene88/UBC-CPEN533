@@ -52,7 +52,9 @@ public class MasterCommandManager implements Runnable {
             case "removeAtMaster":
                 sendRemoveFileToNodes();
                 break;
-
+            case "getAtMaster":
+                sendGetToNode();
+                break;
         }
 
     }
@@ -299,5 +301,12 @@ public class MasterCommandManager implements Runnable {
         }
 
 
+    }
+
+    private void sendGetToNode()
+    {
+        int index = Main.masterFileList.getIndexOfFile(cmd.fs533FileName);
+
+        FileInfo temp = Main.masterFileList.getFileFromIndex(index);
     }
 }

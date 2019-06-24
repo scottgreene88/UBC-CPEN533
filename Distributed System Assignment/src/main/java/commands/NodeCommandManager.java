@@ -69,6 +69,9 @@ public class NodeCommandManager implements Runnable {
             case "removeToMaster":
                 sendRemoveToMaster();
                 break;
+            case "getToMaster":
+                sendGetToMaster();
+                break;
 
 
 
@@ -214,5 +217,15 @@ public class NodeCommandManager implements Runnable {
         Main.localFileList.removeFileFromList(cmd.fs533FileName,cmd.fileSaveType);
 
 
+    }
+
+    private void sendGetToMaster()
+    {
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("master", "getAtMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+        localMessage.localFileName = cmd.localFileName;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
     }
 }
