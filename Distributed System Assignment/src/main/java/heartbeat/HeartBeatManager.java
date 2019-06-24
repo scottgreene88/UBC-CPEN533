@@ -15,7 +15,7 @@ public class HeartBeatManager implements Runnable{
             try {
 
                 Vector<String> hbCheckResponse = Main.heartBeatTable.checkPredecessorTimeoutForFail();
-
+                //System.out.println("HB Manager Check list: " + hbCheckResponse.size());
                 if (hbCheckResponse.size() != 0) {
                     for (String ip : hbCheckResponse) {
 
@@ -24,6 +24,8 @@ public class HeartBeatManager implements Runnable{
                         if(ip.equals(Main.masterIPAddress))
                         {
                             Main.masterIPAddress = Main.localHostIP;
+                            Main.inPortNum = 6000;
+                            Main.outPortNum = 5000;
                         }
                     }
 

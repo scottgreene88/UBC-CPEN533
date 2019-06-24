@@ -32,7 +32,7 @@ public class HeartBeatTable {
         try {
 
                 //Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
-
+            //System.out.println("adding ip to pred list: " + ip);
 
                 currentPredecessors.add(ip);
                 lastCheckedTimeStamp.add(timeStamp);
@@ -41,7 +41,7 @@ public class HeartBeatTable {
                 //long dateOffset = date.getTime();
                 //dateOffset += 10;
                 //date.setTime(dateOffset);
-                lastTimeStamp.add(timeStamp);
+                lastTimeStamp.add(timeStamp + 1);
                 //System.out.println("Setting new machine ip: " + ip + " to time: " + date);
 
         }
@@ -86,6 +86,7 @@ public class HeartBeatTable {
 
             while(Main.listBusyLock)
             {
+                //System.out.println("Waiting for lock HB check");
                 //if lists are being updated then wait for them to finish
                 Thread.sleep(50);
             }

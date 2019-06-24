@@ -39,11 +39,14 @@ public class ClientCommandManager implements Runnable {
             //execute the command
             Vector<String> response = executeCommand(cmd.commandType);
 
-            Main.localProcessClock.incrementClock();
-            TCPMessage responseMessage =  new TCPMessage("client",cmd.commandType,Main.localHostIP, Main.localHostIP,Main.localProcessClock.getClock());
-            responseMessage.dataList = new core.GateWayManager().serializeList(response) ;
+            if(response.size() > 0) {
+                Main.localProcessClock.incrementClock();
+                TCPMessage responseMessage = new TCPMessage("client", cmd.commandType, Main.localHostIP, Main.localHostIP, Main.localProcessClock.getClock());
+                responseMessage.dataList = new core.GateWayManager().serializeList(response);
 
-            Main.commandQueues.addCommandToOutBoundQueue(responseMessage);
+
+                Main.commandQueues.addCommandToOutBoundQueue(responseMessage);
+            }
 
         }catch (Exception e)
         {
@@ -85,8 +88,8 @@ public class ClientCommandManager implements Runnable {
             case "confirmResponse":
                 responseList = forwardConfirmToNode();
                 break;
-            default:
-                responseList.add("Invalid Command");
+            case "lshere":
+                responseList = getMyLocalFiles();
                 break;
 
 
@@ -189,18 +192,18 @@ public class ClientCommandManager implements Runnable {
     {
         Vector<String> response = new Vector<>();
 
-        System.out.println("In client put command");
+        //System.out.println("In client put command");
 
         String localFileName = cmd.localFileName;
         String fs533FileName =  cmd.fs533FileName;
 
-        System.out.println("Read file names");
+        //System.out.println("Read file names");
 
         ReadWriteManager reader = new ReadWriteManager();
 
         while(!Main.cacheFileSaved)
         {
-            System.out.println("stuck in cachefile loop");
+            System.out.println("s=Stuck in cachefile loop");
             try {
                 Thread.sleep(50);
             }catch (Exception e)
@@ -245,5 +248,10 @@ public class ClientCommandManager implements Runnable {
 
         response.add("Confirmation Received");
         return response;
+    }
+
+    private Vector<String> getMyLocalFiles()
+    {
+        return Main.localFileList.getAList("main");
     }
 }

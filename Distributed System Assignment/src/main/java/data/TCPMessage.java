@@ -12,6 +12,7 @@ public class TCPMessage {
     public String localFileName;
     public String fs533FileName;
     public boolean fileSaveConfirm;
+    public String fileSaveType;
 
 
     public TCPMessage(String messageType, String commandType, String senderIP,String destinationIP, long sendTimestamp)

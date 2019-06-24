@@ -11,7 +11,7 @@ import java.util.*;
 
 public class GateWayManager {
 
-    private int numberOfNeighbours = 1;
+    private int numberOfNeighbours = 4;
 
     public void requestLogin(String ip)
     {
@@ -89,13 +89,14 @@ public class GateWayManager {
     synchronized public void updatePredecessorsList()
     {
 
-
+        //System.out.println("Updating Pred list");
 
         int selfIndex = 0;
         try {
 
             while(Main.listBusyLock)
             {
+                //System.out.println("Waiting for lock");
                 //if lists are being updated then wait for them to finish
                 Thread.sleep(50);
             }
@@ -304,13 +305,14 @@ public class GateWayManager {
     synchronized public void updateSuccessorsList()
     {
 
-
+        //System.out.println("Updating Suc list");
 
         int selfIndex = 0;
         try {
 
             while(Main.listBusyLock)
             {
+                System.out.println("Waiting for lock");
                 //if lists are being updated then wait for them to finish
                 Thread.sleep(50);
             }
@@ -344,7 +346,7 @@ public class GateWayManager {
             for(int i = 1; i <= numberOfNeighbours - 2; i++)
             {
 
-                if((selfIndex+ i) < Main.currentMachineList.size())
+                if((selfIndex + i) < Main.currentMachineList.size())
                 {
 
                     Main.successorsList.add(Main.currentMachineList.get(selfIndex + i));

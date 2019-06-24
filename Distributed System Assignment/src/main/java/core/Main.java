@@ -3,10 +3,8 @@ package core;
 
 
 import commands.TcpCommandManager;
-import data.CommandQueues;
-import data.HeartBeatTable;
+import data.*;
 
-import data.ProcessClock;
 import heartbeat.HeartBeatManager;
 import heartbeat.SendHeartBeat;
 
@@ -35,10 +33,12 @@ public class Main {
     public static Vector<Long> currentMachineListLoginTime;
 
     public static CommandQueues commandQueues;
+    public static MasterFileList masterFileList;
+    public static LocalFileList localFileList;
 
     public static int heartBeatPort = 1526;
-    public static int heartBeatTime = 300;
-    public  static int heartBeatTimeout = 2000;
+    public static int heartBeatTime = 1000;
+    public  static int heartBeatTimeout = 10000;
     public static HeartBeatTable heartBeatTable;
 
     public static String localHostIP;
@@ -90,6 +90,8 @@ public class Main {
 
         commandQueues = new CommandQueues();
         localProcessClock =  new ProcessClock();
+        masterFileList = new MasterFileList();
+        localFileList = new LocalFileList();
 
         localHostIP = InetAddress.getLocalHost().getHostAddress();
 
