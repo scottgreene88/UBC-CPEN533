@@ -6,7 +6,9 @@ import java.util.Vector;
 public class FileInfo {
 
     public String fs533FileName;
-    public Vector<String> locationIP;
+    public String mainIP;
+    public String backupIP1;
+    public String backupIP2;
 
     public int versionNum;
     public long submitTime;
@@ -15,17 +17,9 @@ public class FileInfo {
     {
         this.fs533FileName = fs533FileName;
         this.versionNum = 1;
-        this.locationIP = new Vector<>();
         Date date = new Date();
         this.submitTime = date.getTime();
     }
 
-    public void addLocationIP(String ip)
-    {
-        if(!this.locationIP.contains(ip))
-        {
-            this.locationIP.add(ip);
-        }
 
-    }
 }

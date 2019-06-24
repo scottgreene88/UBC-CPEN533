@@ -65,4 +65,25 @@ public class LocalFileList {
         }
     }
 
+    public void removeFileFromList(String fileName, String listName)
+    {
+        int index;
+
+        if(listName.equals("main"))
+        {
+            index = myFileList.indexOf(fileName);
+            myFileList.remove(index);
+
+        }else if(listName.equals("backUp1"))
+        {
+            index = backUpFileList1.indexOf(fileName);
+            backUpFileList1.remove(index);
+        }
+        else if(listName.equals("backUp2"))
+        {
+            index = backUpFileList2.indexOf(fileName);
+            backUpFileList2.remove(index);
+        }
+
+    }
 }

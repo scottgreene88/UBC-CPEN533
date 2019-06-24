@@ -7,6 +7,7 @@ import network.fileTransferClient;
 import network.fileTransferServer;
 import data.ReadWriteManager;
 
+import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +51,24 @@ public class NodeCommandManager implements Runnable {
             case "fileIncoming":
                 respondAndOpenPort();
                 break;
-
+            case "lsToMaster":
+                sendLsToMaster();
+                break;
+            case "fullList":
+                sendLsToClient();
+                break;
+            case "locateToMaster":
+                sendLocateToMaster();
+                break;
+            case "locateList":
+                sendLocateToClient();
+                break;
+            case "deleteFile":
+                deleteLocalFIle();
+                break;
+            case "removeToMaster":
+                sendRemoveToMaster();
+                break;
 
 
 
@@ -136,5 +154,65 @@ public class NodeCommandManager implements Runnable {
         writer.writeFile(Main.fs533FileFolder +"/" + Main.cacheFileName, Main.cacheFile);
 
         Main.cacheFileSaved = true;
+    }
+
+    private void sendLsToMaster()
+    {
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("master", "lsFromNode", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendLsToClient()
+    {
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("client", "lsResponse", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock());
+        localMessage.dataList = cmd.dataList;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+
+    }
+
+    private void sendLocateToMaster()
+    {
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("master", "locateAtMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendLocateToClient()
+    {
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("client", "locateResponse", Main.localHostIP, Main.localHostIP , Main.localProcessClock.getClock());
+        localMessage.dataList = cmd.dataList;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendRemoveToMaster()
+    {
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("master", "removeAtMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+
+    }
+
+    private void deleteLocalFIle()
+    {
+        System.out.println("Deleting Local File " +  cmd.fs533FileName);
+        File file = new File(Main.fs533FileFolder + "/" + cmd.fs533FileName);
+        file.delete();
+
+        Main.localFileList.removeFileFromList(cmd.fs533FileName,cmd.fileSaveType);
+
+
     }
 }

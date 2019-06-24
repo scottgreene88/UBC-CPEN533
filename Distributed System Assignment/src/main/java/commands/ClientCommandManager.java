@@ -91,6 +91,15 @@ public class ClientCommandManager implements Runnable {
             case "lshere":
                 responseList = getMyLocalFiles();
                 break;
+            case "ls":
+                responseList = sendLSCommandToMaster();
+                break;
+            case "locate":
+                responseList = getLocationOfFileInSystem();
+                break;
+            case "remove":
+                responseList = sendRemoveToNode();
+                break;
 
 
         }
@@ -253,5 +262,43 @@ public class ClientCommandManager implements Runnable {
     private Vector<String> getMyLocalFiles()
     {
         return Main.localFileList.getAList("main");
+    }
+
+    private Vector<String> sendLSCommandToMaster()
+    {
+        Vector<String> response = new Vector<>();
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "lsToMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        return response;
+    }
+
+    private Vector<String> getLocationOfFileInSystem()
+    {
+        Vector<String> response = new Vector<>();
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "locateToMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        return response;
+    }
+
+    private Vector<String> sendRemoveToNode()
+    {
+        Vector<String> response = new Vector<>();
+
+        Main.localProcessClock.incrementClock();
+        TCPMessage localMessage = new TCPMessage("node", "removeToMaster", Main.localHostIP, Main.masterIPAddress , Main.localProcessClock.getClock());
+        localMessage.fs533FileName = cmd.fs533FileName;
+
+        Main.commandQueues.addCommandToInBoundQueue(localMessage);
+
+        return response;
     }
 }

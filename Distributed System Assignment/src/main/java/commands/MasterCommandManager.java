@@ -1,15 +1,19 @@
 package commands;
 
+import com.google.gson.Gson;
 import core.Main;
 
+import data.FileInfo;
 import data.ReadWriteManager;
 import data.TCPMessage;
 import network.fileTransferClient;
 import network.fileTransferServer;
 
+import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.io.File;
 
 public class MasterCommandManager implements Runnable {
 
@@ -39,9 +43,15 @@ public class MasterCommandManager implements Runnable {
             case "sendFileToDestination":
                 notifyNodeOfIncomingFile();
                 break;
-
-
-
+            case "lsFromNode":
+                sendFullListToNode();
+                break;
+            case "locateAtMaster":
+                sendLocateToNode();
+                break;
+            case "removeAtMaster":
+                sendRemoveFileToNodes();
+                break;
 
         }
 
@@ -103,7 +113,8 @@ public class MasterCommandManager implements Runnable {
 
     private void notifyNodeOfIncomingFile()
     {
-        Main.masterFileList.addNewFile(Main.cacheFileName);
+
+        FileInfo newFile = new FileInfo(Main.cacheFileName);
 
         int counter = Main.masterFileList.getNodeCounter();
 
@@ -112,6 +123,8 @@ public class MasterCommandManager implements Runnable {
         int backUp2 = (counter + 2) % Main.currentMachineList.size() ;
 
         String mainIP = Main.currentMachineList.get(mainNode);
+        newFile.mainIP = mainIP;
+
         TCPMessage localMessage;
         if(!mainIP.equals(Main.localHostIP)) {
             Main.localProcessClock.incrementClock();
@@ -129,6 +142,8 @@ public class MasterCommandManager implements Runnable {
         }
 
         String backupIP1 = Main.currentMachineList.get(backUp1);
+        newFile.backupIP1 = backupIP1;
+
         if(!backupIP1.equals(Main.localHostIP)) {
         Main.localProcessClock.incrementClock();
         localMessage = new TCPMessage("node", "fileIncoming", Main.localHostIP, backupIP1 , Main.localProcessClock.getClock());
@@ -145,6 +160,8 @@ public class MasterCommandManager implements Runnable {
         }
 
         String backupIP2 = Main.currentMachineList.get(backUp2);
+        newFile.backupIP2 = backupIP2;
+
         if(!backupIP2.equals(Main.localHostIP)) {
         Main.localProcessClock.incrementClock();
         localMessage = new TCPMessage("node", "fileIncoming", Main.localHostIP, backupIP2 , Main.localProcessClock.getClock());
@@ -159,6 +176,8 @@ public class MasterCommandManager implements Runnable {
             writer.writeFile(Main.fs533FileFolder +"/" + Main.cacheFileName, Main.cacheFile);
             Main.localFileList.addFileToLocalList(Main.cacheFileName,"backUp2");
         }
+
+        Main.masterFileList.addNewFile(newFile);
     }
 
     private void sendFileToNode()
@@ -179,7 +198,106 @@ public class MasterCommandManager implements Runnable {
 
         Main.cacheFileSaved = true;
 
-        //Main.masterFileList.addIpToFileInfo(cmd.fs533FileName, Main.localHostIP);
+
     }
 
+    private void sendFullListToNode()
+    {
+        Vector<String> responseList = new Vector<>(Main.masterFileList.getMasterIndex());
+
+        Gson json = new Gson();
+
+        TCPMessage localMessage = new TCPMessage("node", "fullList", Main.localHostIP, cmd.senderIP, Main.localProcessClock.getClock());
+        localMessage.dataList = json.toJson(responseList);
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendLocateToNode()
+    {
+
+        int index = Main.masterFileList.getIndexOfFile(cmd.fs533FileName);
+
+        FileInfo temp = Main.masterFileList.getFileFromIndex(index);
+
+        Gson json = new Gson();
+
+        Vector<String> responseList = new Vector<>();
+        responseList.add(temp.mainIP);
+        responseList.add(temp.backupIP1);
+        responseList.add(temp.backupIP2);
+
+        TCPMessage localMessage = new TCPMessage("node", "locateList", Main.localHostIP, cmd.senderIP, Main.localProcessClock.getClock());
+        localMessage.dataList = json.toJson(responseList);
+
+        Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+    }
+
+    private void sendRemoveFileToNodes()
+    {
+        int index = Main.masterFileList.getIndexOfFile(cmd.fs533FileName);
+
+        FileInfo temp = Main.masterFileList.getFileFromIndex(index);
+
+
+        TCPMessage localMessage;
+
+        Main.masterFileList.removeFileFromList(index);
+
+        String mainIP = temp.mainIP;
+        if(!mainIP.equals(Main.localHostIP)) {
+            Main.localProcessClock.incrementClock();
+            localMessage = new TCPMessage("node", "deleteFile", Main.localHostIP, mainIP, Main.localProcessClock.getClock());
+            localMessage.fs533FileName = cmd.fs533FileName;
+            localMessage.fileSaveType = "main";
+
+            Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+        }else
+        {
+            System.out.println("Deleting File Locally "+  cmd.fs533FileName);
+
+            File file = new File(Main.fs533FileFolder + "/" + cmd.fs533FileName);
+            file.delete();
+
+            Main.localFileList.removeFileFromList(cmd.fs533FileName,"main");
+        }
+
+        String backUpIP1 = temp.backupIP1;
+        if(!backUpIP1.equals(Main.localHostIP)) {
+            Main.localProcessClock.incrementClock();
+            localMessage = new TCPMessage("node", "deleteFile", Main.localHostIP, backUpIP1, Main.localProcessClock.getClock());
+            localMessage.fs533FileName = cmd.fs533FileName;
+            localMessage.fileSaveType = "backUp1";
+
+            Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+        }else
+        {
+            System.out.println("Deleting File Locally "+  cmd.fs533FileName);
+
+            File file = new File(Main.fs533FileFolder + "/" + cmd.fs533FileName);
+            file.delete();
+
+            Main.localFileList.removeFileFromList(cmd.fs533FileName,"backUp1");
+        }
+
+        String backUpIP2 = temp.backupIP2;
+        if(!backUpIP2.equals(Main.localHostIP)) {
+            Main.localProcessClock.incrementClock();
+            localMessage = new TCPMessage("node", "deleteFile", Main.localHostIP, backUpIP2, Main.localProcessClock.getClock());
+            localMessage.fs533FileName = cmd.fs533FileName;
+            localMessage.fileSaveType = "backUp2";
+
+            Main.commandQueues.addCommandToOutBoundQueue(localMessage);
+        }else
+        {
+            System.out.println("Deleting File Locally "+  cmd.fs533FileName);
+
+            File file = new File(Main.fs533FileFolder + "/" + cmd.fs533FileName);
+            file.delete();
+
+            Main.localFileList.removeFileFromList(cmd.fs533FileName,"backUp2");
+        }
+
+
+    }
 }

@@ -23,22 +23,31 @@ public class MasterFileList {
         return nodeCounter++;
     }
 
-    public void addNewFile(String fs533FileName)
+    public void addNewFile(FileInfo file)
     {
-        masterList.add(new FileInfo(fs533FileName));
+        System.out.println("Adding to master list " + file.fs533FileName);
+        masterIndex.add(file.fs533FileName);
+        masterList.add(file);
     }
 
-    public void addIpToFileInfo(String fs533FileName, String ip)
+    public Vector<String> getMasterIndex()
     {
+        return masterIndex;
+    }
 
+    public int getIndexOfFile(String fs533FileName)
+    {
+        return masterIndex.indexOf(fs533FileName);
+    }
 
-        FileInfo temp = masterList.get(this.masterIndex.indexOf(fs533FileName));
+    public FileInfo getFileFromIndex(int index)
+    {
+        return masterList.get(index);
+    }
 
-        if(!temp.locationIP.contains(ip))
-        {
-            temp.locationIP.add(ip);
-
-            masterList.set(this.masterIndex.indexOf(fs533FileName), temp);
-        }
+    public void removeFileFromList(int index)
+    {
+        masterList.remove(index);
+        masterIndex.remove(index);
     }
 }
